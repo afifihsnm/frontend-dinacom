@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path='/' Component={HomePage}></Route>
           <Route path='/tentang' Component={AboutPage}></Route>
-          <Route path='/komplain' Component={ComplaintPage}></Route>
+          <Route path='/pengaduan' Component={ComplaintPage}></Route>
           <Route path='/login' Component={LoginPage}></Route>
         </Routes>
       <FooterComponent />
