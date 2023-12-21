@@ -14,8 +14,8 @@ function App() {
     <div>
       <NavbarComponents />
         <Routes>
-          <Route path='/' Component={HomePage}></Route>
-          <Route path='/tentang' Component={AboutPage}></Route>
+          <Route path='/beranda' Component={HomePage}></Route>
+          <Route path='/tentangkami' Component={AboutPage}></Route>
           <Route path='/pengaduan' Component={ComplaintPage}></Route>
           <Route path='/login' Component={LoginPage}></Route>
         </Routes>
