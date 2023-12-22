@@ -38,12 +38,12 @@ const HomePage = () => {
       </header>
 
       <div className="wording-1 w-100 mb-5">
-        <h1>Ribet? kata siapa 😡, di Sadam semua kegiatan bisa dilakukan secara online kok, engga perlu capek-capek ke kantor instansi lagi👉👈</h1>
+        <h3>Ribet? kata siapa 😡, di Sadam semua kegiatan bisa dilakukan secara online kok, engga perlu capek-capek ke kantor instansi lagi👉👈</h3>
         <p>Di Sadam cuma perlu 3 langkah untuk menyelesaikan sebuah masalah. Pertama, buat laporan. kedua, tindak lanjut dari instansi terkait. ketiga, saling tanggap. Selesai 😁</p>
       </div>
 
       <div className="wording-2 w-100">
-        <h1>Masih ragu? lebih dari 200.000 masalah sudah terselesaikan dengan baik lho. Yuk, sampaikan keresahanmu sekarang.</h1>
+        <h3>Masih ragu? lebih dari 200.000 masalah sudah terselesaikan dengan baik lho. Yuk, sampaikan keresahanmu sekarang.</h3>
       </div>
 
       <RunningTextComponent />
@@ -85,8 +85,10 @@ const HomePage = () => {
           height="" className="d-inline-block"/>
           </Col>
         </Row>
-      
       </div>
+
+      <RunningTextComponent  />
+
     </div>
   );
 };

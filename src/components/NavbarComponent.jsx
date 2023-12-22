@@ -13,7 +13,7 @@ const NavbarComponent = () => {
 
   return (
     <Navbar expand="lg" className="w-100" style={{ backgroundColor: '#ECF5FF' }}>
-      <Navbar.Brand as={Link} to="/">
+      <Navbar.Brand as={Link} to="/beranda">
         <img
           src="./src/assets/sadam.png"
           alt="Logo_Sadam"
