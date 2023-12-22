@@ -1,7 +1,15 @@
-const LoginPage = () => {
+// LoginPage.jsx
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+
+function LoginPage() {
+  const location = useLocation();
+
   return (
-    <div>LoginPage</div>
-  )
+    <div>
+      PPP
+    </div>
+  );
 }
 
 export default LoginPage;

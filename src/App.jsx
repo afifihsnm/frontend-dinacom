@@ -6,8 +6,7 @@ import FooterComponent from './components/FooterComponent';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
-import ComplaintPage from './pages/ComplaintPage';
-
+import ComplaintForm from './components/ComplaintForm';
 
 function App() {
   return (
@@ -16,7 +15,7 @@ function App() {
         <Routes>
           <Route path='/beranda' Component={HomePage}></Route>
           <Route path='/tentangkami' Component={AboutPage}></Route>
-          <Route path='/pengaduan' Component={ComplaintPage}></Route>
+          <Route path='/complaint' Component={ComplaintForm}></Route>
           <Route path='/login' Component={LoginPage}></Route>
         </Routes>
       <FooterComponent />

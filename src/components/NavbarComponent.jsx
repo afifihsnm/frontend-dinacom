@@ -1,21 +1,26 @@
+// NavbarComponent.jsx
 import React, { useState } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 const NavbarComponent = () => {
   let navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
+  const location = useLocation();
 
   const handleToggle = () => {
     setExpanded(!expanded);
   };
 
+  // Fungsi untuk menentukan apakah kita berada di halaman LoginPage
+  const isLoginPage = location.pathname === '/login';
+
   return (
-    <Navbar expand="lg" className="w-100" style={{ backgroundColor: '#ECF5FF' }}>
+    <Navbar expand="lg" className={`w-100 ${isLoginPage ? 'login-page-navbar' : ''}`} style={{ backgroundColor: '#ECF5FF' }}>
       <Navbar.Brand as={Link} to="/beranda">
         <img
-          src="./src/assets/sadam.png"
+          src="./src/assets/img/sadamnavbar.png"
           alt="Logo_Sadam"
           height="44"
           className="d-inline-block align-top"
@@ -36,18 +41,21 @@ const NavbarComponent = () => {
           <Nav.Link as={Link} to="/tentangkami" onSelect={() => setExpanded(false)}>
             Tentang Sadam
           </Nav.Link>
-          <Nav.Link as={Link} to="/pengaduan" onSelect={() => setExpanded(false)}>
+          <Nav.Link as={Link} to="/complaint" onSelect={() => setExpanded(false)}>
             Ajukan Pengaduan
           </Nav.Link>
         </Nav>
-        <div className='navbar-sign d-flex'>
-          <Nav.Link as={Link} to="/login" onSelect={() => setExpanded(false)}>
-            Masuk
-          </Nav.Link>
-          <button type="button" onClick={() => navigate("/login")} className="btn navbar-btn btn-outline-primary rounded-5">
-          Daftar Sekarang
-          </button>        
-        </div>
+        {/* Menampilkan tombol Masuk dan Daftar Sekarang hanya jika bukan di halaman LoginPage */}
+        {!isLoginPage && (
+          <div className='navbar-sign d-flex'>
+            <Nav.Link as={Link} to="/login" onSelect={() => setExpanded(false)}>
+              Masuk
+            </Nav.Link>
+            <button type="button" onClick={() => navigate("/login")} className="btn navbar-btn btn-outline-primary rounded-5">
+              Daftar Sekarang
+            </button>
+          </div>
+        )}
       </Navbar.Collapse>
     </Navbar>
   );

@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import HeroImage from '../assets/img/hero.png';
 import HeroImage2 from '../assets/img/hero2.png';
 import HeroImage3 from '../assets/img/hero3.png';
@@ -20,7 +20,7 @@ const HomePage = () => {
               <h1>Jangan ragu jangan bimbang, masalahmu akan terselesaikan😱😎</h1>
               <p>Sadam adalah solusi bagi Masyarakat yang ingin melaporkan keresahan secara mudah, cepat, dan aman tentunya. Tidak perlu datang ke instansi tujuan, cukup dari rumah saja keresahanmu bisa tersampaikan. </p>
               <div className="d-flex gap-3">
-              <button type="button" onClick={() => navigate("/login")} className="btn report btn-primary rounded-5">
+              <button type="button" onClick={() => navigate("/complaint")} className="btn report btn-primary rounded-5">
               Laporin keresahanmu
             </button>
               <button type="button" onClick={() => navigate("/login")} className="btn sign btn-outline-primary rounded-5">
@@ -55,32 +55,32 @@ const HomePage = () => {
         </Row>
         <Row className="mx-5">
           <Col className="text-center">
-          <img src="./src/assets/img/BNN.png"
+          <img src="./src/assets/img/homepage-partner/BNN.png"
           alt="Logo-Sadam-Footer"
           height="" className="text-center"/>
           </Col>
           <Col className="text-center">
-          <img src="./src/assets/img/Kepolisian.png"
+          <img src="./src/assets/img/homepage-partner/Kepolisian.png"
           alt="Logo-Sadam-Footer"
           height="" className="d-inline-block"/>
           </Col>
           <Col className="text-center">
-          <img src="./src/assets/img/BSSN.png"
+          <img src="./src/assets/img/homepage-partner/BSSN.png"
           alt="Logo-Sadam-Footer"
           height="" className="d-inline-block"/>
           </Col>
           <Col className="text-center">
-          <img src="./src/assets/img/KPRI.png"
+          <img src="./src/assets/img/homepage-partner/KPRI.png"
           alt="Logo-Sadam-Footer"
           height="" className="d-inline-block"/>
           </Col>
           <Col className="text-center">
-          <img src="./src/assets/img/Ministers.png"
+          <img src="./src/assets/img/homepage-partner/Ministers.png"
           alt="Logo-Sadam-Footer"
           height="" className="d-inline-block"/>
           </Col>
           <Col className="text-center">
-          <img src="./src/assets/img/BIN.png"
+          <img src="./src/assets/img/homepage-partner/BIN.png"
           alt="Logo-Sadam-Footer"
           height="" className="d-inline-block"/>
           </Col>
