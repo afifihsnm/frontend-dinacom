@@ -10,11 +10,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./dist/css/main.css";
 import "./dist/css/AboutPage.css";
 import "./dist/css/HomePage.css";
+import "./dist/css/LoginPage.css";
+import "./dist/css/ForgotPasswordPage.css";
 
 /* Import CSS Compponents */
 import "./dist/css/NavbarComponent.css";
 import "./dist/css/RunningTextComponent.css";
 import "./dist/css/FooterComponent.css";
+import "./dist/css/LoginForm.css";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

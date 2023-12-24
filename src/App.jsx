@@ -1,22 +1,24 @@
 import { Routes, Route } from 'react-router-dom';
 
-import NavbarComponents from './components/NavbarComponent';
+import NavbarComponent from './components/NavbarComponent';
 import FooterComponent from './components/FooterComponent';
 
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ComplaintForm from './components/ComplaintForm';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
 
 function App() {
   return (
     <div>
-      <NavbarComponents />
+      <NavbarComponent />
         <Routes>
-          <Route path='/beranda' Component={HomePage}></Route>
-          <Route path='/tentangkami' Component={AboutPage}></Route>
-          <Route path='/complaint' Component={ComplaintForm}></Route>
-          <Route path='/login' Component={LoginPage}></Route>
+        <Route path='/beranda' element={<HomePage />} />
+        <Route path='/tentangkami' element={<AboutPage />} />
+        <Route path='/complaint' element={<ComplaintForm />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/lupa-sandi' element={<ForgotPasswordPage />} />
         </Routes>
       <FooterComponent />
     </div>

@@ -13,7 +13,6 @@ const NavbarComponent = () => {
     setExpanded(!expanded);
   };
 
-  // Fungsi untuk menentukan apakah kita berada di halaman LoginPage
   const isLoginPage = location.pathname === '/login';
 
   return (
@@ -45,6 +44,7 @@ const NavbarComponent = () => {
             Ajukan Pengaduan
           </Nav.Link>
         </Nav>
+        
         {/* Menampilkan tombol Masuk dan Daftar Sekarang hanya jika bukan di halaman LoginPage */}
         {!isLoginPage && (
           <div className='navbar-sign d-flex'>

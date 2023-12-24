@@ -4,6 +4,7 @@ import HeroImage2 from '../assets/img/hero2.png';
 import HeroImage3 from '../assets/img/hero3.png';
 
 import { useNavigate } from "react-router-dom";
+
 import RunningTextComponent from "../components/RunningTextComponent";
 import ComplaintForm from "../components/ComplaintForm";
 
