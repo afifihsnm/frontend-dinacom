@@ -13,7 +13,7 @@ const NavbarComponent = () => {
     setExpanded(!expanded);
   };
 
-  const isLoginPage = location.pathname === '/login';
+  const isLoginPage = location.pathname === '/masuk' || location.pathname === '/daftar' || location.pathname === '/lupa-sandi' ;
 
   return (
     <Navbar expand="lg" className={`w-100 ${isLoginPage ? 'login-page-navbar' : ''}`} style={{ backgroundColor: '#ECF5FF' }}>
@@ -48,10 +48,10 @@ const NavbarComponent = () => {
         {/* Menampilkan tombol Masuk dan Daftar Sekarang hanya jika bukan di halaman LoginPage */}
         {!isLoginPage && (
           <div className='navbar-sign d-flex'>
-            <Nav.Link as={Link} to="/login" onSelect={() => setExpanded(false)}>
+            <Nav.Link as={Link} to="/masuk" onSelect={() => setExpanded(false)}>
               Masuk
             </Nav.Link>
-            <button type="button" onClick={() => navigate("/login")} className="btn navbar-btn btn-outline-primary rounded-5">
+            <button type="button" onClick={() => navigate("/daftar")} className="btn navbar-btn btn-outline-primary rounded-5">
               Daftar Sekarang
             </button>
           </div>

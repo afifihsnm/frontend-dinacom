@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 
 function FooterComponent() {
   return (
-    <div className="footer w-100 mt-4">
+    <div className="footer w-100">
       <Row className="m-0 gap-5 d-flex justify-content-between align-item-center">
       <Col lg="5" className="pt-5 pb-3 px-0 col-lg-5">
-      <NavbarBrand as={Link} to="/beranda">
+      <Link to="/beranda">
         <img
         src="./src/assets/img/sadamfooter.png" 
         alt="Logo-Sadam-Footer"
         height="44"
         className="d-inline-block mb-3"
         />
-      </NavbarBrand>
+      </Link>
       <p className="desc my-0">Sistem Pengaduan Online Masyarakat (SADAM) adalah layanan pengaduan keamanan publik berbasis website. Masyarakat tidak perlu datang ke instansi lagi untuk melapor, cukup menggunakan gawai dari manapun masyarakat dapat melapor keresahannya.</p>
       </Col>
       <Col className="d-flex flex-column col-lg-2 col mb-5 gap-2">

@@ -1,53 +1,59 @@
-// LoginForm.js
-import React from 'react';
-import { Form, InputGroup, FormControl, Button } from 'react-bootstrap';
+import { Form, InputGroup, FormControl, Button, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Formik } from 'formik';
-import * as yup from 'yup';
+import * as Yup from 'yup';
 
-const LoginForm = () => {
-  const schema = yup.object().shape({
-    username: yup.string().required(),
-    password: yup.string().required(),
-  });
+const handleSubmit = async (values) => {
+  console.log(values);
+}
+
+const SignInForm = () => {
+  const schema = Yup.object().shape({
+    username: Yup.string().required(),
+    password: Yup.string()
+    .min(8, "Minimum 8 characters")
+    .required(),
+  })
 
   return (
     <Formik
       validationSchema={schema}
-      onSubmit={console.log}
+      onSubmit={handleSubmit}
       initialValues={{
         username: '',
         password: '',
       }}
     >
       {({ handleSubmit, handleChange, values, touched, errors }) => (
-        <Form className='signin' onSubmit={handleSubmit}>
+        <Form noValidate className='signin-form' onSubmit={handleSubmit}>
           <Form.Group className='forms-g' controlId="validationUsername">
             <Form.Label className='label'>Username<span className='red-dot'>*</span></Form.Label>
             <InputGroup className='mb-1'>
-              <FormControl
+              <FormControl className='rounded-5'
                 type="text"
                 placeholder="Username"
                 name="username"
                 value={values.username}
                 onChange={handleChange}
-                isInvalid={!!errors.username}
+                isValid={touched.username && !errors.username}
               />
+              <Form.Control.Feedback type="invalid">{errors.username}</Form.Control.Feedback>
             </InputGroup>
           </Form.Group>
 
           <Form.Group className="forms-g mb-3" controlId="validationPassword">
             <Form.Label className='label'>Kata Sandi<span className='red-dot'>*</span></Form.Label>
             <InputGroup className='mb-1'>
-            <FormControl
+            <FormControl className='rounded-5'
               type="password"
               placeholder="Password"
               name="password"
               value={values.password}
               onChange={handleChange}
-              isInvalid={!!errors.password}
-            />
-            </InputGroup>
+              isValid={touched.password && !errors.password}
+              />
+              <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
+              </InputGroup>
             <Link to="/lupa-sandi">Lupa Kata Sandi?</Link>
           </Form.Group>
           <Button type="submit">Masuk</Button>
@@ -58,4 +64,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default SignInForm;

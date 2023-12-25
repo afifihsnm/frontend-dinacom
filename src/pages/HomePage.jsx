@@ -1,4 +1,4 @@
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import HeroImage from '../assets/img/hero.png';
 import HeroImage2 from '../assets/img/hero2.png';
 import HeroImage3 from '../assets/img/hero3.png';
@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 
 import RunningTextComponent from "../components/RunningTextComponent";
 import ComplaintForm from "../components/ComplaintForm";
-
 
 const HomePage = () => {
   let navigate = useNavigate();
@@ -24,7 +23,7 @@ const HomePage = () => {
               <button type="button" onClick={() => navigate("/complaint")} className="btn report btn-primary rounded-5">
               Laporin keresahanmu
             </button>
-              <button type="button" onClick={() => navigate("/login")} className="btn sign btn-outline-primary rounded-5">
+              <button type="button" onClick={() => navigate("/daftar")} className="btn sign btn-outline-primary rounded-5">
               Daftar
             </button>
             </div>
