@@ -1,13 +1,15 @@
-import { Form, InputGroup, FormControl, Button } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
+import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { Formik } from "formik";
+import * as Yup from "yup";
 
 const ForgotPasswordForm = ({ onEmailSent, onFormReset }) => {
   const [isEmailSent, setIsEmailSent] = useState(false);
 
   const schema = Yup.object().shape({
-    email: Yup.string().email('Invalid email format').required('Email is required'),
+    email: Yup.string()
+      .email("Invalid email format")
+      .required("Email is required"),
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
@@ -27,11 +29,18 @@ const ForgotPasswordForm = ({ onEmailSent, onFormReset }) => {
       validationSchema={schema}
       onSubmit={handleSubmit}
       initialValues={{
-        email: '',
+        email: "",
       }}
     >
-      {({ handleSubmit, handleChange, values, touched, errors, isSubmitting }) => (
-        <Form noValidate onSubmit={handleSubmit} className='fpass-form'>
+      {({
+        handleSubmit,
+        handleChange,
+        values,
+        touched,
+        errors,
+        isSubmitting,
+      }) => (
+        <Form noValidate onSubmit={handleSubmit} className="fpass-form">
           {isEmailSent ? (
             <div>
               <p>
@@ -43,10 +52,11 @@ const ForgotPasswordForm = ({ onEmailSent, onFormReset }) => {
             </div>
           ) : (
             <div>
-              <Form.Group className='forms-g' controlId="validationEmail">
-                <Form.Label className='label'>Email</Form.Label>
+              <Form.Group className="forms-g" controlId="validationEmail">
+                <Form.Label className="label">Email</Form.Label>
                 <InputGroup className="mb-1">
-                  <FormControl className='rounded-5 mb-3'
+                  <FormControl
+                    className="rounded-5 mb-3"
                     type="email"
                     placeholder="name@gmail.com"
                     name="email"
@@ -54,7 +64,9 @@ const ForgotPasswordForm = ({ onEmailSent, onFormReset }) => {
                     onChange={handleChange}
                     isInvalid={touched.email && !!errors.email}
                   />
-                  <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
+                  <Form.Control.Feedback type="invalid">
+                    {errors.email}
+                  </Form.Control.Feedback>
                 </InputGroup>
               </Form.Group>
 

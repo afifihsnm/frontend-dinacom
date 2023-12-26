@@ -19,7 +19,6 @@ const NewPassPage = () => {
 
   useEffect(() => {
     if (resetForm) {
-      // Setelah resetForm, bersihkan pesan emailSentMessage
       setEmailSentMessage(null);
       setResetForm(false);
     }
@@ -28,7 +27,7 @@ const NewPassPage = () => {
   return (
     <div className="NewPassPage">
       <div className='d-flex w-100 newpasspage'>
-        <div className='newpass d-flex flex-column align-items-left py-5 w-100'>
+        <div className='newpass d-flex flex-column align-items-left py-5 px-1 w-100'>
           <img src="../src/assets/img/logo-sadam.png" alt="hero-img" className='d-inline-block'  />
           <h1>{emailSentMessage || 'Ganti Kata Sandi Baru🔐'}</h1>
           {emailSentMessage ? (
