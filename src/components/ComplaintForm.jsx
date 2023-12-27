@@ -17,13 +17,12 @@ const ComplaintForm = () => {
       .min(5, "Laporan terlalu pendek"),
     formFile: Yup.mixed()
       .required("Harus diisi"),
-    email: Yup.string("Harus diisi")
-      .email("Invalid email format")
-      .required("Harus diisi")
+    showName: Yup.boolean().required("Harus diisi"),
+    showStatus: Yup.boolean().required("Harus diisi"),
   });
 
   return (
-    <div className="Complaint">
+    <div className="Complaint my-4">
       <div className="complaint-header text-center">
         <h5>Yuk, laporin keresahanmu</h5>
         <p>Laporkan keresahanmu di Sadam. Cepat, Aman, Mudah, dan Transparan. </p>
@@ -35,14 +34,15 @@ const ComplaintForm = () => {
         report: "",
         contentReport: "",
         formFile: "",
-        email: ""
+        showName: true,
+        showStatus: true
       }}
     >
       {({ handleSubmit, handleChange, values, touched, errors }) => (
         <Form noValidate className="complaint-form" onSubmit={handleSubmit}>
           <Form.Group className="forms-g" controlId="validationReport">
             <Form.Label className="label">
-              Nama Lengkap<span className="red-dot">*</span>
+              Judul Laporan<span className="red-dot">*</span>
             </Form.Label>
             <InputGroup className="mb-1">
               <FormControl
@@ -88,8 +88,7 @@ const ComplaintForm = () => {
             </Form.Text>
           </Form.Group>
 
-          <Form.Group className="forms-g" controlId="validationFormFile"
-          onClick={() => document.querySelector(".file-field").click()}>
+          <Form.Group className="forms-g" controlId="validationFormFile">  
             <Form.Label className="label">
               Unggah Bukti Foto<span className="red-dot">*</span>
             </Form.Label>
@@ -109,36 +108,29 @@ const ComplaintForm = () => {
               </Form.Control.Feedback>
             </InputGroup>
             <Form.Text id="formFileHelpBlock" muted>
-            Ceritakan keresahanmu dengan jelas dan menggunakan bahasa yang  mudah dimengerti.
+            Unggah bukti agar memperkuat laporanmu.
             </Form.Text>
-          </Form.Group>
+          </Form.Group>   
 
-          <Form.Group className="forms-g" controlId="validationEmail">
-            <Form.Label className="label">
-              Email<span className="red-dot">*</span>
-            </Form.Label>
-            <InputGroup className="mb-1">
-              <FormControl
-                className="rounded-5"
-                type="email"
-                placeholder="name@gmail.com"
-                name="email"
-                value={values.email}
-                onChange={handleChange}
-                isInvalid={touched.email && !!errors.email}
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.email}
-              </Form.Control.Feedback>
-            </InputGroup>
-          </Form.Group>
+          <Form.Group className="forms-g" controlId="validationShowName">
+          <Form.Label className="label">
+            Apakah Anda ingin menampilkan nama Anda<span className="red-dot">*</span>
+          </Form.Label>
+          <Form.Check className="d-flex mb-1" type="radio" name="showName" value="true" label="Ya!, saya ingin menampilkan nama pada laporan" />
+          <Form.Check className="d-flex mb-1" type="radio" name="showName" value="false" label="Tidak, saya ingin merahasiakan nama saya" />
+        </Form.Group>
+        
+        <Form.Group className="forms-g" controlId="validationShowStatus">
+        <Form.Label className="label">
+        Siapakah yang dapat melihat/ menanggapi laporan ini<span className="red-dot">*</span>
+        </Form.Label>
+        <Form.Check className="d-flex mb-1" type="radio" name="ShowStatus" value="true" label="Hanya saya dan instansi" />
+        <Form.Check className="d-flex mb-1" type="radio" name="ShowStatus" value="false" label="Saya ingin laporan ini dapat ditanggapi oleh instansi dan publik" />
+      </Form.Group>
 
           <Button className="mt-4" type="submit">
             Daftar
           </Button>
-          <p className="text-center m-0 mt-3">
-            Sudah punya akun? <Link to="/masuk">Masuk</Link>
-          </p>
         </Form>
       )}
     </Formik>
