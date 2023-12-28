@@ -11,6 +11,7 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import NavInfo from "./components/NavInfo";
 import NewPassPage from "./pages/NewPassPage";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const location = useLocation();
@@ -29,6 +30,7 @@ function App() {
         <Route path="/masuk" element={<SignInPage />} />
         <Route path="/daftar" element={<SignUpPage />} />
         <Route path="/lupa-sandi" element={<ForgotPasswordPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <FooterComponent />
     </div>

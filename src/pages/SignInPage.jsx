@@ -1,6 +1,14 @@
 import SignInForm from "../components/SignInForm";
+import { useNavigate  } from 'react-router-dom';
 
 const SignInPage = () => {
+  let navigate = useNavigate ();
+
+  const handleLoginSuccess = () => {
+    // Arahkan pengguna ke dashboard setelah login berhasil
+    navigate("/dashboard");
+  };
+
   return (
     <div className="SignInPage">
       <div className="d-flex w-100 sign-in-page">
@@ -13,7 +21,7 @@ const SignInPage = () => {
           <h1 className="px-1 animate__animated animate__fadeInUp">
             Hai, Selamat datang. Senang bertemu denganmu 👋
           </h1>
-          <SignInForm />
+          <SignInForm onLoginSuccess={handleLoginSuccess}/>
         </div>
         <img
           src="../src/assets/img/loginpage/signinhero.png"

@@ -3,11 +3,20 @@ import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-const handleSubmit = async (values) => {
-  console.log(values);
-};
+const SignUpForm = ({ onSignUpSuccess}) => {
 
-const SignUpForm = () => {
+  const handleSubmit = (values, { setSubmitting }) => {
+    // Simpan data pendaftaran di local storage
+    localStorage.setItem('registrationData', JSON.stringify(values));
+
+    // Panggil onSignUpSuccess untuk mengarahkan pengguna ke dashboard
+    if (onSignUpSuccess) {
+      onSignUpSuccess();
+    }
+
+    setSubmitting(false);
+  };
+
   const schema = Yup.object().shape({
     fullName: Yup.string()
       .min(3, "Mininum 3 karakter")

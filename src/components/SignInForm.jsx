@@ -1,23 +1,46 @@
 import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
 
-const SignInForm = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+const SignInForm = ({ onLoginSuccess }) => {
+  let navigate = useNavigate();
+
+  const handleSubmit = async (values, { setSubmitting }) => {
+    console.log('Login data:', values);
+
+    // Memeriksa apakah data pendaftaran sudah ada di local storage
+    const registrationData = localStorage.getItem('registrationData');
+
+    if (registrationData) {
+      const userData = JSON.parse(registrationData);
+      if (values.username === userData.username && values.password === userData.password) {
+        // login berhasil
+        console.log('Login berhasil');
+        
+        if (onLoginSuccess) {
+          onLoginSuccess();
+        }
+
+        navigate('/dashboard');
+      } else {
+        // Login gagal
+        console.log('Login gagal: Username atau password tidak cocok');
+      }
+    } else {
+      // Data pendaftaran tidak ditemukan
+      console.log('Registration data not found');
+    }
+
+    setSubmitting(false);
+  };
 
   const schema = Yup.object().shape({
     username: Yup.string().min(3, "Minimum 3 karakter").required("Wajib diisi"),
     password: Yup.string().min(8, "Minimum 8 characters").required("Wajib diisi"),
   });
-
-  const handleSubmit = async (values) => {
-    setIsSubmitting(true);
-    console.log(values);
-    setIsSubmitting(false);
-  };
 
   return (
     <Formik
@@ -71,7 +94,7 @@ const SignInForm = () => {
             <Link to="/lupa-sandi">Lupa Kata Sandi?</Link>
           </Form.Group>
 
-          <Button type="submit" disabled={isSubmitting}>
+          <Button type="submit">
             Masuk
           </Button>
           <p className="text-center m-0 mt-3">
