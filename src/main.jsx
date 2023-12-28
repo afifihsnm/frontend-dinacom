@@ -7,6 +7,12 @@ import ScrollToTop from "./components/ScrollToTop.jsx";
 //import CSS Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 
+//import CSS Animate
+import 'animate.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
+
 // Import CSS Pages
 import "./dist/css/main.css";
 import "./dist/css/pages/AboutPage.css";

@@ -1,5 +1,4 @@
 import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
@@ -22,10 +21,11 @@ const ComplaintForm = () => {
   });
 
   return (
+    <div className="Complaint-Form">
     <div className="Complaint my-4">
-      <div className="complaint-header text-center">
-        <h5>Yuk, laporin keresahanmu</h5>
-        <p>Laporkan keresahanmu di Sadam. Cepat, Aman, Mudah, dan Transparan. </p>
+      <div className="complaint-header text-center overflow-hidden">
+        <h5 data-aos="fade-up" data-aos-duration="900">Yuk, laporin keresahanmu</h5>
+        <p data-aos="fade-up" data-aos-duration="1000">Laporkan keresahanmu di Sadam. Cepat, Aman, Mudah, dan Transparan. </p>
       </div>
     <Formik
       validationSchema={schema}
@@ -39,7 +39,7 @@ const ComplaintForm = () => {
       }}
     >
       {({ handleSubmit, handleChange, values, touched, errors }) => (
-        <Form noValidate className="complaint-form" onSubmit={handleSubmit}>
+        <Form noValidate className="complaint-form" data-aos="fade-up" data-aos-duration="1000" onSubmit={handleSubmit}>
           <Form.Group className="forms-g" controlId="validationReport">
             <Form.Label className="label">
               Judul Laporan<span className="red-dot">*</span>
@@ -129,11 +129,12 @@ const ComplaintForm = () => {
       </Form.Group>
 
           <Button className="mt-4" type="submit">
-            Daftar
+            Kirim Laporan
           </Button>
         </Form>
       )}
     </Formik>
+    </div>
     </div>
   );
 };

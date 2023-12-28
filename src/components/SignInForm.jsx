@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
+
+
 const SignInForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const schema = Yup.object().shape({
-    username: Yup.string().min(3, "Minimum 3 karakter").required("Harus diisi"),
-    password: Yup.string().min(8, "Minimum 8 characters").required(),
+    username: Yup.string().min(3, "Minimum 3 karakter").required("Wajib diisi"),
+    password: Yup.string().min(8, "Minimum 8 characters").required("Wajib diisi"),
   });
 
   const handleSubmit = async (values) => {

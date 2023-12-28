@@ -1,5 +1,7 @@
 import SignUpForm from "../components/SignUpForm";
 
+
+
 const SignUpPage = () => {
   return (
     <div className="SignUpPage">
@@ -8,9 +10,9 @@ const SignUpPage = () => {
           <img
             src="../src/assets/img/logo-sadam.png"
             alt="hero-img"
-            className="d-inline-block"
+            className="d-inline-block animate__animated animate__fadeInUp"
           />
-          <h1 className="">Laporkan keresahanmu dengan mudah & cepat 🏃‍♂️</h1>
+          <h1 className="animate__animated animate__fadeInUp">Laporkan keresahanmu dengan mudah & cepat 🏃‍♂️</h1>
           <SignUpForm className="col-6" />
         </div>
         <img

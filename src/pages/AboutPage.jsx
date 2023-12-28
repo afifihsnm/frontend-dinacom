@@ -2,13 +2,13 @@ const AboutPage = () => {
   return (
     <div className="tentang-kami-page w-100 d-flex flex-column">
       <div className="tentang-kami">
-        <div className="tentang-kami-header mb-5">
-          <h1>
+        <div className="tentang-kami-header mb-5 overflow-hidden">
+          <h1 className="animate__animated animate__fadeInUp">
             Hai👋, masih bingung tentang Sadam. Yuk, baca artikel dibawah ini
             agar kamu paham tentang Sadam.
           </h1>
-          <p>
-            Sistem Pengaduan Onlie Masyarakat atau biasa dikenal dengan kata
+          <p className="animate__animated animate__fadeInUp animate__delay-1s">
+            Sistem Pengaduan Online Masyarakat atau biasa dikenal dengan kata
             “Sadam” adalah sebuah layanan pengaduan keamanan publik berbasis
             website. Kami melihat banyak masyarakat diluar sana yang sering
             mengalami kesulitan saat ingin melaporkan keresahannya. Mulai dari
@@ -19,24 +19,31 @@ const AboutPage = () => {
             melaporkan keresahannya dimanapun dan kapanpun.
           </p>
         </div>
-        <h3 className="mb-4">
+        <h3 className="mb-4" data-aos="fade-up" data-aos-duration="800">
           Untuk informasi lebih lanjut mengenai Sadam. Yuk kepoin akun medsos
           Sadam 😊.
         </h3>
         <div className="medsos">
           <img
+            data-aos="fade-up" data-aos-duration="400"
             src="./src/assets/img/medsos/Instagram.png"
             alt="Instagram-logo"
           ></img>
           <img
+            data-aos="fade-up" data-aos-duration="600"
             src="./src/assets/img/medsos/Telegram.png"
             alt="Telegram-logo"
           ></img>
           <img
+            data-aos="fade-up" data-aos-duration="800"
             src="./src/assets/img/medsos/Facebook.png"
             alt="Facebook-logo"
           ></img>
-          <img src="./src/assets/img/medsos/X.png" alt="X-logo"></img>
+          <img 
+            data-aos="fade-up" data-aos-duration="1000"
+            src="./src/assets/img/medsos/X.png" 
+            alt="X-logo">
+            </img>
         </div>
       </div>
     </div>

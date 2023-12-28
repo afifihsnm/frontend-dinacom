@@ -11,22 +11,22 @@ const SignUpForm = () => {
   const schema = Yup.object().shape({
     fullName: Yup.string()
       .min(3, "Mininum 3 karakter")
-      .required("Harus diisi"),
+      .required("Wajib diisi"),
     dateOfBirth: Yup.date()
-      .required("Harus diisi"),
+      .required("Wajib diisi"),
     addres: Yup.string()
-      .required("Harus diisi")
+      .required("Wajib diisi")
       .min(3, "Tempat tinggal terlalu pendek"),
     username: Yup.string()
       .min(3, "Minimum 3 karakter")
-      .required("Harus diisi"),
-    email: Yup.string("Harus diisi")
+      .required("Wajib diisi"),
+    email: Yup.string()
       .email("Invalid email format")
-      .required("Harus diisi"),
-    password: Yup.string().min(8, "Minimum 8 karakter").required("Harus diisi"),
+      .required("Wajib diisi"),
+    password: Yup.string().min(8, "Minimum 8 karakter").required("Wajib diisi"),
     confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Kata sandi harus sama")
-      .required("Harus diisi")
+    .oneOf([Yup.ref("password"), null], "Kata sandi tidak sama")
+      .required("Wajib diisi")
   });
 
   return (
@@ -170,7 +170,7 @@ const SignUpForm = () => {
             controlId="validationConfirmPassword"
           >
             <Form.Label className="label">
-              Kata Sandi<span className="red-dot">*</span>
+              Konfirmasi Kata Sandi<span className="red-dot">*</span>
             </Form.Label>
             <InputGroup className="mb-1">
               <FormControl
