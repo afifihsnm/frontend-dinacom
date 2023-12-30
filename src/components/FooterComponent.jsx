@@ -1,4 +1,4 @@
-import { Col, Row, NavbarBrand } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function FooterComponent() {

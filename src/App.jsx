@@ -11,18 +11,19 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import NavInfo from "./components/NavInfo";
 import NewPassPage from "./pages/NewPassPage";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/DashboardPage";
+import Sidebar from "./components/SidebarComponent";
 
 function App() {
   const location = useLocation();
-  const isLoginPage = ["/masuk", "/daftar", "/lupa-sandi"].includes(
-    location.pathname
-  );
+  const isLoginPage = ["/masuk", "/daftar", "/lupa-sandi"].includes( location.pathname );
+  const isDashboardPage = location.pathname === "/dashboard";
 
   return (
     <div>
       {isLoginPage && <NavInfo />}
-      <NavbarComponent />
+      {!isDashboardPage && <NavbarComponent />}
+      {isDashboardPage && <Sidebar />}
       <Routes>
         <Route path="/beranda" element={<HomePage />} />
         <Route path="/tentangkami" element={<AboutPage />} />
@@ -32,7 +33,7 @@ function App() {
         <Route path="/lupa-sandi" element={<ForgotPasswordPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
-      <FooterComponent />
+      {!isDashboardPage && <FooterComponent />}
     </div>
   );
 }

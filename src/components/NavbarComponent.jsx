@@ -32,16 +32,14 @@ const NavbarComponent = () => {
         />
       </Navbar.Brand>
       <Navbar.Toggle
-        className={`navbar-toggle position-relative ${
-          expanded ? "active" : ""
-        }`}
+        className={`navbar-toggle position-relative ${expanded ? "active" : ""
+          }`}
         onClick={handleToggle}
         aria-controls="basic-navbar-nav"
       >
         <span
-          className={`fas ${
-            expanded ? "fa-light fa-arrow-right-long" : "fa-bars"
-          }`}
+          className={`fas ${expanded ? "fa-light fa-arrow-right-long" : "fa-bars"
+            }`}
         ></span>
       </Navbar.Toggle>
       <Navbar.Collapse id="basic-navbar-nav">

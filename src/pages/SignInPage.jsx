@@ -5,7 +5,6 @@ const SignInPage = () => {
   let navigate = useNavigate ();
 
   const handleLoginSuccess = () => {
-    // Arahkan pengguna ke dashboard setelah login berhasil
     navigate("/dashboard");
   };
 

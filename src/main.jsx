@@ -21,12 +21,15 @@ import "./dist/css/pages/SignInPage.css";
 import "./dist/css/pages/SignUpPage.css";
 import "./dist/css/pages/ForgotPasswordPage.css";
 import "./dist/css/pages/NewPassPage.css";
+import "./dist/css/pages/DashboardPage.css";
 
 // Import CSS Compponents
 import "./dist/css/components/NavbarComponent.css";
 import "./dist/css/components/NavInfo.css";
 import "./dist/css/components/RunningTextComponent.css";
 import "./dist/css/components/FooterComponent.css";
+import "./dist/css/components/SidebarComponent.css";
+
 
 // Import CSS Form Page
 import "./dist/css/Form/SignInForm.css";
