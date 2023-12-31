@@ -1,4 +1,5 @@
 import { Routes, Route, Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import NavbarComponent from "./components/NavbarComponent";
 import FooterComponent from "./components/FooterComponent";
@@ -12,18 +13,30 @@ import SignUpPage from "./pages/SignUpPage";
 import NavInfo from "./components/NavInfo";
 import NewPassPage from "./pages/NewPassPage";
 import Dashboard from "./pages/DashboardPage";
+import LaporinPage from "./pages/LaporinPage";
+import LaporanPublikPage from "./pages/LaporanPublikPage";
+import PesanPage from "./pages/PesanPage";
+import AkunPage from "./pages/AkunPage";
 import Sidebar from "./components/SidebarComponent";
 
 function App() {
   const location = useLocation();
-  const isLoginPage = ["/masuk", "/daftar", "/lupa-sandi"].includes( location.pathname );
+  const [activePage, setActivePage] = useState("");
+
+  useEffect(() => {
+    const path = location.pathname.substring(1);
+    setActivePage(path);
+  }, [location.pathname]);
+
+  const isLoginPage = ["/masuk", "/daftar", "/lupa-sandi"].includes(location.pathname);
   const isDashboardPage = location.pathname === "/dashboard";
+  const isSidebarPage = ["/dashboard", "/laporin", "/lapor-publik", "/pesan", "/akun"].includes(location.pathname);
 
   return (
     <div>
       {isLoginPage && <NavInfo />}
-      {!isDashboardPage && <NavbarComponent />}
-      {isDashboardPage && <Sidebar />}
+      {isSidebarPage && <Sidebar activePage={activePage} />}
+      {!isDashboardPage && !isSidebarPage && <NavbarComponent />}
       <Routes>
         <Route path="/beranda" element={<HomePage />} />
         <Route path="/tentangkami" element={<AboutPage />} />
@@ -32,8 +45,12 @@ function App() {
         <Route path="/daftar" element={<SignUpPage />} />
         <Route path="/lupa-sandi" element={<ForgotPasswordPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/laporin" element={<LaporinPage />} />
+        <Route path="/lapor-publik" element={<LaporanPublikPage />} />
+        <Route path="/pesan" element={<PesanPage />} />
+        <Route path="/akun" element={<AkunPage />} />
       </Routes>
-      {!isDashboardPage && <FooterComponent />}
+      {!isDashboardPage && !isSidebarPage && <FooterComponent />}
     </div>
   );
 }
