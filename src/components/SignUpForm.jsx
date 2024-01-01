@@ -6,10 +6,8 @@ import * as Yup from "yup";
 const SignUpForm = ({ onSignUpSuccess}) => {
 
   const handleSubmit = (values, { setSubmitting }) => {
-    // Simpan data pendaftaran di local storage
     localStorage.setItem('registrationData', JSON.stringify(values));
 
-    // Panggil onSignUpSuccess untuk mengarahkan pengguna ke dashboard
     if (onSignUpSuccess) {
       onSignUpSuccess();
     }

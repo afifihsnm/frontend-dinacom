@@ -44,18 +44,18 @@ const NavbarComponent = () => {
       </Navbar.Toggle>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mx-auto">
-          <Nav.Link as={Link} activeClassName="active" to="/beranda" onSelect={() => setExpanded(false)}>
+          <Nav.Link as={Link} to="/beranda" onSelect={() => setExpanded(false)}>
             Beranda
           </Nav.Link>
           <Nav.Link
-            as={Link} activeClassName="active"
+            as={Link}
             to="/tentangkami"
             onSelect={() => setExpanded(false)}
           >
             Tentang Sadam
           </Nav.Link>
           <Nav.Link
-            as={Link} activeClassName="active"
+            as={Link}
             to="/complaint"
             onSelect={() => setExpanded(false)}
           >
@@ -65,7 +65,7 @@ const NavbarComponent = () => {
 
         {!isLoginPage && (
           <div className="navbar-sign d-flex">
-            <Nav.Link as={Link} activeClassName="active" to="/masuk" onSelect={() => setExpanded(false)}>
+            <Nav.Link as={Link} to="/masuk" onSelect={() => setExpanded(false)}>
               Masuk
             </Nav.Link>
             <button

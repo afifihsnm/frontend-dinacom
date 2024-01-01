@@ -2,6 +2,7 @@ import { Routes, Route, Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import NavbarComponent from "./components/NavbarComponent";
+import Sidebar from "./components/SidebarComponent";
 import FooterComponent from "./components/FooterComponent";
 
 import HomePage from "./pages/HomePage";
@@ -17,7 +18,6 @@ import LaporinPage from "./pages/LaporinPage";
 import LaporanPublikPage from "./pages/LaporanPublikPage";
 import PesanPage from "./pages/PesanPage";
 import AkunPage from "./pages/AkunPage";
-import Sidebar from "./components/SidebarComponent";
 
 function App() {
   const location = useLocation();
