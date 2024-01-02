@@ -23,7 +23,7 @@ const NavbarComponent = () => {
       expand="lg"
       className={`w-100 ${isLoginPage ? "login-page-navbar" : ""}`}
     >
-      <Navbar.Brand as={Link} to="/beranda">
+      <Navbar.Brand as={Link} to="/">
         <img
           src="./src/assets/img/sadamnavbar.png"
           alt="Logo_Sadam"
@@ -44,7 +44,7 @@ const NavbarComponent = () => {
       </Navbar.Toggle>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mx-auto">
-          <Nav.Link as={Link} to="/beranda" onSelect={() => setExpanded(false)}>
+          <Nav.Link as={Link} to="/" onSelect={() => setExpanded(false)}>
             Beranda
           </Nav.Link>
           <Nav.Link

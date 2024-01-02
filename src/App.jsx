@@ -38,12 +38,13 @@ function App() {
       {isSidebarPage && <Sidebar activePage={activePage} />}
       {!isDashboardPage && !isSidebarPage && <NavbarComponent />}
       <Routes>
-        <Route path="/beranda" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/tentangkami" element={<AboutPage />} />
         <Route path="/complaint" element={<ComplaintForm />} />
         <Route path="/masuk" element={<SignInPage />} />
         <Route path="/daftar" element={<SignUpPage />} />
         <Route path="/lupa-sandi" element={<ForgotPasswordPage />} />
+        <Route path="/lupa-sandi" element={<NewPassPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/laporin" element={<LaporinPage />} />
         <Route path="/lapor-publik" element={<LaporanPublikPage />} />

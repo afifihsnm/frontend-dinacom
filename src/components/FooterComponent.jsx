@@ -6,7 +6,7 @@ function FooterComponent() {
     <div className="footer w-100">
       <Row className="m-0 gap-5 d-flex justify-content-between align-item-center">
         <Col lg="5" className="pt-5 pb-3 px-0 col-lg-5">
-          <Link to="/beranda">
+          <Link to="/">
             <img
               src="./src/assets/img/sadamfooter.png"
               alt="Logo-Sadam-Footer"
@@ -23,17 +23,17 @@ function FooterComponent() {
         </Col>
         <Col className="d-flex flex-column col-lg-2 col mb-5 gap-2">
           <h5 className="fw-bold mb-3">Media Sosial</h5>
-          <Link to="beranda">Instagram</Link>
-          <Link to="beranda">Telegram</Link>
-          <Link to="beranda">Facebook</Link>
-          <Link to="beranda">X</Link>
+          <Link to="">Instagram</Link>
+          <Link to="">Telegram</Link>
+          <Link to="">Facebook</Link>
+          <Link to="">X</Link>
         </Col>
         <Col className="d-flex flex-column col-lg-2 col mb-5 gap-2">
           <h5 className="fw-bold mb-3">Lain-lain</h5>
           <Link to="tentangkami">Tentang Kami</Link>
-          <Link to="beranda">Kontak Kami</Link>
-          <Link to="beranda">Privacy Police</Link>
-          <Link to="beranda">Terms Of Service</Link>
+          <Link to="">Kontak Kami</Link>
+          <Link to="">Privacy Police</Link>
+          <Link to="">Terms Of Service</Link>
         </Col>
       </Row>
       <Row>

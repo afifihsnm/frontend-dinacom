@@ -16,7 +16,7 @@ const Dashboard = () => {
 
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard">
       <div className="dashboard-content">
         <h1>Dashboard</h1>
         <div className="dashboard-card d-flex">
@@ -117,13 +117,13 @@ function Report({ laporan }) {
                 <Dropdown.Item href="#/action-2"><i className="bi bi-arrow-return-right" /><label className="proses">Lama</label></Dropdown.Item>
                 <Dropdown.Item href="#/action-3"><i className="bi bi-arrow-return-right" /><label className="done">Belum ditangani</label></Dropdown.Item>
                 <Dropdown.ItemText>Hapus Laporan</Dropdown.ItemText>
-                <Dropdown.Item href="#/action-3"><i className="bi bi-arrow-return-right" /><label className="del">Selesai</label></Dropdown.Item>
+                <Dropdown.Item href="#/action-3"><i className="bi bi-arrow-return-right" /><label className="del">Hapus laporan</label></Dropdown.Item>
               </Dropdown.Menu>
               </Dropdown>
           
                 </div>
               </div>
-              <div className="laporan-body ">
+              <div className="laporan-body">
                 <h4>Pencemaran nama baik melalui media sosial</h4>
                 <p>Saya ingin melaporkan adanya kegiatan pencemaran nama baik. Saya dituduh sebagai maling oleh orang yang tidak saya kenal. Saya mengetahui berita ini dari media sosial instagram dengan akun @akunignya. Apa yang diperlihatkan/ diposting oleh akun tersebut sepenuhnya tidak benar adanya. Saya hanya mengembalikan ...                </p>
               </div>

@@ -14,17 +14,16 @@ const HomePage = () => {
   return (
     <div className="homepage">
       <header className="d-flex align-items-center overflow-hidden">
-        <Container>
           <Row className="header-box d-flex align-items-center">
             <Col lg="6" className="left p-0">
-              <h1 className="animate__animated animate__fadeInUp animate__delay-1s">
-                Jangan ragu jangan bimbang, masalahmu akan terselesaikan😱😎
+              <h1 className="mb-2 animate__animated animate__fadeInUp animate__delay-1s">
+                Jangan ragu, jangan bimbang, masalahmu akan terselesaikan😱😎
               </h1>
               <p className="animate__animated animate__fadeInUp animate__delay-1s">
                 Sadam adalah solusi bagi Masyarakat yang ingin melaporkan
                 keresahan secara mudah, cepat, dan aman tentunya. Tidak perlu
                 datang ke instansi tujuan, cukup dari rumah saja keresahanmu
-                bisa tersampaikan.{" "}
+                bisa tersampaikan.
               </p>
               <div className="btn-nav d-flex gap-3 animate__animated animate__fadeInUp animate__delay-1s">
                 <button
@@ -61,19 +60,19 @@ const HomePage = () => {
               />
             </Col>
           </Row>
-        </Container>
+
       </header>
 
       <div className="Wording">
         <div className="wording-1 w-100 mb-5">
           <h3 data-aos="fade-up" data-aos-duration="1000">
-            Ribet? kata siapa 😡, di Sadam semua kegiatan bisa dilakukan secara
+            Ribet? kata siapa?😡, di Sadam semua kegiatan bisa dilakukan secara
             online kok, engga perlu capek-capek ke kantor instansi lagi👉👈
           </h3>
           <p data-aos="fade-up" data-aos-duration="1000">
             Di Sadam cuma perlu 3 langkah untuk menyelesaikan sebuah masalah.
-            Pertama, buat laporan. kedua, tindak lanjut dari instansi terkait.
-            ketiga, saling tanggap. Selesai 😁
+            Pertama, buat laporan. Kedua, tindak lanjut dari instansi terkait.
+            Ketiga, saling tanggap. Selesai 😁
           </p>
         </div>
 
