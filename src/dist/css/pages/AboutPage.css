@@ -1,0 +1,81 @@
+.tentang-kami {
+  padding: 5.5rem 5rem 3.25rem;
+}
+
+.tentang-kami-header {
+  color: var(--colors-grayscale-text-icon-title, #191b29);
+}
+
+.tentang-kami h3 {
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 4rem;
+  letter-spacing: 0.0625rem;
+  color: var(--colors-grayscale-text-icon-title, #191b29);
+}
+
+.tentang-kami-header h1 {
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 4rem;
+  letter-spacing: 0.0625rem;
+  margin-bottom: 1.56rem;
+}
+
+.tentang-kami-header p {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 2rem;
+  letter-spacing: 0.04688rem;
+  --animate-delay: 0.5s;
+}
+
+.tentang-kami .medsos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .tentang-kami {
+    padding: 5.5rem 1.5rem 3.25rem;
+  }
+
+  .tentang-kami .medsos {
+    gap: 1.4375rem var(--Dimensions-Spacing-3xl, 2rem);
+    justify-content: center;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 425px) {
+  .tentang-kami {
+    padding: 5.5rem 1rem 3.25rem;
+  }
+
+  .tentang-kami-header h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 3rem;
+  }
+
+  .tentang-kami-header p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.625rem;
+  }
+
+  .tentang-kami h3 {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 3rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 355px) {
+  .tentang-kami .medsos img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}

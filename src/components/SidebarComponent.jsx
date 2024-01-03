@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom"
 import Offcanvas from "react-bootstrap/Offcanvas";
 
+// Import Image
+import Logo_Sadam from "../assets/img/sadamnavbar.png";
+
 function Sidebar({ activePage }) {
   const [show, setShow] = useState(false);
 
@@ -39,7 +42,7 @@ function Sidebar({ activePage }) {
       </Offcanvas>
 
       <img
-        src="./src/assets/img/sadamnavbar.png"
+        src={Logo_Sadam}
         alt="Logo_Sadam"
         className="d-inline-block align-top"
       />

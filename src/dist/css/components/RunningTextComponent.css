@@ -1,0 +1,45 @@
+/*Style Running Text*/
+.running-text-container {
+  overflow: hidden;
+  white-space: nowrap;
+  align-items: center;
+  background-color: #0e206a;
+  margin-bottom: 3.25rem;
+}
+
+.bold-dot {
+  font-weight: bold;
+  margin: 0 1.06rem;
+}
+
+.running-text p {
+  animation: marquee-animation 25s linear infinite;
+  margin: 1rem 0 1rem;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2rem;
+  letter-spacing: 0.04688rem;
+  color: #fff;
+}
+
+@keyframes marquee-animation {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (max-width: 425px) {
+  .running-text p {
+    animation: marquee-animation 15s linear infinite;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.625rem;
+    letter-spacing: 0.04688rem;
+  }
+}
+/*Style Running Text End*/

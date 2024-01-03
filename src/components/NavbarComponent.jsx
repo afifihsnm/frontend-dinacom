@@ -1,8 +1,10 @@
-// NavbarComponent.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+
+//import image 
+import Logo_Sadam from "../assets/img/sadamnavbar.png";
 
 const NavbarComponent = () => {
   let navigate = useNavigate();
@@ -25,7 +27,7 @@ const NavbarComponent = () => {
     >
       <Navbar.Brand as={Link} to="/">
         <img
-          src="./src/assets/img/sadamnavbar.png"
+          src={Logo_Sadam}
           alt="Logo_Sadam"
           height="44"
           className="d-inline-block align-top"

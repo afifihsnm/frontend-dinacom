@@ -1,6 +1,11 @@
 import ForgotPasswordForm from "../components/ForgotPassswordForm";
 import { useState, useEffect } from "react";
 
+// Import Image 
+import Logo_Sadam from "../assets/img/logo-sadam.png";
+import Hero1 from "../assets/img/loginpage/fpasshero.png";
+import Hero2 from "../assets/img/loginpage/fpassnew.png";
+
 const ForgotPasswordPage = () => {
   const [emailSentMessage, setEmailSentMessage] = useState(null);
   const [resetForm, setResetForm] = useState(false);
@@ -22,12 +27,14 @@ const ForgotPasswordPage = () => {
     }
   }, [resetForm]);
 
+  const heroImage = emailSentMessage ? Hero2 : Hero1;
+
   return (
     <div className="ForgotPasswordPage">
       <div className="d-flex w-100 fpasspage">
         <div className="fpass d-flex flex-column align-items-left py-5 w-100">
           <img
-            src="../src/assets/img/logo-sadam.png"
+            src={Logo_Sadam}
             alt="hero-img"
             className="d-inline-block"
           />
@@ -37,7 +44,6 @@ const ForgotPasswordPage = () => {
             <p>
               Belum menerima email balasan?
               <span className="resend-link" onClick={handleFormReset}>
-                {" "}
                 Kirim Ulang
               </span>
             </p>
@@ -49,9 +55,7 @@ const ForgotPasswordPage = () => {
           )}
         </div>
         <img
-          src={`../src/assets/img/loginpage/${
-            emailSentMessage ? "fpassnew" : "fpasshero"
-          }.png`}
+          src={heroImage}
           alt="hero-img"
           className="fluid col-6"
         />

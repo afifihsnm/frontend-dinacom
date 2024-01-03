@@ -1,0 +1,154 @@
+/*Style Laporin Content*/
+.laporin .laporin-content h1 {
+    color: var(--colors-grayscale-text-icon-title, #191b29);
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 4rem;
+  letter-spacing: 0.0625rem;
+  margin-bottom: 0.75rem;
+}
+
+.laporin .laporin-content p {
+    color: var(--colors-grayscale-text-icon-title, #191b29);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.625rem;
+    letter-spacing: 0.04688rem;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .laporin {
+        margin-left: 17.0625rem;
+        padding: 5.5rem 1.5rem 5rem 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .laporin {
+        margin-left: 17.0625rem;
+        padding: 5.5rem 5rem 5rem 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .laporin {
+        margin: 0;
+        margin-top: 4.75rem;
+        padding: 3.25rem 1.5rem 5rem;
+    }
+
+    .laporin .laporin-content h1 {
+        font-size: 2rem;
+        font-weight: 500;
+        line-height: 3rem;
+    }
+
+    .laporin .laporin-content p {
+        font-size: 0.75rem;
+        line-height: 1.125rem;
+    }
+
+}
+/*Style Laporin Content End*/
+
+/*Style Laporin Form*/
+.laporin-form {
+    gap: var(--Dimensions-Spacing-2xs, 0.25rem);
+    margin: 0 auto;
+  }
+  
+  .laporin-form .label {
+      color: var(--colors-grayscale-text-icon-title, #191b29);
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.625rem;
+    letter-spacing: 0.0625rem;
+}
+
+.laporin-form .red-dot {
+    color: var(--colors-error-text-icon-link-light, #ff1a51);
+}
+
+.laporin-form .forms-g {
+    gap: var(--Dimensions-Spacing-xs, 0.375rem);
+}
+
+.laporin-form .form-control {
+    border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
+    color: var(--colors-grayscale-text-icon-caption, #a4a7c6);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.625rem;
+    letter-spacing: 0.04688rem;
+  }
+  
+  .form-check {
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 0;
+  }
+  
+  .form-check-label {
+    color: var(--colors-grayscale-text-icon-body, #333652);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.625rem;
+    letter-spacing: 0.0625rem;
+  }
+  
+  .form-check-input[type="radio"] {
+    border-radius: 30%;
+    border: 2px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
+    margin: 0;
+    height: 1.75rem;
+    width: 1.75rem;
+  }
+  
+  .laporin-form button {
+    width: 100%;
+    padding: var(--Dimensions-Spacing-md, 0.75rem)
+      var(--Dimensions-Spacing-lg, 1rem);
+    border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
+    background: var(--Colors-Primary-Surface-default, #0e206a);
+  }
+  
+  .laporin-form p {
+    color: var(--colors-grayscale-text-icon-title, #191b29);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    letter-spacing: 0.0625rem;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .laporin-form {
+      width: 100%;
+    }
+    .laporin-form button {
+      width: 100%;
+    }
+  
+    .laporin-form {
+      padding: 0 0.5rem;
+    }
+  }
+  
+  @media (max-width: 425px) {
+    .complaint-header h5 {
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: 3rem;
+      color: var(--colors-grayscale-text-icon-title, #191b29);
+    }
+  
+    .complaint-header p {
+      font-size: 1rem;
+      line-height: 1rem;
+      margin-bottom: 1.5rem;
+      color: var(--colors-grayscale-text-icon-body, #333652);
+    }
+  }
+
+  /*Style Laporin Form End*/

@@ -1,0 +1,86 @@
+/*NewPass Page*/
+.newpasspage {
+  padding-left: 5rem;
+  align-items: center;
+}
+
+.newpass {
+  gap: var(--Dimensions-Spacing-4xl, 2.5rem);
+}
+
+.newpass img {
+  width: 6.5rem;
+  height: 6.5rem;
+}
+
+.newpass h1 {
+  color: var(--colors-grayscale-text-icon-title, #191b29);
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 4rem;
+  letter-spacing: 0.0625rem;
+  padding-right: 7rem;
+}
+
+.newpass button {
+  width: 25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 2rem;
+  letter-spacing: 0.0625rem;
+  color: var(--colors-grayscale-text-icon-negative, #fff);
+  padding: var(--Dimensions-Spacing-md, 0.75rem)
+    var(--Dimensions-Spacing-lg, 1rem);
+  border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
+  background: var(--Colors-Primary-Surface-default, #0e206a);
+}
+
+.newpass .resend-link {
+  color: var(--Colors-Indigo-500, #5d11ff);
+  font-weight: 600;
+  line-height: 1.5rem;
+  letter-spacing: 0.0625rem;
+}
+
+@media (max-width: 1080px) {
+  .newpass {
+    align-items: center;
+    margin: 0;
+  }
+
+  .newpasspage {
+    padding: 2.12rem 5rem 8rem;
+  }
+
+  .newpasspage img {
+    display: none;
+  }
+
+  .newpass h1 {
+    text-align: center;
+    padding: 0;
+  }
+}
+
+@media (max-width: 565px) {
+  .newpasspage {
+    padding: 5.5rem 0;
+  }
+
+  .newpass h1 {
+    color: var(--colors-grayscale-text-icon-title, #191b29);
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 3rem;
+    letter-spacing: 0.0625rem;
+  }
+
+  .newpass p {
+    text-align: center;
+  }
+
+  .newpass button {
+    width: 100%;
+  }
+}
+/*NewPass Page End*/

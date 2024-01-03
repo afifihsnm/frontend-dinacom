@@ -7,6 +7,7 @@ import * as Yup from "yup";
 
 const SignInForm = ({ onLoginSuccess }) => {
   let navigate = useNavigate();
+  const [loginError, setLoginError] = useState(null);
 
   const handleSubmit = async (values, { setSubmitting }) => {
     console.log('Login data:', values);
@@ -17,22 +18,20 @@ const SignInForm = ({ onLoginSuccess }) => {
     if (registrationData) {
       const userData = JSON.parse(registrationData);
       if (values.username === userData.username && values.password === userData.password) {
-        // login berhasil
         console.log('Login berhasil');
         
         if (onLoginSuccess) {
           onLoginSuccess();
         }
-
         navigate('/dashboard');
       } else {
         // Login gagal
-        console.log('Login gagal: Username atau password tidak cocok');
+        console.log('Username atau password salah');
+        setLoginError('Sepertinya ada yang salah');
       }
-    } else {
-      // Data pendaftaran tidak ditemukan
-      console.log('Registration data not found');
-    }
+  
+      setSubmitting(false);
+    };
 
     setSubmitting(false);
   };
@@ -53,6 +52,11 @@ const SignInForm = ({ onLoginSuccess }) => {
     >
       {({ handleSubmit, handleChange, values, touched, errors }) => (
         <Form noValidate className="signin-form" onSubmit={handleSubmit}>
+        
+        {loginError && (
+          <p className="text-danger">{loginError}</p>
+        )}
+  
           <Form.Group className="forms-g" controlId="validationUsername">
             <Form.Label className="label">
               Username<span className="red-dot">*</span>

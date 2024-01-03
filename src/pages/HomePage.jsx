@@ -1,7 +1,15 @@
 import { Container, Row, Col } from "react-bootstrap";
+
+//Import Image
 import HeroImage from "../assets/img/hero.png";
 import HeroImage2 from "../assets/img/hero2.png";
 import HeroImage3 from "../assets/img/hero3.png";
+import Partner1 from "../assets/img/homepage-partner/BNN.png";
+import Partner2 from "../assets/img/homepage-partner/Kepolisian.png";
+import Partner3 from "../assets/img/homepage-partner/BSSN.png";
+import Partner4 from "../assets/img/homepage-partner/KPRI.png";
+import Partner5 from "../assets/img/homepage-partner/Ministers.png";
+import Partner6 from "../assets/img/homepage-partner/BIN.png";
 
 import { useNavigate } from "react-router-dom";
 
@@ -95,49 +103,43 @@ const HomePage = () => {
           <Row className="mx-5">
             <Col className="text-center">
               <img
-                src="./src/assets/img/homepage-partner/BNN.png"
-                alt="Logo-Sadam-Footer"
-                height=""
+                src={Partner1}
+                alt="Logo Badan Narkotika Nasional"
                 className="text-center"
               />
             </Col>
             <Col className="text-center">
               <img
-                src="./src/assets/img/homepage-partner/Kepolisian.png"
-                alt="Logo-Sadam-Footer"
-                height=""
+                src={Partner2}
+                alt="Logo Kepolisian RI"
                 className="d-inline-block"
               />
             </Col>
             <Col className="text-center">
               <img
-                src="./src/assets/img/homepage-partner/BSSN.png"
-                alt="Logo-Sadam-Footer"
-                height=""
+                src={Partner3}
+                alt="Logo BSSN"
                 className="d-inline-block"
               />
             </Col>
             <Col className="text-center">
               <img
-                src="./src/assets/img/homepage-partner/KPRI.png"
-                alt="Logo-Sadam-Footer"
-                height=""
+                src={Partner4}
+                alt="Logo Kementrian Pertahanan RI"
                 className="d-inline-block"
               />
             </Col>
             <Col className="text-center">
               <img
-                src="./src/assets/img/homepage-partner/Ministers.png"
-                alt="Logo-Sadam-Footer"
-                height=""
+                src={Partner5}
+                alt="Logo Ministers"
                 className="d-inline-block"
               />
             </Col>
             <Col className="text-center">
               <img
-                src="./src/assets/img/homepage-partner/BIN.png"
-                alt="Logo-Sadam-Footer"
-                height=""
+                src={Partner6}
+                alt="Logo Badan Intelijen Negara"
                 className="d-inline-block"
               />
             </Col>

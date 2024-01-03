@@ -1,0 +1,16 @@
+.nav-info {
+    background-color: var(--Colors-Primary-Surface-default, #0E206A);
+    justify-content: center
+}
+
+.nav-info h5 {
+    color: var(--colors-grayscale-text-icon-negative, #FFF);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5rem;
+    letter-spacing: 0.0625rem;
+    margin: 0;
+    padding: 0.75rem;
+    --animate-delay: 0.5s;
+}

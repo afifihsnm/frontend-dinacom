@@ -1,14 +1,18 @@
 import { Card, Dropdown } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
+// Import Image 
+import IconCircleTime from "../assets/icon/circle-time.svg";
+import IconCircleBlank from "../assets/icon/circle-blank.svg";
+import IconCircleCheck from "../assets/icon/circle-check.svg";
+import IconCircleX from "../assets/icon/circle-x.svg";
+
 const Dashboard = () => {
 
   const [laporan, setLaporan] = useState([]);
 
-  // Ambil data laporan dari API menggunakan useEffect
   useEffect(() => {
-    // Gantilah URL API dengan URL sesuai aplikasi Anda
-    fetch('https://fakestoreapi.com/products') // Use a different endpoint that returns an array of products
+    fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
       .then((data) => setLaporan(data))
       .catch((error) => console.error('Error fetching data:', error));
@@ -22,7 +26,7 @@ const Dashboard = () => {
         <div className="dashboard-card d-flex">
           <Card>
             <Card.Body className="d-flex flex-column">
-              <Card.Title className="d-flex mb-0"><img src="../src/assets/icon/circle-time.svg" />Belum ditangani</Card.Title>
+              <Card.Title className="d-flex mb-0"><img src={IconCircleTime} />Belum ditangani</Card.Title>
               <Card.Text>
                 0 Laporan
               </Card.Text>
@@ -31,7 +35,7 @@ const Dashboard = () => {
 
           <Card>
             <Card.Body className="d-flex flex-column">
-              <Card.Title className="d-flex mb-0"><img src="../src/assets/icon/circle-blank.svg" />Sedang ditangani</Card.Title>
+              <Card.Title className="d-flex mb-0"><img src={IconCircleTime} />Sedang ditangani</Card.Title>
               <Card.Text>
                 0 Laporan
               </Card.Text>
@@ -40,7 +44,7 @@ const Dashboard = () => {
 
           <Card>
             <Card.Body className="d-flex flex-column">
-              <Card.Title className="d-flex mb-0"><img src="../src/assets/icon/circle-check.svg" />Selesai</Card.Title>
+              <Card.Title className="d-flex mb-0"><img src={IconCircleBlank} />Selesai</Card.Title>
               <Card.Text>
                 0 Laporan
               </Card.Text>
@@ -49,7 +53,7 @@ const Dashboard = () => {
 
           <Card>
             <Card.Body className="d-flex flex-column">
-              <Card.Title className="d-flex mb-0"><img src="../src/assets/icon/circle-x.svg" />Ditolak</Card.Title>
+              <Card.Title className="d-flex mb-0"><img src={IconCircleX} />Ditolak</Card.Title>
               <Card.Text>
                 0 Laporan
               </Card.Text>
@@ -114,7 +118,7 @@ function Report({ laporan }) {
                 <Dropdown.Menu drop="down">
                 <Dropdown.ItemText>Ubah status</Dropdown.ItemText>
                 <Dropdown.Item href="#/action-1"><i className="bi bi-arrow-return-right" /><label className="notproses">Belum ditangani</label></Dropdown.Item>
-                <Dropdown.Item href="#/action-2"><i className="bi bi-arrow-return-right" /><label className="proses">Lama</label></Dropdown.Item>
+                <Dropdown.Item href="#/action-2"><i className="bi bi-arrow-return-right" /><label className="proses">Sedang ditangani</label></Dropdown.Item>
                 <Dropdown.Item href="#/action-3"><i className="bi bi-arrow-return-right" /><label className="done">Belum ditangani</label></Dropdown.Item>
                 <Dropdown.ItemText>Hapus Laporan</Dropdown.ItemText>
                 <Dropdown.Item href="#/action-3"><i className="bi bi-arrow-return-right" /><label className="del">Hapus laporan</label></Dropdown.Item>

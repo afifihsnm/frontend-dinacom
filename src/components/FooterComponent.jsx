@@ -1,6 +1,9 @@
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+// Import Image
+import Logo_Sadam from "../assets/img/sadamfooter.png";
+
 function FooterComponent() {
   return (
     <div className="footer w-100">
@@ -8,7 +11,7 @@ function FooterComponent() {
         <Col lg="5" className="pt-5 pb-3 px-0 col-lg-5">
           <Link to="/">
             <img
-              src="./src/assets/img/sadamfooter.png"
+              src={Logo_Sadam}
               alt="Logo-Sadam-Footer"
               height="44"
               className="d-inline-block mb-3"
