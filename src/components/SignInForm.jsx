@@ -4,41 +4,45 @@ import { useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-
 const SignInForm = ({ onLoginSuccess }) => {
   let navigate = useNavigate();
   const [loginError, setLoginError] = useState(null);
 
   const handleSubmit = async (values, { setSubmitting }) => {
-    console.log('Login data:', values);
+    try {
+      const response = await fetch('https://admin.sadam.fr.to/api/v1/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
 
-    // Memeriksa apakah data pendaftaran sudah ada di local storage
-    const registrationData = localStorage.getItem('registrationData');
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log('Login berhasil:', responseData);
 
-    if (registrationData) {
-      const userData = JSON.parse(registrationData);
-      if (values.username === userData.username && values.password === userData.password) {
-        console.log('Login berhasil');
-        
+        // Simpan token ke localStorage
+        localStorage.setItem('token', responseData.authorization.token);
+
         if (onLoginSuccess) {
           onLoginSuccess();
         }
         navigate('/dashboard');
       } else {
-        // Login gagal
-        console.log('Username atau password salah');
-        setLoginError('Sepertinya ada yang salah');
+        const responseData = await response.json();
+        console.log('Login gagal:', responseData);
       }
-  
-      setSubmitting(false);
-    };
+    } catch (error) {
+      console.error('Terjadi kesalahan saat login:', error);
+    }
 
     setSubmitting(false);
   };
 
   const schema = Yup.object().shape({
     username: Yup.string().min(3, "Minimum 3 karakter").required("Wajib diisi"),
-    password: Yup.string().min(8, "Minimum 8 characters").required("Wajib diisi"),
+    password: Yup.string().min(8, "Minimum 8 karakter").required("Wajib diisi"),
   });
 
   return (
@@ -50,13 +54,13 @@ const SignInForm = ({ onLoginSuccess }) => {
         password: "",
       }}
     >
-      {({ handleSubmit, handleChange, values, touched, errors }) => (
-        <Form noValidate className="signin-form" onSubmit={handleSubmit}>
-        
-        {loginError && (
-          <p className="text-danger">{loginError}</p>
-        )}
-  
+      {({ handleSubmit, handleChange, values, touched, errors, isSubmitting }) => (
+        <Form noValidate className="signup-form" onSubmit={handleSubmit}>
+
+          {loginError && (
+            <p className="text-danger">{loginError}</p>
+          )}
+
           <Form.Group className="forms-g" controlId="validationUsername">
             <Form.Label className="label">
               Username<span className="red-dot">*</span>
@@ -98,7 +102,7 @@ const SignInForm = ({ onLoginSuccess }) => {
             <Link to="/lupa-sandi">Lupa Kata Sandi?</Link>
           </Form.Group>
 
-          <Button type="submit">
+          <Button className="mt-4" type="submit" disabled={isSubmitting}>
             Masuk
           </Button>
           <p className="text-center m-0 mt-3">

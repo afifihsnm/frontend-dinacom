@@ -52,7 +52,7 @@ const ForgotPasswordForm = ({ onEmailSent, onFormReset }) => {
             </div>
           ) : (
             <div>
-              <Form.Group className="forms-g" controlId="validationEmail">
+              <Form.Group className="forms-g" controlId="validationEmails">
                 <Form.Label className="label">Email</Form.Label>
                 <InputGroup className="mb-1">
                   <FormControl

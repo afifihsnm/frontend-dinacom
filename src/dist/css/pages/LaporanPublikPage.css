@@ -1,0 +1,208 @@
+.laporan-publik h1 {
+  color: var(--colors-grayscale-text-icon-title, #191B29);
+font-size: 3.5rem;
+font-style: normal;
+font-weight: 400;
+line-height: 4rem; 
+letter-spacing: 0.0625rem;
+}
+
+.laporan-publik p {
+  color: var(--colors-grayscale-text-icon-title, #191B29);
+font-size: 1rem;
+font-weight: 400;
+line-height: 1.625rem;
+letter-spacing: 0.04688rem;
+margin-bottom: 3.25rem;
+}
+
+.laporan-publik-content .laporan-filter .toggle-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--Dimensions-Spacing-lg, 1rem);
+}
+
+.laporan-publik-content .laporan-filter .toggle-group .toggle-btn {
+  display: flex;
+  color: var(--colors-grayscale-text-icon-title, #191b29);
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 2rem;
+  letter-spacing: 0.0625rem;
+
+  border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
+  background: #FFF;
+  padding: var(--Dimensions-Spacing-sm, 0.5rem)
+    var(--Dimensions-Spacing-2xl, 1.5rem);
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--Colors-Grayscale-Border-default, #D3D5E4);
+}
+
+.laporan-publik-content .laporan-filter .toggle-group .toggle-btn:hover {
+  background: var(--Colors-Primary-Surface-default-subtle, #ecf5ff);
+}
+
+.laporan-publik-content .laporan-filter .toggle-group .toggle-btn:active {
+  background: var(--Colors-Primary-Surface-default-subtle, #ecf5ff);
+}
+
+
+.laporan-all {
+  width: 100%;
+  background-color: #fff;
+}
+
+.laporan-all .laporan-artikel {
+  gap: 1.5rem;
+}
+
+ .laporan-artikel img {
+  width: 3.25rem;
+  height: 3.25rem;
+  flex-shrink: 0;
+  border-radius: 3.25rem;
+  border: 2px solid var(--Colors-Charcoal-100, #F2F2F2);
+}
+
+.laporan-all .laporan-head .badge {
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  letter-spacing: 0.0625rem;
+}
+
+.laporan-all .laporan-artikel .avatar-anonim {
+  width: 3.25rem;
+  height: 3.25rem;
+  flex-shrink: 0;
+  border-radius: 3.25rem;
+  border: 2px solid var(--Colors-Charcoal-100, #F2F2F2);
+  background: var(--Colors-Charcoal-100, #F2F2F2);
+}
+
+.laporan-all .laporan-head .badge .anonim-username {
+  color: var(--colors-grayscale-text-icon-title, #191B29);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.625rem;
+  letter-spacing: 0.0625rem;
+  margin: 0;
+}
+
+.laporan-all .laporan-head .badge-status1 {
+  color: var(--Colors-Chilled-Gray-500, #8E92B9);
+  background: var(--Colors-Chilled-Gray-50, #F2F3F7);
+  border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
+}
+
+.laporan-all .laporan-head .badge-status2 {
+  color: var(--Colors-Orange-500, #FF9736);
+  background: var(--Colors-Orange-50, #FFF4EB);
+  border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);  
+}
+
+.laporan-all .laporan-head .badge-status3  {
+  color: var(--Colors-Green-500, #4AE27E);
+  background: var(--Colors-Green-50, #EDFCF3);
+  border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);  
+}
+
+.laporan-all .laporan-head .badge-status4  {
+  color: var(--Colors-Red-500, #FF1A51);
+  background: var(--Colors-Red-50, #FFEBEF);
+  border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);  
+}
+
+.laporan-all .laporan-head .badge-post1  {
+  color: var(--Colors-Blue-500, #1B5BFF);
+  background: var(--Colors-Blue-50, #EBF0FF);
+  border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);  
+}
+
+.laporan-all .laporan-head .badge-post2 {
+  color: var(--Colors-Blue-500, #1B5BFF);
+  background: var(--Colors-Blue-50, #EBF0FF);
+  border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);  
+}
+
+.laporan-all .laporan-head {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.laporan-all .laporan-head h3 {
+  color: var(--colors-grayscale-text-icon-title, #191B29);
+font-size: 1rem;
+font-weight: 500;
+line-height: 1.625rem;
+letter-spacing: 0.0625rem;
+margin: 0;
+}
+
+.laporan-all .laporan-head p {
+  color: var(--colors-grayscale-text-icon-title, #191B29);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.625rem;
+  letter-spacing: 0.0625rem;
+  margin: 0;
+}
+
+.laporan-all .laporan-body {
+  height: 6.5rem;
+  position: relative; 
+  overflow: hidden;
+}
+
+.laporan-all .laporan-body-link {
+  text-decoration: none;
+}
+
+.laporan-all .laporan-body h4 {
+  color: var(--colors-grayscale-text-icon-title, #191B29);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.625rem;
+  letter-spacing: 0.0625rem;
+  margin: 0;
+}
+
+.laporan-all .laporan-body p {
+  color: var(--colors-grayscale-text-icon-title, #191B29);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.625rem;
+  letter-spacing: 0.0625rem;
+  margin: 0;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .laporan-publik {
+    margin-left: 17.0625rem;
+    padding: 5.5rem 1.5rem 5rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .laporan-publik {
+    margin-left: 17.0625rem;
+    padding: 5.5rem 5rem 5rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .laporan-publik {
+    margin: 0;
+    margin-top: 4.75rem;
+    padding: 3.25rem 1.5rem 5rem;
+  }
+}

@@ -11,6 +11,29 @@ function Sidebar({ activePage }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const logout = () => {
+    fetch('https://admin.sadam.fr.to/api/v1/auth/logout', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`, // Sesuaikan dengan cara autentikasi API Anda
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => {
+        if (response.ok) {
+          // Hapus token dari localStorage setelah logout berhasil
+          localStorage.removeItem('token');
+          window.location.href = '/'; // Redirect ke halaman login atau halaman lain sesuai kebutuhan
+        } else {
+          // Handle kesalahan logout jika diperlukan
+          console.error('Gagal logout:', response.statusText);
+        }
+      })
+      .catch(error => {
+        console.error('Gagal logout:', error);
+      });
+}
+
   return (
     <div className="sidebar" responsive="lg">
       <span className="icon-bars" onClick={handleShow}><i className="fas fa-bars"></i></span>
@@ -21,7 +44,7 @@ function Sidebar({ activePage }) {
         <Offcanvas.Body className="p-0">
           <h5>Layanan</h5>
           <Link to="/dashboard" className={activePage === "dashboard" ? "active" : ""}>
-            <span className="icon"><i className="bi bi-house-fill" style={{ fontSize: '1.5rem' }}></i></span>Dashboard
+            <span className="icon"><i className="bi bi-house" style={{ fontSize: '1.5rem' }}></i></span>Dashboard
           </Link>
           <Link to="/laporin" className={activePage === "laporin" ? "active" : ""}>
             <span className="icon"><i className="bi bi-file-earmark-plus" style={{ fontSize: '1.5rem' }}></i></span>Laporin
@@ -36,7 +59,7 @@ function Sidebar({ activePage }) {
           <Link to="/akun" className={activePage === "akun" ? "active" : ""}>
             <span className="icon"><i className="bi bi-person-circle" style={{ fontSize: '1.5rem' }}></i></span>Akun
           </Link>
-          <Link to="/"><span className="icon"><i className="bi bi-door-open" style={{ fontSize: '1.5rem' }}></i></span>Logout</Link>
+          <Link to="/" onClick={logout}><span className="icon"><i className="bi bi-door-open" style={{ fontSize: '1.5rem' }}></i></span>Logout</Link>
 
         </Offcanvas.Body>
       </Offcanvas>
@@ -49,7 +72,7 @@ function Sidebar({ activePage }) {
 
       <h5>Layanan</h5>
       <Link to="/dashboard" className={activePage === "dashboard" ? "active" : ""}>
-        <span className="icon"><i className="bi bi-house-fill" style={{ fontSize: '1.5rem' }}></i></span>Dashboard
+        <span className="icon"><i className="bi bi-house" style={{ fontSize: '1.5rem' }}></i></span>Dashboard
       </Link>
       <Link to="/laporin" className={activePage === "laporin" ? "active" : ""}>
         <span className="icon"><i className="bi bi-file-earmark-plus" style={{ fontSize: '1.5rem' }}></i></span>Laporin
@@ -64,7 +87,7 @@ function Sidebar({ activePage }) {
       <Link to="/akun" className={activePage === "akun" ? "active" : ""}>
         <span className="icon"><i className="bi bi-person-circle" style={{ fontSize: '1.5rem' }}></i></span>Akun
       </Link>
-      <Link to="/"><span className="icon"><i className="bi bi-door-open" style={{ fontSize: '1.5rem' }}></i></span>Logout</Link>
+      <Link to="/" onClick={logout}><span className="icon"><i className="bi bi-door-open" style={{ fontSize: '1.5rem' }}></i></span>Logout</Link>
 
     </div>
   );

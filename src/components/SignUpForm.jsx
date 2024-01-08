@@ -1,27 +1,48 @@
 import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-const SignUpForm = ({ onSignUpSuccess}) => {
+const SignUpForm = ( ) => {
+  let navigate = useNavigate();
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    localStorage.setItem('registrationData', JSON.stringify(values));
+  const signUp = useState({
+    nama_lengkap: "",
+    tanggal_lahir: "",
+    tempat_tinggal: "",
+    username: "",
+    email: "",
+    password: "",
+    password_konfirmasi: "",
+  });
 
-    if (onSignUpSuccess) {
-      onSignUpSuccess();
+  const handleSubmit = async (signUp, { setSubmitting }) => {
+    try {
+      const response = await fetch('https://admin.sadam.fr.to/api/v1/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(signUp),
+      }).then(res => res.json()).then(console.log);
+
+    } catch (error) {
+      console.error('Error during sign up:', error);
+    }  finally {
+      setSubmitting(false);
+      navigate('/masuk');
     }
-
-    setSubmitting(false);
+    
   };
 
   const schema = Yup.object().shape({
-    fullName: Yup.string()
+    nama_lengkap: Yup.string()
       .min(3, "Mininum 3 karakter")
       .required("Wajib diisi"),
-    dateOfBirth: Yup.date()
+    tanggal_lahir: Yup.date()
       .required("Wajib diisi"),
-    addres: Yup.string()
+    tempat_tinggal: Yup.string()
       .required("Wajib diisi")
       .min(3, "Tempat tinggal terlalu pendek"),
     username: Yup.string()
@@ -31,7 +52,7 @@ const SignUpForm = ({ onSignUpSuccess}) => {
       .email("Invalid email format")
       .required("Wajib diisi"),
     password: Yup.string().min(8, "Minimum 8 karakter").required("Wajib diisi"),
-    confirmPassword: Yup.string()
+    password_konfirmasi: Yup.string()
     .oneOf([Yup.ref("password"), null], "Kata sandi tidak sama")
       .required("Wajib diisi")
   });
@@ -41,13 +62,13 @@ const SignUpForm = ({ onSignUpSuccess}) => {
       validationSchema={schema}
       onSubmit={handleSubmit}
       initialValues={{
-        fullName: "",
-        dateOfBirth: "",
-        addres: "",
+        nama_lengkap: "",
+        tanggal_lahir: "",
+        tempat_tinggal: "",
         username: "",
         email: "",
         password: "",
-        confirmPassword: "",
+        password_konfirmasi: "",
       }}
     >
       {({ handleSubmit, handleChange, values, touched, errors }) => (
@@ -61,13 +82,13 @@ const SignUpForm = ({ onSignUpSuccess}) => {
                 className="rounded-5"
                 type="text"
                 placeholder="Nama"
-                name="fullName"
-                value={values.fullName}
+                name="nama_lengkap"
+                value={values.nama_lengkap}
                 onChange={handleChange}
-                isInvalid={touched.fullName && !!errors.fullName}
+                isInvalid={touched.nama_lengkap && !!errors.nama_lengkap}
               />
               <Form.Control.Feedback type="invalid">
-                {errors.fullName}
+                {errors.nama_lengkap}
               </Form.Control.Feedback>
             </InputGroup>
           </Form.Group>
@@ -81,13 +102,13 @@ const SignUpForm = ({ onSignUpSuccess}) => {
                 className="rounded-5"
                 type="date"
                 placeholder="11/12/2023"
-                name="dateOfBirth"
-                value={values.dateOfBirth}
+                name="tanggal_lahir"
+                value={values.tanggal_lahir}
                 onChange={handleChange}
-                isInvalid={touched.dateOfBirth && !!errors.dateOfBirth}
+                isInvalid={touched.tanggal_lahir && !!errors.tanggal_lahir}
               />
               <Form.Control.Feedback type="invalid">
-                {errors.dateOfBirth}
+                {errors.tanggal_lahir}
               </Form.Control.Feedback>
             </InputGroup>
           </Form.Group>
@@ -101,13 +122,13 @@ const SignUpForm = ({ onSignUpSuccess}) => {
                 className="rounded-5"
                 type="text"
                 placeholder="Alamat sekarang"
-                name="addres"
-                value={values.addres}
+                name="tempat_tinggal"
+                value={values.tempat_tinggal}
                 onChange={handleChange}
-                isInvalid={touched.addres && !!errors.addres}
+                isInvalid={touched.tempat_tinggal && !!errors.tempat_tinggal}
               />
               <Form.Control.Feedback type="invalid">
-                {errors.addres}
+                {errors.tempat_tinggal}
               </Form.Control.Feedback>
             </InputGroup>
           </Form.Group>
@@ -184,13 +205,13 @@ const SignUpForm = ({ onSignUpSuccess}) => {
                 className="rounded-5"
                 type="password"
                 placeholder="Konfirmasi kata sandi"
-                name="confirmPassword"
-                value={values.confirmPassword}
+                name="password_konfirmasi"
+                value={values.password_konfirmasi}
                 onChange={handleChange}
-                isInvalid={touched.confirmPassword && !!errors.confirmPassword}
+                isInvalid={touched.password_konfirmasi && !!errors.password_konfirmasi}
               />
               <Form.Control.Feedback type="invalid">
-                {errors.confirmPassword}
+                {errors.password_konfirmasi}
               </Form.Control.Feedback>
             </InputGroup>
           </Form.Group>

@@ -22,7 +22,7 @@ const ComplaintForm = () => {
 
   return (
     <div className="Complaint-Form">
-    <div className="Complaint my-4">
+   <div className="Complaint my-4">
       <div className="complaint-header text-center overflow-hidden">
         <h5 data-aos="fade-up" data-aos-duration="900">Yuk, laporin keresahanmu</h5>
         <p data-aos="fade-up" data-aos-duration="1000">Laporkan keresahanmu di Sadam. Cepat, Aman, Mudah, dan Transparan. </p>
@@ -40,7 +40,7 @@ const ComplaintForm = () => {
     >
       {({ handleSubmit, handleChange, values, touched, errors }) => (
         <Form noValidate className="complaint-form" data-aos="fade-up" data-aos-duration="1000" onSubmit={handleSubmit}>
-          <Form.Group className="forms-g" controlId="validationReport">
+          <Form.Group className="forms-g" controlId="report">
             <Form.Label className="label">
               Judul Laporan<span className="red-dot">*</span>
             </Form.Label>
@@ -64,7 +64,7 @@ const ComplaintForm = () => {
             </Form.Text>
           </Form.Group>
 
-          <Form.Group className="forms-g" controlId="validationContentReport">
+          <Form.Group className="forms-g" controlId="contentReport">
             <Form.Label className="label">
               Isi Laporan<span className="red-dot">*</span>
             </Form.Label>
@@ -88,7 +88,7 @@ const ComplaintForm = () => {
             </Form.Text>
           </Form.Group>
 
-          <Form.Group className="forms-g" controlId="validationFormFile">  
+          <Form.Group className="forms-g" controlId="formFile">  
             <Form.Label className="label">
               Unggah Bukti Foto<span className="red-dot">*</span>
             </Form.Label>
@@ -112,7 +112,7 @@ const ComplaintForm = () => {
             </Form.Text>
           </Form.Group>   
 
-          <Form.Group className="forms-g" controlId="validationShowName">
+          <Form.Group className="forms-g" controlId="showName">
           <Form.Label className="label">
             Apakah Anda ingin menampilkan nama Anda<span className="red-dot">*</span>
           </Form.Label>
@@ -120,7 +120,7 @@ const ComplaintForm = () => {
           <Form.Check className="d-flex mb-1" type="radio" name="showName" value="false" label="Tidak, saya ingin merahasiakan nama saya" />
         </Form.Group>
         
-        <Form.Group className="forms-g" controlId="validationShowStatus">
+        <Form.Group className="forms-g" controlId="ShowStatus">
         <Form.Label className="label">
         Siapakah yang dapat melihat/ menanggapi laporan ini<span className="red-dot">*</span>
         </Form.Label>

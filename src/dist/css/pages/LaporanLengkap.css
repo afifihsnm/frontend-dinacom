@@ -1,0 +1,22 @@
+@media (min-width: 768px) and (max-width: 1024px) {
+    .laporan-publik {
+      margin-left: 17.0625rem;
+      padding: 5.5rem 1.5rem 5rem 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .laporan-publik {
+      margin-left: 17.0625rem;
+      padding: 5.5rem 5rem 5rem 1.5rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .laporan-publik {
+      margin: 0;
+      margin-top: 4.75rem;
+      padding: 3.25rem 1.5rem 5rem;
+    }
+  }
+  
