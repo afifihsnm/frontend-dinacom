@@ -12,7 +12,7 @@ function Sidebar({ activePage }) {
   const handleShow = () => setShow(true);
 
   const logout = () => {
-    fetch('https://admin.sadam.fr.to/api/v1/auth/logout', {
+    fetch('https://admin.sadam.bid/api/v1/auth/logout', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`, // Sesuaikan dengan cara autentikasi API Anda
@@ -52,9 +52,6 @@ function Sidebar({ activePage }) {
           <Link to="/lapor-publik" className={activePage === "lapor-publik" ? "active" : ""}>
             <span className="icon"><i className="bi bi-file-earmark-text" style={{ fontSize: '1.5rem' }}></i></span>Laporin Publik
           </Link>
-          <Link to="/pesan" className={activePage === "pesan" ? "active" : ""}>
-            <span className="icon"><i className="bi bi-chat-square-text" style={{ fontSize: '1.5rem' }}></i></span>Pesan
-          </Link>
           <h5>Dukungan</h5>
           <Link to="/akun" className={activePage === "akun" ? "active" : ""}>
             <span className="icon"><i className="bi bi-person-circle" style={{ fontSize: '1.5rem' }}></i></span>Akun
@@ -79,9 +76,6 @@ function Sidebar({ activePage }) {
       </Link>
       <Link to="/lapor-publik" className={activePage === "lapor-publik" ? "active" : ""}>
         <span className="icon"><i className="bi bi-file-earmark-text" style={{ fontSize: '1.5rem' }}></i></span>Laporin Publik
-      </Link>
-      <Link to="/pesan" className={activePage === "pesan" ? "active" : ""}>
-        <span className="icon"><i className="bi bi-chat-square-text" style={{ fontSize: '1.5rem' }}></i></span>Pesan
       </Link>
       <h5>Dukungan</h5>
       <Link to="/akun" className={activePage === "akun" ? "active" : ""}>

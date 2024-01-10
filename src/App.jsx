@@ -17,7 +17,6 @@ import NewPassPage from "./pages/NewPassPage";
 import DashboardPage from "./pages/DashboardPage";
 import LaporinPage from "./pages/LaporinPage";
 import LaporanPublikPage from "./pages/LaporanPublikPage";
-import PesanPage from "./pages/PesanPage";
 import AkunPage from "./pages/AkunPage";
 import LaporanLengkap from "./pages/LaporanLengkap";
 
@@ -34,7 +33,7 @@ function App() {
   }, [location.pathname]);
 
   const isLoginPage = ["/masuk", "/daftar", "/lupa-sandi"].includes(location.pathname);
-  const showSidebar = isLaporanLengkap || ["/dashboard", "/laporin", "/lapor-publik", "/pesan", "/akun"].includes(location.pathname);
+  const showSidebar = isLaporanLengkap || ["/dashboard", "/laporin", "/lapor-publik", "/akun"].includes(location.pathname);
 
   if (token) {
     return (
@@ -54,7 +53,6 @@ function App() {
           <Route path="/akun" element={<PrivateRoute />}>
             <Route path="/akun" element={<AkunPage />} />
           </Route>
-            <Route path="/pesan" element={<PesanPage />} />
         </Routes>
       </div>
     );
@@ -84,7 +82,6 @@ function App() {
           <Route path="/akun" element={<PrivateRoute />}>
             <Route path="/akun" element={<AkunPage />} />
           </Route>
-            <Route path="/pesan" element={<PesanPage />} />
         </Routes>
         {!showSidebar && <FooterComponent />}
 

@@ -10,7 +10,7 @@ const SignInForm = ({ onLoginSuccess }) => {
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      const response = await fetch('https://admin.sadam.fr.to/api/v1/auth/login', {
+      const response = await fetch('https://admin.sadam.bid/api/v1/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const SignInForm = ({ onLoginSuccess }) => {
       }}
     >
       {({ handleSubmit, handleChange, values, touched, errors, isSubmitting }) => (
-        <Form noValidate className="signup-form" onSubmit={handleSubmit}>
+        <Form noValidate className="signin-form" onSubmit={handleSubmit}>
 
           {loginError && (
             <p className="text-danger">{loginError}</p>

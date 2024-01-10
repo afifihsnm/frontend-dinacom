@@ -36,7 +36,6 @@
 }
 
 .homepage .header-box .left .report {
-  border-color: var(--Colors-Primary-Surface-default, #0e206a);
   background: var(--Colors-Primary-Surface-default, #0e206a);
   padding: var(--Dimensions-Spacing-md, 0.75rem)
     var(--Dimensions-Spacing-lg, 2rem);
@@ -46,15 +45,17 @@
   color: var(--text-color-title);
 }
 
+.homepage .header-box .left .sign:hover {
+  color: #0e206a;
+  background: var(--Colors-Primary-Surface-default-subtle, #ecf5ff);
+}
+
 .homepage .header-box .left button {
   font-size: 1.25rem;
-  font-style: normal;
   font-weight: 600;
   line-height: 2rem;
-  letter-spacing: 0.0625rem;
   padding: var(--Dimensions-Spacing-md, 0.75rem)
     var(--Dimensions-Spacing-lg, 1rem);
-  border-color: var(--Colors-Primary-Surface-default, #0e206a);
 }
 
 .homepage .header-box .right {
@@ -234,7 +235,6 @@
 /*Style Partner End*/
 
 /*Style Wording 2*/
-
 .wording-2 {
   background-color: var(--Colors-Grayscale-Surface-default-subtle, #f2f3f7);
   padding: 2rem 5rem 5rem;

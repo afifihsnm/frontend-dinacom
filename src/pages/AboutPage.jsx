@@ -1,3 +1,9 @@
+//Import Image
+import logoInstagram from "../assets/img/medsos/Instagram.png";
+import logoTelegram from "../assets/img/medsos/Telegram.png";
+import logoFacebook from "../assets/img/medsos/Facebook.png";
+import logoX from "../assets/img/medsos/X.png";
+
 const AboutPage = () => {
   return (
     <div className="tentang-kami-page w-100 d-flex flex-column">
@@ -26,22 +32,22 @@ const AboutPage = () => {
         <div className="medsos">
           <img
             data-aos="fade-up" data-aos-duration="400"
-            src="./src/assets/img/medsos/Instagram.png"
+            src={logoInstagram}
             alt="Instagram-logo"
           ></img>
           <img
             data-aos="fade-up" data-aos-duration="600"
-            src="./src/assets/img/medsos/Telegram.png"
+            src={logoTelegram}
             alt="Telegram-logo"
           ></img>
           <img
             data-aos="fade-up" data-aos-duration="800"
-            src="./src/assets/img/medsos/Facebook.png"
+            src={logoFacebook}
             alt="Facebook-logo"
           ></img>
           <img 
             data-aos="fade-up" data-aos-duration="1000"
-            src="./src/assets/img/medsos/X.png" 
+            src={logoX}
             alt="X-logo">
             </img>
         </div>

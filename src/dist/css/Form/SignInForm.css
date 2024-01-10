@@ -23,14 +23,14 @@
     padding: var(--Dimensions-Spacing-md, 0.75rem) var(--Dimensions-Spacing-lg, 1rem);
     border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
     border: 1px solid var(--Colors-Grayscale-Border-default, #D3D5E4);
-    color: var(--colors-grayscale-text-icon-caption, #A4A7C6);
+    color: var(--colors-grayscale-text-icon-caption, #191B29);
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.625rem;
     letter-spacing: 0.04688rem;
 }
 
-.signin-form .forms-g a, p a {
+.signin-form .forms-g a {
     color: var(--Colors-Indigo-500, #5D11FF);
     font-size: 1rem;
     font-weight: 400;

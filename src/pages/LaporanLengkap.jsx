@@ -1,25 +1,25 @@
-import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import ToggleButton from 'react-bootstrap/ToggleButton';
-import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
+import { useState, useEffect } from "react";
+import {Spinner} from "react-bootstrap";
+import { useNavigate, useParams } from "react-router-dom";
 
 const LaporanLengkap = () => {
+  let navigate = useNavigate();
   const { id } = useParams();
   const [laporanDetail, setLaporanDetail] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
 
     if (!token) {
-      navigate('/');
+      navigate("/");
     }
 
     // Sesuaikan URL API sesuai kebutuhan
-    fetch(`https://admin.sadam.fr.to/api/v1/reports/${id}`, {
-      method: 'GET',
+    fetch(`https://admin.sadam.bid/api/v1/reports/${id}`, {
+      method: "GET",
       headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
     })
       .then((res) => {
@@ -29,28 +29,93 @@ const LaporanLengkap = () => {
         return res.json();
       })
       .then((data) => {
-        console.log('API Response:', data);
-        setLaporanDetail(data); // Set data laporanDetail sesuai API response
+        console.log("API Response:", data);
+        setLaporanDetail(data.data); //
       })
-      .catch((error) => console.error('Error fetching data:', error));
+      .catch((error) => console.error("Error fetching data:", error));
   }, [id]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Tanggapan laporan dikirim:", e.target.contentReport.value);
+  };
+
   return (
-    <div className="laporan-publik">
-      <div className="laporan-publik-content">
-        {laporanDetail ? (
-          <div>
-            <h2>{laporanDetail.title}</h2>
-            <p>{laporanDetail.content}</p>
-            {/* Tambahan informasi sesuai kebutuhan dari API response */}
+    <div className="laporan-lengkap">
+      <button
+        type="button"
+        onClick={() => navigate("/lapor-publik")}
+        className="btn lapor-back btn-outline-primary rounded-5 mb-5"
+      >
+        <i className="bi bi-arrow-left" />
+        Kembali
+      </button>
+      {laporanDetail ? (
+        <div className="laporan-detail flex-column">
+          <div className="laporan-artikel d-flex w-100">
+          {laporanDetail.user && laporanDetail.user.avatar ? (
+            <img src={laporanDetail.user.avatar.replace('https://admin.sadam.bid/', '')} alt={`avatar ${laporanDetail.id}`} className="avatar" />            
+          ) : (
+            <div className="avatar-anonim"></div>
+          )}            
+          <div className="laporan-content">
+            <div className="laporan-head d-flex mb-2">
+              <div className="badge d-flex gap-2 p-0 mb-3 align-items-center">
+              {laporanDetail.user && laporanDetail.user.username && (
+                <h3>{laporanDetail.user.username}</h3>
+              )}
+              {!laporanDetail.user && (
+                <span className="anonim-username">Anonim</span>
+              )}
+                <p>{laporanDetail.publishedAt}</p>
+                {laporanDetail.status === 0 && (
+                    <label className="badge-status1 d-flex">Belum ditangani</label>
+                  )}
+                  {laporanDetail.status === 1 && (
+                    <label className="badge-status2 d-flex">Sedang Ditangani</label>
+                  )}
+                  {laporanDetail.status === 2 && (
+                    <label className="badge-status3 d-flex">Selesai</label>
+                  )}
+                  {laporanDetail.status === 3 && (
+                    <label className="badge-status4 d-flex">Ditolak</label>
+                  )}
+
+                  {laporanDetail.visibility === 1 && (
+                    <label className="badge-post1 d-flex">Terbuka untuk publik</label>
+                  )}
+                  {laporanDetail.visibility === 0 && (
+                    <label className="badge-post2 d-flex">Rahasia</label>
+                  )}
+              </div>
+            </div>
+
+              <div className="laporan-body gap-2 d-flex flex-column">
+                <h4>{laporanDetail.title}</h4>
+                <p>{laporanDetail.content}</p>
+                <p>Lampiran:</p>
+                {laporanDetail.image && laporanDetail.image.length > 0 && (
+                  <img src={laporanDetail.image[0].path} alt="Laporan" />
+                )}
+                <div className="laporan-comment d-flex">
+                  <p> Komentar ({laporanDetail.totalComment}) </p>
+                  <span className="black-dot">•</span>
+                  <p>
+                    {" "}
+                    Butuh tanggapan cepat ({
+                      laporanDetail.totalNeedResponse
+                    }){" "}
+                  </p>
+                </div>
+              </div>
+              </div>
           </div>
-        ) : (
-          <div>Loading...</div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <Spinner animation="border" variant="primary" />
+      )}
     </div>
   );
 };
 
 export default LaporanLengkap;
-  

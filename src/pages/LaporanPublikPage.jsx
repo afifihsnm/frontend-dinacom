@@ -1,73 +1,120 @@
-import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
-import ToggleButton from 'react-bootstrap/ToggleButton';
-import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import ToggleButton from "react-bootstrap/ToggleButton";
+import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 
 const LaporanPublikPage = () => {
+  let navigate = useNavigate();
   const [laporanAll, setLaporanAll] = useState([]);
-  const [filter, setFilter] = useState(1); 
+  const [filter, setFilter] = useState(1);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
 
     if (!token) {
-      navigate('/');
+      navigate("/");
     }
 
-    let apiPost = 'https://admin.sadam.fr.to/api/v1/reports'; 
+    let apiPost = "https://admin.sadam.bid/api/v1/reports";
 
     if (filter === 2) {
-      apiPost = 'https://admin.sadam.fr.to/api/v1/reports/liked';
+      apiPost = "https://admin.sadam.bid/api/v1/reports/liked";
     } else if (filter === 3) {
-      apiPost = 'https://admin.sadam.fr.to/api/v1/reports/latest';
+      apiPost = "https://admin.sadam.bid/api/v1/reports/latest";
     }
 
     fetch(apiPost, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
     })
       .then((res) => {
         if (!res.ok) {
-          localStorage.removeItem('token');
-          navigate('/masuk');
+          localStorage.removeItem("token");
+          navigate("/masuk");
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
         return res.json();
       })
       .then((data) => {
-        console.log('API Response:', data);
+        console.log("API Response:", data);
         setLaporanAll(data.data);
       })
-      .catch((error) => console.error('Error fetching data:', error));
+      .catch((error) => console.error("Error fetching data:", error));
   }, [filter]);
 
   const handleFilterChange = (value) => {
     setFilter(value);
   };
 
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredLaporanAll = laporanAll.filter((data) => {
+    // Perform case-insensitive search on title and content
+    const searchText = searchTerm.toLowerCase();
+    return (
+      data.title.toLowerCase().includes(searchText) ||
+      data.content.toLowerCase().includes(searchText)
+    );
+  });
+
   return (
     <div className="laporan-publik">
       <div className="laporan-publik-content">
-        <h1 className='mb-3'>Laporan Publik</h1>
-        <p>
+        <h1 className="mb-2">Laporan Publik</h1>
+        <p className="mb-5">
           Buatlah laporan yang mudah dimengerti & dipercaya dengan cara
           menggunakan bahasa yang mudah dipahami dan sertakan bukti foto untuk
           memperkuat laporan yang telah kamu buat.
         </p>
 
+        {/* Search bar */}
+        <div className="search-bar mt-1 mb-4">
+          <input
+            className="search"
+            type="text"
+            placeholder="Cari laporan"
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+          <i className="bi bi-search" />
+        </div>
+
         <div className="laporan-filter d-flex">
-          <ToggleButtonGroup className="toggle-group" type="radio" name="options" defaultValue={filter}>
-            <ToggleButton className='toggle-btn' id="tbg-radio-1" value={1} onClick={() => handleFilterChange(1)}>
+          <ToggleButtonGroup
+            className="toggle-group"
+            type="radio"
+            name="options"
+            defaultValue={filter}
+          >
+            <ToggleButton
+              className="toggle-btn"
+              id="tbg-radio-1"
+              value={1}
+              onClick={() => handleFilterChange(1)}
+            >
               Semua laporan
             </ToggleButton>
-            <ToggleButton className='toggle-btn' id="tbg-radio-2" value={2} onClick={() => handleFilterChange(2)}>
+            <ToggleButton
+              className="toggle-btn"
+              id="tbg-radio-2"
+              value={2}
+              onClick={() => handleFilterChange(2)}
+            >
               Butuh tanggapan cepat
             </ToggleButton>
-            <ToggleButton className='toggle-btn' id="tbg-radio-3" value={3} onClick={() => handleFilterChange(3)}>
+            <ToggleButton
+              className="toggle-btn"
+              id="tbg-radio-3"
+              value={3}
+              onClick={() => handleFilterChange(3)}
+            >
               Terbaru
             </ToggleButton>
           </ToggleButtonGroup>
@@ -77,13 +124,13 @@ const LaporanPublikPage = () => {
           {laporanAll.length === 0 && (
             <div className="no-activity">
               <i className="bi bi-calendar2-x"></i>
-              <p>Anda belum melakukan aktivitas apapun</p>
+              <p>Tidak ada aktivitas apapun</p>
             </div>
           )}
-
-          {laporanAll.length > 0 && <ReportAll laporanAll={laporanAll} />}
+          {filteredLaporanAll.length > 0 && (
+            <ReportAll laporanAll={filteredLaporanAll} />
+          )}{" "}
         </div>
-
       </div>
     </div>
   );
@@ -96,26 +143,33 @@ function ReportAll({ laporanAll }) {
         <div key={data.id} className="d-flex flex-column mb-3">
           <div className="laporan-artikel d-flex w-100">
             {data.user && data.user.avatar ? (
-              <img src='https://{data.user.avatar}' alt={`Laporan ${data.id}`} />
+              <img
+                src={data.user.avatar.replace("https://admin.sadam.bid/", "")}
+                alt={`Laporan ${data.id}`}
+                className="avatar"
+              />
             ) : (
-              <div className="avatar-anonim"> 
-              </div>
+              <div className="avatar-anonim" />
             )}
             <div className="laporan-content w-100">
               <div className="laporan-head d-flex">
-                <div className="badge d-flex gap-2 p-0 align-items-center">
+                <div className="badge d-flex gap-2 p-0 mb-2 align-items-center">
                   {data.user && data.user.username && (
                     <h3>{data.user.username}</h3>
                   )}
                   {!data.user && (
                     <span className="anonim-username">Anonim</span>
                   )}
-                  <p>{data.publishedAt}</p>
+                  <p>12/2/2222</p>
                   {data.status === 0 && (
-                    <label className="badge-status1 d-flex">Belum ditangani</label>
+                    <label className="badge-status1 d-flex">
+                      Belum ditangani
+                    </label>
                   )}
                   {data.status === 1 && (
-                    <label className="badge-status2 d-flex">Sedang Ditangani</label>
+                    <label className="badge-status2 d-flex">
+                      Sedang Ditangani
+                    </label>
                   )}
                   {data.status === 2 && (
                     <label className="badge-status3 d-flex">Selesai</label>
@@ -124,27 +178,39 @@ function ReportAll({ laporanAll }) {
                     <label className="badge-status4 d-flex">Ditolak</label>
                   )}
 
-
                   {data.visibility === 1 && (
-                    <label className="badge-post1 d-flex">Terbuka untuk publik</label>
+                    <label className="badge-post1 d-flex">
+                      Terbuka untuk publik
+                    </label>
                   )}
                   {data.visibility === 0 && (
                     <label className="badge-post2 d-flex">Rahasia</label>
                   )}
                 </div>
               </div>
-              <Link to={`/lapor-publik/${data.id}`} className='laporan-body-link'>
-              <div className="laporan-body">
-                <h4>{data.title}</h4>
-                <p>{data.content}</p>
-              </div>
-            </Link>
+              <Link
+                to={`/lapor-publik/${data.id}`}
+                className="laporan-body-link"
+              >
+                <div className="laporan-body mb-2">
+                  <h4>{data.title}</h4>
+                  <p>{data.content}</p>
+                  {data.image && data.image.length > 0 && (
+                    <img src={data.image[0].path} alt={`Laporan ${data.id}`} />
+                  )}
+                </div>
+                <div className="laporan-comment d-flex">
+                  <p> Komentar ({data.totalComment})</p>
+                  <span className="black-dot">•</span>
+                  <p> Butuh tanggapan cepat ({data.totalNeedResponse}) </p>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
       ))}
     </div>
   );
-};
+}
 
-export default LaporanPublikPage; 
+export default LaporanPublikPage;

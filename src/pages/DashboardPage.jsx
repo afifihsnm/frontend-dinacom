@@ -11,6 +11,10 @@ import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
   const navigate = useNavigate();
   const [laporanUser, setLaporan] = useState([]);
+  const [totalNotYetHandled, setTotalNotYetHandled] = useState(0);
+  const [totalHandled, setTotalHandled] = useState(0);
+  const [totalFinished, setTotalFinished] = useState(0);
+  const [totalCanceled, setTotalCanceled] = useState(0);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -19,7 +23,7 @@ const Dashboard = () => {
       navigate('/');
     }
 
-    fetch('https://admin.sadam.fr.to/api/v1/users/dashboard', {
+    fetch('https://admin.sadam.bid/api/v1/users/dashboard', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -35,12 +39,19 @@ const Dashboard = () => {
         return res.json();
       })
       .then((data) => {
-        console.log('API Response:', data); // Log the entire response
+        console.log('API Response:', data);
+
+        // Set total counts
+        setTotalNotYetHandled(data.totalStatusNotYetHandled);
+        setTotalHandled(data.totalStatusHandled);
+        setTotalFinished(data.totalStatusFinished);
+        setTotalCanceled(data.totalStatusCanceled);
+
+        // Set user reports
         setLaporan(data.data);
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, [navigate]);
-
 
   return (
     <div className="dashboard">
@@ -51,7 +62,7 @@ const Dashboard = () => {
             <Card.Body className="d-flex flex-column">
               <Card.Title className="d-flex mb-0"><img src={IconCircleTime} />Belum ditangani</Card.Title>
               <Card.Text>
-                0 Laporan
+                {totalNotYetHandled} Laporan
               </Card.Text>
             </Card.Body>
           </Card>
@@ -60,7 +71,7 @@ const Dashboard = () => {
             <Card.Body className="d-flex flex-column">
               <Card.Title className="d-flex mb-0"><img src={IconCircleBlank} />Sedang ditangani</Card.Title>
               <Card.Text>
-                0 Laporan
+                {totalHandled} Laporan
               </Card.Text>
             </Card.Body>
           </Card>
@@ -69,7 +80,7 @@ const Dashboard = () => {
             <Card.Body className="d-flex flex-column">
               <Card.Title className="d-flex mb-0"><img src={IconCircleCheck} />Selesai</Card.Title>
               <Card.Text>
-                0 Laporan
+                {totalFinished} Laporan
               </Card.Text>
             </Card.Body>
           </Card>
@@ -78,7 +89,7 @@ const Dashboard = () => {
             <Card.Body className="d-flex flex-column">
               <Card.Title className="d-flex mb-0"><img src={IconCircleX} />Ditolak</Card.Title>
               <Card.Text>
-                0 Laporan
+                {totalCanceled} Laporan
               </Card.Text>
             </Card.Body>
           </Card>
@@ -124,7 +135,7 @@ function ReportUser({ laporanUser }) {
         <div key={data.id} className="d-flex flex-column mb-3">
           <div className="laporan-artikel d-flex w-100">
             {data.user && data.user.avatar && (
-              <img src={data.user.avatar} alt={`Laporan ${data.id}`} />
+              <img src={data.user.avatar.replace('https://admin.sadam.bid/', '')} alt={`Laporan ${data.id}`} />            
             )}
             <div className="laporan-content w-100">
               <div className="laporan-head d-flex">
@@ -171,8 +182,8 @@ function ReportUser({ laporanUser }) {
                 </div>
               </div>
               <div className="laporan-body">
-                <h4>{data.title}</h4>
-                <p>{data.content}</p>
+                  <h4>{data.title}</h4>
+                  <p>{data.content}</p>
               </div>
             </div>
           </div>

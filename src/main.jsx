@@ -23,8 +23,8 @@ import "./dist/css/pages/ForgotPasswordPage.css";
 import "./dist/css/pages/NewPassPage.css";
 import "./dist/css/pages/DashboardPage.css";
 import "./dist/css/pages/LaporinPage.css";
+import "./dist/css/pages/LaporanLengkap.css";
 import "./dist/css/pages/LaporanPublikPage.css";
-import "./dist/css/pages/PesanPage.css";
 import "./dist/css/pages/AkunPage.css";
 
 // Import CSS Compponents
