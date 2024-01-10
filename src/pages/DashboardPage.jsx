@@ -19,7 +19,7 @@ const Dashboard = () => {
       navigate('/');
     }
 
-    fetch('https://admin.sadam.fr.to/api/v1/reports', {
+    fetch('https://admin.sadam.fr.to/api/v1/users/dashboard', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,

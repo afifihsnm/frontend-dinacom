@@ -15,15 +15,15 @@ const LaporanPublikPage = () => {
       navigate('/');
     }
 
-    let apiUrl = 'https://admin.sadam.fr.to/api/v1/reports'; 
+    let apiPost = 'https://admin.sadam.fr.to/api/v1/reports'; 
 
     if (filter === 2) {
-      apiUrl = 'https://admin.sadam.fr.to/api/v1/reports/latest';
+      apiPost = 'https://admin.sadam.fr.to/api/v1/reports/liked';
     } else if (filter === 3) {
-      apiUrl = 'https://admin.sadam.fr.to/api/v1/reports/liked';
+      apiPost = 'https://admin.sadam.fr.to/api/v1/reports/latest';
     }
 
-    fetch(apiUrl, {
+    fetch(apiPost, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -32,6 +32,8 @@ const LaporanPublikPage = () => {
     })
       .then((res) => {
         if (!res.ok) {
+          localStorage.removeItem('token');
+          navigate('/masuk');
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
         return res.json();
@@ -60,10 +62,10 @@ const LaporanPublikPage = () => {
         <div className="laporan-filter d-flex">
           <ToggleButtonGroup className="toggle-group" type="radio" name="options" defaultValue={filter}>
             <ToggleButton className='toggle-btn' id="tbg-radio-1" value={1} onClick={() => handleFilterChange(1)}>
-              Butuh tanggapan cepat
+              Semua laporan
             </ToggleButton>
             <ToggleButton className='toggle-btn' id="tbg-radio-2" value={2} onClick={() => handleFilterChange(2)}>
-              Semua laporan
+              Butuh tanggapan cepat
             </ToggleButton>
             <ToggleButton className='toggle-btn' id="tbg-radio-3" value={3} onClick={() => handleFilterChange(3)}>
               Terbaru
