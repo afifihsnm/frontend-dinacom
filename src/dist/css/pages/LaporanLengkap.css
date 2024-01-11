@@ -270,6 +270,32 @@
   margin: 0;
 }
 
+/*Style Button Respons*/
+.laporan-detail .respons .button-group .btn-respons {
+  display: flex;
+  color: var(--colors-grayscale-text-icon-title, #191b29);
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 2rem;
+  letter-spacing: 0.0625rem;
+  border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
+  background: #fff;
+  padding: var(--Dimensions-Spacing-sm, 0.5rem)
+    var(--Dimensions-Spacing-2xl, 1.5rem);
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
+}
+
+.laporan-detail .respons .button-group .btn-respons:hover {
+  background: var(--Colors-Primary-Surface-default-subtle, #ecf5ff);
+}
+
+.laporan-detail .respons .button-group .btn-respons:active {
+  background: var(--Colors-Primary-Surface-default-subtle, #ecf5ff);
+}
+/*Style Button Respons End*/
+
 .loader {
   margin: auto;
   position: relative;
