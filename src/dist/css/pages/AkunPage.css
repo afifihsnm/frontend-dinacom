@@ -46,6 +46,24 @@
   letter-spacing: 0.04688rem;
 }
 
+.akun .akun-content .akun-category-publik .profile {
+  color: var(--colors-grayscale-text-icon-title, #191b29);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.625rem;
+  letter-spacing: 0.0625rem;
+}
+
+.akun .akun-content .akun-category-publik .avatar {
+  width: 6.25rem;
+  height: 6.25rem;
+  border-radius: 6.25rem;
+  border: 2.769px solid var(--Colors-Charcoal-100, #f2f2f2);
+  background: url(<path-to-image>),
+    lightgray -6.993px -4.954px / 123.304% 115.655% no-repeat,
+    var(--Colors-Charcoal-200, #d9d9d9);
+}
+
 @media (min-width: 768px) and (max-width: 1024px) {
   .akun {
     margin-left: 17.0625rem;

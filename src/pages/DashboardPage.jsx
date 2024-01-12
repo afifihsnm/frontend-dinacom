@@ -133,18 +133,19 @@ function ReportUser({ laporanUser }) {
     <div className="laporan-user">
       {laporanUser.map(data => (
         <div key={data.id} className="d-flex flex-column mb-3">
+          <p className="mb-2">{data.publishedAt}</p>
           <div className="laporan-artikel d-flex w-100">
             {data.user && data.user.avatar && (
-              <img src={data.user.avatar.replace('https://admin.sadam.bid/', '')} alt={`Laporan ${data.id}`} />            
+              <img src={data.user.avatar.replace('https://admin.sadam.bid/', '')} alt={`Laporan ${data.id}`} className="avatar"/>            
             )}
             <div className="laporan-content w-100">
               <div className="laporan-head d-flex">
-                <div className="badge d-flex gap-2 p-0 align-items-center">
+                <div className="badge d-flex gap-2 p-0 mb-2 align-items-center">
                   {data.user && data.user.username && (
                     <h3>{data.user.username}</h3>
                   )}
                   <label className="badge-anda d-flex">Anda</label>
-                  <p>{data.publishedAt}</p>
+                  <p>12/22/2222</p>
                   {data.status === 0 && (
                     <label className="badge-status1 d-flex">Belum ditangani</label>
                   )}

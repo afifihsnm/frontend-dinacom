@@ -154,6 +154,7 @@
   font-weight: 400;
   line-height: 1.625rem;
   letter-spacing: 0.04688rem;
+  max-height: 1rem;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -272,6 +273,7 @@
 }
 
 .laporan-user .laporan-head .badge-anda {
+  font-size: 0.75rem;
   background: var(--Colors-Indigo-50, #EEE5FF);
   color: var(--Colors-Indigo-500, #5D11FF);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
@@ -279,6 +281,7 @@
 }
 
 .laporan-user .laporan-head .badge-status1 {
+  font-size: 0.75rem;
   color: var(--Colors-Chilled-Gray-500, #8E92B9);
   background: var(--Colors-Chilled-Gray-50, #F2F3F7);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
@@ -286,27 +289,31 @@
 }
 
 .laporan-user .laporan-head .badge-status2 {
+  font-size: 0.75rem;
   color: var(--Colors-Orange-500, #FF9736);
   background: var(--Colors-Orange-50, #FFF4EB);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
   padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);  
 }
 
-.laporan-user .laporan-head .badge-status3  {
+.laporan-user .laporan-head .badge-status3 {
+  font-size: 0.75rem;
   color: var(--Colors-Green-500, #4AE27E);
   background: var(--Colors-Green-50, #EDFCF3);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
   padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);  
 }
 
-.laporan-user .laporan-head .badge-status4  {
+.laporan-user .laporan-head .badge-status4 {
+  font-size: 0.75rem;
   color: var(--Colors-Red-500, #FF1A51);
   background: var(--Colors-Red-50, #FFEBEF);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
   padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);  
 }
 
-.laporan-user .laporan-head .badge-post1  {
+.laporan-user .laporan-head .badge-post1 {
+  font-size: 0.75rem;
   color: var(--Colors-Blue-500, #1B5BFF);
   background: var(--Colors-Blue-50, #EBF0FF);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
@@ -314,6 +321,7 @@
 }
 
 .laporan-user .laporan-head .badge-post2 {
+  font-size: 0.75rem;
   color: var(--Colors-Blue-500, #1B5BFF);
   background: var(--Colors-Blue-50, #EBF0FF);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
@@ -344,8 +352,7 @@ margin: 0;
 }
 
 .laporan-user .laporan-body {
-  height: 6.5rem;
-  position: relative; /* Tambahkan properti position: relative */
+  position: relative;
   overflow: hidden;
 }
 
@@ -359,12 +366,14 @@ margin: 0;
 }
 
 .laporan-user .laporan-body p {
-  color: var(--colors-grayscale-text-icon-title, #191B29);
+  color: var(--colors-grayscale-text-icon-title, #191b29);
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.625rem;
   letter-spacing: 0.0625rem;
   margin: 0;
+  max-height: 5rem;
+  overflow: hidden;
 }
 
 .status .dropdown-toggle {
@@ -475,31 +484,59 @@ letter-spacing: 0.0625rem;
 }
 
 
-@media (max-width: 425px) {
-  .laporan-user .laporan-artikel img {
+@media (max-width:552px) {
+  .laporan-user .laporan-artikel .avatar {
     display: none;
   }
+}
 
-  .laporan-user .laporan-body h3 {
+@media (max-width: 425px) {
+  .laporan-user p {
+    color: var(--colors-grayscale-text-icon-title, #191B29);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  }
+  
+  .laporan-user .laporan-head .badge {
+    display: flex;
+    gap: 0.5rem var(--Dimensions-Spacing-sm, 0.5rem);
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .laporan-user .laporan-head h3 {
     font-size: 0.875rem;
-    line-height: 1.5rem; 
-    letter-spacing: 0.04688rem;
+    line-height: 1.5rem;
+  }
+
+  .laporan-user .laporan-head p {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
   }
 
   .laporan-user .laporan-head .badge {
-    flex-direction: column;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.125rem;
+    letter-spacing: 0.04688rem;
   }
-  
-  .laporan-user .laporan-head h3, .laporan-user .laporan-head .badge p {
-    font-size: 0.875rem;
-line-height: 1.5rem;
-letter-spacing: 0.04688rem;
+
+  .laporan-user .laporan-body h4 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.25rem;
+    letter-spacing: 0.0625rem;
   }
 
   .laporan-user .laporan-body p {
     font-size: 0.75rem;
-font-weight: 400;
-line-height: 1.125rem;
+    line-height: 1.125rem;
+    max-height: 4.5rem;
+  }
+
+  .black-dot {
+    font-size: 0.75rem;
   }
 }
 /*Style Laporan End*/

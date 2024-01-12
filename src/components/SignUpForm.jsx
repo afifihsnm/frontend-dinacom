@@ -49,7 +49,7 @@ const SignUpForm = ( ) => {
       .min(3, "Minimum 3 karakter")
       .required("Wajib diisi"),
     email: Yup.string()
-      .email("Invalid email format")
+      .email("Format email salah")
       .required("Wajib diisi"),
     password: Yup.string().min(8, "Minimum 8 karakter").required("Wajib diisi"),
     password_konfirmasi: Yup.string()

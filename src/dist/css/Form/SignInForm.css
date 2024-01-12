@@ -30,6 +30,20 @@
     letter-spacing: 0.04688rem;
 }
 
+.signin-form .border-danger {
+    background-color: var(--Colors-Error-Surface-default-subtle, #FFEBEF);
+    border: none;
+}
+
+.signin-form .text-danger {
+    padding: var(--Dimensions-Spacing-md, 0.75rem) var(--Dimensions-Spacing-lg, 1rem);
+    align-items: center;
+    gap: var(--Dimensions-Spacing-lg, 1rem);
+    border: 1px solid var(--Colors-Error-Border-default, #FF1A51);
+    border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
+    background: var(--Colors-Error-Surface-default-subtle, #FFEBEF);
+  }
+
 .signin-form .forms-g a {
     color: var(--Colors-Indigo-500, #5D11FF);
     font-size: 1rem;

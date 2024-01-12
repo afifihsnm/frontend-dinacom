@@ -24,7 +24,7 @@
     var(--Dimensions-Spacing-lg, 1rem);
   border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
   border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
-  color: var(--colors-grayscale-text-icon-caption, #a4a7c6);
+  color: var(--colors-grayscale-text-icon-caption, #191B29);
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.625rem;

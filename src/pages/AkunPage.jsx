@@ -49,6 +49,8 @@ function AkunPage() {
             <hr className="mt-0 mb-4" />
             {userData && (
               <>
+              <p className="profile">Foto Profil</p>
+              <img src={userData.avatar.replace('https://admin.sadam.bid/', '')} alt={`avatar ${userData.id}`} className="avatar mb-2"/>            
                 <Form.Group className="mb-3">
                   <Form.Label>Nama Lengkap</Form.Label>
                   <Form.Control value={userData.namaLengkap} disabled />{" "}

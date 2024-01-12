@@ -104,9 +104,9 @@ const LaporanLengkap = () => {
               </div>
 
               <div className="laporan-body gap-2 d-flex flex-column">
-                <h4>{laporanDetail.title}</h4>
-                <p>{laporanDetail.content}</p>
-                <p>Lampiran:</p>
+                <h4 className="laporan-title">{laporanDetail.title}</h4>
+                <p className="laporan-desc">{laporanDetail.content}</p>
+                <p className="laporan-desc">Lampiran:</p>
                 {laporanDetail.image && laporanDetail.image.length > 0 && (
                   <img src={laporanDetail.image[0].path} alt="Laporan" />
                 )}

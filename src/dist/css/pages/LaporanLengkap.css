@@ -17,17 +17,6 @@
   gap: var(--Dimensions-Spacing-3xl, 2rem);
 }
 
-.laporan-content .laporan-head h3,
-.laporan-content .laporan-head p,
-.laporan-content .laporan-head .anonim-username {
-  color: var(--colors-grayscale-text-icon-title, #191b29);
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.625rem;
-  letter-spacing: 0.0625rem;
-  margin: 0 ;
-}
-
 .laporan-content .laporan-head .badge {
   justify-content: center;
   align-items: center;
@@ -85,25 +74,6 @@
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
   padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
     var(--Dimensions-Spacing-sm, 0.5rem);
-}
-
-
-.laporan-content .laporan-body h4 {
-  color: var(--colors-grayscale-text-icon-title, #191B29);
-  font-size: 1.25rem;
-  font-weight: 700;
-  line-height: 2rem;
-  letter-spacing: 0.0625rem;
-  margin: 0;
-}
-
-.laporan-content .laporan-body p {
-  color: var(--colors-grayscale-text-icon-body, #333652);
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.625rem; 
-  letter-spacing: 0.04688rem;
-  margin: 0;
 }
 
 .laporan-artikel .laporan-content img {
@@ -254,9 +224,10 @@
 
 .laporan-detail .laporan-body h4 {
   color: var(--colors-grayscale-text-icon-title, #191b29);
-  font-size: 1rem;
+  font-size: 1.25rem;
+  font-style: normal;
   font-weight: 700;
-  line-height: 1.625rem;
+  line-height: 2rem;
   letter-spacing: 0.0625rem;
   margin: 0;
 }
@@ -391,13 +362,6 @@
     font-weight: 600;
     line-height: 1.125rem;
     letter-spacing: 0.04688rem;
-  }
-
-  .laporan-detail .laporan-body h4 {
-    font-size: 0.75rem;
-    font-weight: 700;
-    line-height: 1.25rem;
-    letter-spacing: 0.0625rem;
   }
 
   .laporan-detail .laporan-body p {

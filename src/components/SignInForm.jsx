@@ -6,6 +6,7 @@ import * as Yup from "yup";
 
 const SignInForm = ({ onLoginSuccess }) => {
   let navigate = useNavigate();
+  const [hasError, setHasError] = useState(false);
   const [loginError, setLoginError] = useState(null);
 
   const handleSubmit = async (values, { setSubmitting }) => {
@@ -17,28 +18,32 @@ const SignInForm = ({ onLoginSuccess }) => {
         },
         body: JSON.stringify(values),
       });
-
+  
       if (response.ok) {
         const responseData = await response.json();
         console.log('Login berhasil:', responseData);
 
-        // Simpan token ke localStorage
         localStorage.setItem('token', responseData.authorization.token);
 
         if (onLoginSuccess) {
           onLoginSuccess();
         }
         navigate('/dashboard');
-      } else {
+        } else {
         const responseData = await response.json();
         console.log('Login gagal:', responseData);
+        setLoginError(responseData.message); 
+        setHasError(true); 
       }
     } catch (error) {
       console.error('Terjadi kesalahan saat login:', error);
+      setLoginError('Terjadi kesalahan saat login');
+      setHasError(true); 
+    } finally {
+      setSubmitting(false);
     }
-
-    setSubmitting(false);
   };
+  
 
   const schema = Yup.object().shape({
     username: Yup.string().min(3, "Minimum 3 karakter").required("Wajib diisi"),
@@ -58,7 +63,7 @@ const SignInForm = ({ onLoginSuccess }) => {
         <Form noValidate className="signin-form" onSubmit={handleSubmit}>
 
           {loginError && (
-            <p className="text-danger">{loginError}</p>
+            <p className="text-danger"><i className="bi bi-exclamation-circle mx-2" />Sepertinya ada yang salah</p>
           )}
 
           <Form.Group className="forms-g" controlId="validationUsername">
@@ -67,7 +72,7 @@ const SignInForm = ({ onLoginSuccess }) => {
             </Form.Label>
             <InputGroup className="mb-1">
               <FormControl
-                className="rounded-5"
+  className={`rounded-5 ${hasError ? 'border-danger' : ''}`}
                 type="text"
                 placeholder="Username"
                 name="username"
@@ -87,7 +92,7 @@ const SignInForm = ({ onLoginSuccess }) => {
             </Form.Label>
             <InputGroup className="mb-1">
               <FormControl
-                className="rounded-5"
+  className={`rounded-5 ${hasError ? 'border-danger' : ''}`}
                 type="password"
                 placeholder="Password"
                 name="password"

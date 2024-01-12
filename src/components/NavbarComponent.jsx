@@ -58,7 +58,7 @@ const NavbarComponent = () => {
           </Nav.Link>
           <Nav.Link
             as={Link}
-            to="/complaint"
+            to="/pengaduan"
             onSelect={() => setExpanded(false)}
           >
             Ajukan Pengaduan

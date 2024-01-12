@@ -36,7 +36,7 @@ const HomePage = () => {
               <div className="btn-nav d-flex gap-3 animate__animated animate__fadeInUp animate__delay-1s">
                 <button
                   type="button"
-                  onClick={() => navigate("/complaint")}
+                  onClick={() => navigate("/pengaduan")}
                   className="btn report btn-primary rounded-5"
                 >
                   Laporin keresahanmu
