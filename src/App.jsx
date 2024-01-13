@@ -19,6 +19,7 @@ import LaporinPage from "./pages/LaporinPage";
 import LaporanPublikPage from "./pages/LaporanPublikPage";
 import AkunPage from "./pages/AkunPage";
 import LaporanLengkap from "./pages/LaporanLengkap";
+import FooterDashboard from "./components/FooterDashboard";
 
 function App() {
   const location = useLocation();
@@ -60,6 +61,7 @@ function App() {
             <Route path="/akun" element={<AkunPage />} />
           </Route>
         </Routes>
+          {showSidebar && <FooterDashboard />}
       </div>
     );
   } else {
@@ -85,9 +87,7 @@ function App() {
             <Route path="/lapor-publik" element={<LaporanPublikPage />} />
             <Route path="/lapor-publik/:id" element={<LaporanLengkap />} />
           </Route>
-          <Route path="/akun" element={<PrivateRoute />}>
-            <Route path="/akun" element={<AkunPage />} />
-          </Route>
+          <Route element={<AkunPage />} />
         </Routes>
         {!showSidebar && <FooterComponent />}
       </div>

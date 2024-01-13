@@ -32,7 +32,9 @@ import "./dist/css/components/NavbarComponent.css";
 import "./dist/css/components/NavInfo.css";
 import "./dist/css/components/RunningTextComponent.css";
 import "./dist/css/components/FooterComponent.css";
+import "./dist/css/components/FooterDashboard.css";
 import "./dist/css/components/SidebarComponent.css";
+import "./dist/css/components/Comment.css";
 
 
 // Import CSS Form Page

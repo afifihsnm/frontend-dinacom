@@ -104,6 +104,11 @@
     height: 1.75rem;
     width: 1.75rem;
   }
+
+  .form-check-input:checked[type=radio] {
+    border: 2px solid var(--Colors-Primary-Border-default-subtle, #A3BDFF);
+    background: var(--Colors-Primary-Surface-default, #0E206A);
+  }
   
   .laporin-form button {
     width: 100%;

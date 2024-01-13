@@ -241,31 +241,121 @@
   margin: 0;
 }
 
+/*Style Laporan Tanggapan*/
+.laporan-detail .laporan-tanggapan {
+  margin-left: 5.25rem;
+}
+/*Style Laporan Tanggapan End*/
+
 /*Style Button Respons*/
-.laporan-detail .respons .button-group .btn-respons {
+.laporan-detail .laporan-tanggapan .respons .btn-respons {
   display: flex;
   color: var(--colors-grayscale-text-icon-title, #191b29);
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 2rem;
   letter-spacing: 0.0625rem;
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
   background: #fff;
-  padding: var(--Dimensions-Spacing-sm, 0.5rem)
-    var(--Dimensions-Spacing-2xl, 1.5rem);
-  justify-content: center;
-  align-items: center;
+  padding: var(--Dimensions-Spacing-2xs, 0.25rem) var(--Dimensions-Spacing-lg, 1rem);
   border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
 }
 
-.laporan-detail .respons .button-group .btn-respons:hover {
+.laporan-detail  .laporan-tanggapan .respons .btn-respons:hover {
   background: var(--Colors-Primary-Surface-default-subtle, #ecf5ff);
 }
 
-.laporan-detail .respons .button-group .btn-respons:active {
+.laporan-detail  .laporan-tanggapan .respons .btn-respons:active {
   background: var(--Colors-Primary-Surface-default-subtle, #ecf5ff);
 }
 /*Style Button Respons End*/
+
+/*Style Comment*/
+.laporan-detail .laporan-tanggapan .tanggapan {
+  color: var(--colors-grayscale-text-icon-title, #191B29);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.625rem;
+  letter-spacing: 0.0625rem;
+}
+
+.laporan-detail .laporan-tanggapan .tanggapan .form-label {
+  line-height: 1.625rem;
+  letter-spacing: 0.0625rem;
+}
+
+.laporan-detail .laporan-tanggapan .tanggapan .form-control {
+  color: var(--colors-grayscale-text-icon-caption, #A4A7C6);
+  font-weight: 400;
+  line-height: 1.625rem;
+  letter-spacing: 0.04688rem;
+  padding: 2rem 1rem;
+  border-radius: var(--Dimensions-Corner-Radius-5xl, 1.5rem);
+  border: 1px solid var(--Colors-Grayscale-Border-default, #D3D5E4);
+}
+
+.laporan-detail .laporan-tanggapan .tanggapan .form-text{
+  color: var(--colors-grayscale-text-icon-caption, #A4A7C6);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.625rem;
+  letter-spacing: 0.0625rem;  
+}
+
+.laporan-detail .laporan-tanggapan .tanggapan .form-check .form-check-input{
+  margin: 0;
+  width: var(--Dimensions-Spacing-3xl, 2rem);
+  height: var(--Dimensions-Spacing-3xl, 2rem);
+  border-radius: var(--Dimensions-Corner-Radius-xl, 0.5rem);
+  border: 2px solid var(--Colors-Grayscale-Border-default, #D3D5E4);
+}
+
+.laporan-detail .laporan-tanggapan .tanggapan .btn {
+  display: flex;
+  padding: var(--Dimensions-Spacing-sm, 0.5rem) var(--Dimensions-Spacing-lg, 1rem);
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
+  background: var(--Colors-Primary-Surface-default, #0E206A);
+  font-weight: 600;
+  line-height: 2rem;
+  width: 8.75rem;
+  font-size: 1.25rem;
+}
+/*Style Comment End*/
+
+/*Style Pop Up Bagikan*/
+.laporan-detail .laporan-tanggapan .modal-content {
+  display: inline-flex;
+  padding: var(--Dimensions-Spacing-4xl, 2.5rem);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--Dimensions-Spacing-3xl, 2rem);
+}
+
+.laporan-detail .laporan-tanggapan .modal-header {
+  display: inline-flex;
+  padding: var(--Dimensions-Spacing-4xl, 2.5rem);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--Dimensions-Spacing-3xl, 2rem);
+}
+
+.laporan-detail .laporan-tanggapan .modal-title.h4 {
+  color: var(--colors-grayscale-text-icon-title, #191B29);
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 500;
+line-height: 1.625rem;
+letter-spacing: 0.0625rem;
+}
+
+.laporan-detail .laporan-tanggapan .modal-body {
+
+}
+/*Style Pop Up Bagikan End*/
+
 
 .loader {
   margin: auto;

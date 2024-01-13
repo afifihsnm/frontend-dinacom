@@ -184,9 +184,7 @@
 
   .dashboard-card {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
+    justify-content: center;
     row-gap: var(--Dimensions-Spacing-2xl, 1.5rem);
   }
 
@@ -209,8 +207,6 @@
   .dashboard-card {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    align-content: flex-start;
     gap: 1rem var(--Dimensions-Spacing-lg, 1rem);
     flex-wrap: wrap;
   }

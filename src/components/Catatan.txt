@@ -1,0 +1,501 @@
+import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
+import { Formik } from "formik";
+import * as Yup from "yup";
+import { useEffect, useState } from "react";
+
+const API_URL = 'https://admin.sadam.bid/api/v1/reports'
+const API_METHOD = 'POST'
+const STATUS_IDLE = 0
+const STATUS_UPLOADING = 1
+
+const ComplaintForm = () => {
+  const [files, setFiles] = useState([]);
+  const [status, setStatus] = useState(STATUS_IDLE);
+
+  useEffect(() => {
+    // Code ini akan dijalankan setiap kali nilai files berubah
+    console.log("Files updated:", files);
+  }, [files]);
+
+  const uploadFiles = (data) => {
+    setStatus(STATUS_UPLOADING);
+
+    fetch(API_URL, {
+      method: API_METHOD,
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err))
+      .finally(() => setStatus(STATUS_IDLE));
+  };
+
+  const packFiles = () => {
+    const data = new FormData();
+
+    files.forEach((file, i) => {
+      data.append(`file-${i}`, file, file.name);
+    });
+
+    return data;
+  };
+
+  const handleUploadClick = () => {
+    if (files.length) {
+      const data = packFiles();
+      uploadFiles(data);
+    }
+  };
+
+
+  const schema = Yup.object().shape({
+    title: Yup.string()
+      .min(5, "Judul terlalu pendek")
+      .required("Harus diisi"),
+    content: Yup.string()
+      .required("Harus diisi")
+      .min(5, "Laporan terlalu pendek"),
+    image: Yup.mixed()
+      .required("Harus diisi"),
+    visibility: Yup.boolean().required("Harus diisi"),
+    showStatus: Yup.boolean().required("Harus diisi"),
+  });
+
+
+  const handleSubmit = async (values) => {
+    try {
+      const data = packFiles(); // Mendapatkan data form yang sudah di-pack
+      const response = await fetch(API_URL, {
+        method: API_METHOD,
+        body: data,
+      });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        // Formulir berhasil dikirim
+        console.log("Laporan berhasil dikirim:", responseData);
+        // Lakukan apa yang diperlukan setelah berhasil mengirim formulir
+      } else {
+        // Ada kesalahan dalam pengiriman formulir
+        console.error("Gagal mengirim laporan:", responseData.message);
+        // Lakukan apa yang diperlukan jika pengiriman gagal
+      }
+    } catch (error) {
+      console.error("Terjadi kesalahan:", error);
+      // Lakukan apa yang diperlukan jika terjadi kesalahan
+    }
+  };
+
+  return (
+    <div className="Complaint-Form">
+   <div className="Complaint my-4">
+      <div className="complaint-header text-center overflow-hidden">
+        <h5 data-aos="fade-up" data-aos-duration="900">Yuk, laporin keresahanmu</h5>
+        <p data-aos="fade-up" data-aos-duration="1000">Laporkan keresahanmu di Sadam. Cepat, Aman, Mudah, dan Transparan. </p>
+      </div>
+    <Formik
+      validationSchema={schema}
+      onSubmit={handleSubmit}
+      initialValues={{
+        title: "",
+        content: "",
+        image: "",
+        visibility: true,
+        showStatus: true
+      }}
+    >
+      {({ handleSubmit, handleChange, values, touched, errors }) => (
+        <Form noValidate className="complaint-form" data-aos="fade-up" data-aos-duration="1000" onSubmit={handleSubmit}>
+          <Form.Group className="forms-g" controlId="title">
+            <Form.Label className="label">
+              Judul Laporan<span className="red-dot">*</span>
+            </Form.Label>
+            <InputGroup className="mb-1">
+              <FormControl
+                className="rounded-5"
+                type="text"
+                placeholder="Ketik judul laporan"
+                name="title"
+                aria-describedby="titleHelpBlock"
+                value={values.title}
+                onChange={handleChange}
+                isInvalid={touched.title && !!errors.title}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.title}
+              </Form.Control.Feedback>
+            </InputGroup>
+            <Form.Text id="titleHelpBlock" muted>
+            Buatlah judul yang singkat, padat, dan jelas.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="forms-g" controlId="content">
+            <Form.Label className="label">
+              Isi Laporan<span className="red-dot">*</span>
+            </Form.Label>
+            <InputGroup className="mb-1">
+              <FormControl
+                className="rounded-4"
+                as="textarea"
+                rows={6}
+                placeholder="Ketik isi laporan anda"
+                name="content"
+                value={values.content}
+                onChange={handleChange}
+                isInvalid={touched.content && !!errors.content}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.content}
+              </Form.Control.Feedback>
+            </InputGroup>
+            <Form.Text id="contentHelpBlock" muted>
+            Ceritakan keresahanmu dengan jelas dan menggunakan bahasa yang  mudah dimengerti.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="forms-g" controlId="image">
+        <Form.Label className="label">
+          Unggah Bukti Foto<span className="red-dot">*</span>
+        </Form.Label>
+        <InputGroup className="mb-1">
+          <FormControl
+            className="file-field rounded-5"
+            type="file"
+            multiple
+            accept="image/*"
+            placeholder="image"
+            name="image"
+            onChange={(e) => setFiles(e.target.files)}
+            isInvalid={touched.image && !!errors.image}
+          />
+          <Form.Control.Feedback type="invalid">
+            {errors.image}
+          </Form.Control.Feedback>
+        </InputGroup>
+        <Form.Text id="imageHelpBlock" muted>
+          Unggah bukti agar memperkuat laporanmu.
+        </Form.Text>
+      </Form.Group>
+ 
+
+          <Form.Group className="forms-g" controlId="visibility">
+          <Form.Label className="label">
+            Apakah Anda ingin menampilkan nama Anda<span className="red-dot">*</span>
+          </Form.Label>
+          <Form.Check className="d-flex mb-1" type="radio" name="visibility" value="true" label="Ya!, saya ingin menampilkan nama pada laporan" />
+          <Form.Check className="d-flex mb-1" type="radio" name="visibility" value="false" label="Tidak, saya ingin merahasiakan nama saya" />
+        </Form.Group>
+        
+        <Form.Group className="forms-g" controlId="ShowStatus">
+        <Form.Label className="label">
+        Siapakah yang dapat melihat/ menanggapi laporan ini<span className="red-dot">*</span>
+        </Form.Label>
+        <Form.Check className="d-flex mb-1" type="radio" name="ShowStatus" value="true" label="Hanya saya dan instansi" />
+        <Form.Check className="d-flex mb-1" type="radio" name="ShowStatus" value="false" label="Saya ingin laporan ini dapat ditanggapi oleh instansi dan publik" />
+      </Form.Group>
+
+      <Button className="mt-4" type="submit" onClick={handleUploadClick} disabled={status === STATUS_UPLOADING}>
+        {status === STATUS_IDLE ? "Kirim Laporan" : <img src="./load.svg" alt="Loading" />}
+      </Button>
+        </Form>
+      )}
+    </Formik>
+    </div>
+    </div>
+  );
+};
+
+export default ComplaintForm;
+
+
+
+
+
+
+
+
+    <div className="laporan-tanggapan">
+      <div className="respons d-flex mt-4 align-items-center gap-3">
+        <Button className="btn-respons" variant="outline-primary">
+          Butuh tanggapan cepat
+        </Button>
+        <Button className="btn-respons" variant="outline-primary">
+          Laporakan laporan ini
+        </Button>
+        <Button className="btn-respons" variant="outline-primary">
+          Bagikan
+        </Button>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
+import { Formik } from "formik";
+import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+const LaporinPage = () => {
+  const navigate = useNavigate();
+  const [responseMessage, setResponseMessage] = useState("");
+
+  const handleSubmit = async (values, { setSubmitting }) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        navigate("/");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("title", values.title);
+      formData.append("content", values.content);
+
+      // Append each image file to the formData
+      values.image.forEach((file, index) => {
+        formData.append(`image[${index}]`, file);
+      });
+
+      formData.append("visibility", values.visibility);
+      formData.append("status", values.status);
+
+      const response = await fetch("https://admin.sadam.bid/api/v1/reports", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.log(data);
+        throw new Error(data.message || "Failed to create report");
+      }
+
+      setResponseMessage(data.message || "Report created successfully");
+    } catch (error) {
+      console.error("Error creating report:", error.message);
+      setResponseMessage("Failed to create report");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+const schema = Yup.object().shape({
+  title: Yup.string().min(5, "Judul terlalu pendek").required("Harus diisi"),
+  content: Yup.string().required("Harus diisi").min(5, "Laporan terlalu pendek"),
+  image: Yup.array()
+    .of(Yup.mixed().test("fileSize", "Ukuran file terlalu besar", (value) => !value || (value && value.size <= 5242880))),
+  visibility: Yup.bool().oneOf([true], "Harus dipilih"),
+  status: Yup.bool().oneOf([true], "Harus dipilih"),
+});
+
+
+  return (
+    <div className="laporin">
+      <div className="laporin-content">
+        <h1>Laporin</h1>
+        <p className="mb-4">
+          Buatlah laporan yang mudah dimengerti & dipercaya dengan cara menggunakan bahasa yang mudah dipahami dan sertakan bukti foto untuk memperkuat laporan yang telah kamu buat.
+        </p>
+        <div className="response-message">{responseMessage}</div>
+        <div className="Laporin Form">
+          <div className="Complaint my-4">
+            <Formik
+              validationSchema={schema}
+              onSubmit={handleSubmit}
+              initialValues={{
+                title: "",
+                content: "",
+                image: [],
+                visibility: false,
+                status: false,
+              }}
+            >
+              {({
+                handleSubmit,
+                handleChange,
+                setFieldValue,
+                values,
+                touched,
+                errors,
+              }) => (
+                <Form noValidate className="laporin-form" onSubmit={handleSubmit}>
+                  <Form.Group className="forms-g" controlId="validationReport">
+                    <Form.Label className="label">
+                      Judul Laporan<span className="red-dot">*</span>
+                    </Form.Label>
+                    <InputGroup className="mb-1">
+                      <FormControl
+                        className="rounded-5"
+                        type="text"
+                        placeholder="Ketik judul laporan"
+                        name="title"
+                        aria-describedby="titleHelpBlock"
+                        value={values.title}
+                        onChange={handleChange}
+                        isInvalid={touched.title && !!errors.title}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.title}
+                      </Form.Control.Feedback>
+                    </InputGroup>
+                    <Form.Text id="reportHelpBlock" muted>
+                      Buatlah judul yang singkat, padat, dan jelas.
+                    </Form.Text>
+                  </Form.Group>
+
+                  <Form.Group
+                    className="forms-g"
+                    controlId="validationContentReport"
+                  >
+                    <Form.Label className="label">
+                      Isi Laporan<span className="red-dot">*</span>
+                    </Form.Label>
+                    <InputGroup className="mb-1">
+                      <FormControl
+                        className="rounded-4"
+                        as="textarea"
+                        rows={6}
+                        placeholder="Ketik isi laporan anda"
+                        name="content"
+                        value={values.content}
+                        onChange={handleChange}
+                        isInvalid={touched.content && !!errors.content}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.content}
+                      </Form.Control.Feedback>
+                    </InputGroup>
+                    <Form.Text id="contentHelpBlock" muted>
+                      Ceritakan keresahanmu dengan jelas dan menggunakan bahasa
+                      yang mudah dimengerti.
+                    </Form.Text>
+                  </Form.Group>
+
+                  <Form.Group className="forms-g" controlId="validationFormFile">
+  <Form.Label className="label">
+    Unggah Bukti Foto<span className="red-dot">*</span>
+  </Form.Label>
+  <InputGroup className="mb-1">
+    <FormControl
+      type="file"
+      multiple
+      className="file-field rounded-5"
+      accept="image/*"
+      name="image"
+      onChange={(event) => {
+        // Convert FileList to an array
+        const filesArray = Array.from(event.currentTarget.files);
+        setFieldValue("image", filesArray);
+
+        // Clear validation error for image field
+        setFieldError("image", "");
+      }}
+      isInvalid={touched.image && !!errors.image}
+    />
+    <Form.Control.Feedback type="invalid">
+      {errors.image}
+    </Form.Control.Feedback>
+  </InputGroup>
+  <Form.Text id="imageHelpBlock" muted>
+    Unggah bukti agar memperkuat laporanmu.
+  </Form.Text>
+</Form.Group>
+
+                  <Form.Group
+                    className="forms-g"
+                    controlId="validationShowName"
+                  >
+                    <Form.Label className="label">
+                      Apakah Anda ingin menampilkan nama Anda
+                      <span className="red-dot">*</span>
+                    </Form.Label>
+                    <Form.Check
+                      required
+                      className="d-flex mb-1"
+                      type="radio"
+                      name="visibility"
+                      checked={values.visibility === true}
+                      label="Ya!, saya ingin menampilkan nama pada laporan"
+                      onChange={() => setFieldValue("visibility", true)}
+                      isInvalid={!!errors.visibility}
+                      feedback={errors.visibility}
+                      feedbackType="invalid"
+                    />
+                    <Form.Check
+                      required
+                      className="d-flex mb-1"
+                      type="radio"
+                      name="visibility"
+                      checked={values.visibility === false}
+                      label="Tidak, saya ingin merahasiakan nama saya"
+                      onChange={() => setFieldValue("visibility", false)}
+                      isInvalid={!!errors.visibility}
+                      feedback={errors.visibility}
+                      feedbackType="invalid"
+                    />
+                  </Form.Group>
+
+                  <Form.Group
+                    className="forms-g"
+                    controlId="validationShowStatus"
+                  >
+                    <Form.Label className="label">
+                      Siapakah yang dapat melihat/ menanggapi laporan ini
+                      <span className="red-dot">*</span>
+                    </Form.Label>
+                    <Form.Check
+                      required
+                      className="d-flex mb-1"
+                      type="radio"
+                      name="status"
+                      checked={values.status === true}
+                      label="Hanya saya dan instansi"
+                      onChange={() => setFieldValue("status", true)}
+                      isInvalid={!!errors.status}
+                      feedback={errors.status}
+                      feedbackType="invalid"
+                    />
+                    <Form.Check
+                      required
+                      className="d-flex mb-1"
+                      type="radio"
+                      name="status"
+                      checked={values.status === false}
+                      label="Saya ingin laporan ini dapat ditanggapi oleh instansi dan publik"
+                      onChange={() => setFieldValue("status", false)}
+                      isInvalid={!!errors.status}
+                      feedback={errors.status}
+                      feedbackType="invalid"
+                    />
+                  </Form.Group>
+
+                  <Button className="mt-4" type="submit">
+                    Kirim Laporan
+                  </Button>
+                </Form>
+              )}
+            </Formik>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default LaporinPage;

@@ -189,7 +189,7 @@ function ReportUser({ laporanUser }) {
             </div>
           </div>
         </div>
-      ))};
+      ))}
     </div>
   );
 };
