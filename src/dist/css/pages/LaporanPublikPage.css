@@ -42,7 +42,7 @@
 .laporan-publik-content .search-bar .bi-search {
   width: var(--Dimensions-Spacing-2xl, 1.5rem);
   height: var(--Dimensions-Spacing-2xl, 1.5rem);
-  color: var(--colors-primary-text-icon-link-label, #0E206A);
+  color: var(--colors-primary-text-icon-link-label, #0e206a);
 }
 
 .laporan-publik-content .search:focus-visible {
@@ -77,7 +77,7 @@
   background: var(--Colors-Primary-Surface-default-subtle, #ecf5ff);
 }
 
-.laporan-publik-content .laporan-filter .toggle-group .toggle-btn:active {
+.laporan-publik-content .laporan-filter .toggle-group .toggle-btn.active {
   background: var(--Colors-Primary-Surface-default-subtle, #ecf5ff);
 }
 
@@ -264,7 +264,7 @@
 
 .laporan-all .laporan-comment {
   gap: var(--Dimensions-Spacing-md, 0.75rem);
-  color: var(--colors-grayscale-text-icon-title, #191B29);
+  color: var(--colors-grayscale-text-icon-title, #191b29);
 }
 
 .laporan-all .laporan-comment p {
@@ -273,6 +273,7 @@
   font-weight: 500;
   line-height: 1.625rem;
   letter-spacing: 0.0625rem;
+  margin: 0;
 }
 
 .black-dot {
@@ -280,7 +281,7 @@
   color: #000;
 }
 
-@media (max-width:552px) {
+@media (max-width: 552px) {
   .laporan-all .laporan-artikel .avatar {
     display: none;
   }
@@ -310,7 +311,7 @@
     line-height: 1.5rem;
     letter-spacing: 0.04688rem;
   }
-  
+
   .laporan-all .laporan-head .badge .anonim-username {
     font-size: 0.875rem;
     line-height: 1.5rem;

@@ -7,6 +7,7 @@ const LaporanPublikPage = () => {
   let navigate = useNavigate();
   const [laporanAll, setLaporanAll] = useState([]);
   const [filter, setFilter] = useState(1);
+  const [activeFilter, setActiveFilter] = useState(1);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -47,6 +48,7 @@ const LaporanPublikPage = () => {
 
   const handleFilterChange = (value) => {
     setFilter(value);
+    setActiveFilter(value);
   };
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -56,7 +58,6 @@ const LaporanPublikPage = () => {
   };
 
   const filteredLaporanAll = laporanAll.filter((data) => {
-    // Perform case-insensitive search on title and content
     const searchText = searchTerm.toLowerCase();
     return (
       data.title.toLowerCase().includes(searchText) ||
@@ -94,15 +95,16 @@ const LaporanPublikPage = () => {
             defaultValue={filter}
           >
             <ToggleButton
-              className="toggle-btn"
+              className={`toggle-btn ${activeFilter === 1 ? 'active' : ''}`}
               id="tbg-radio-1"
               value={1}
               onClick={() => handleFilterChange(1)}
             >
               Semua laporan
             </ToggleButton>
+
             <ToggleButton
-              className="toggle-btn"
+              className={`toggle-btn ${activeFilter === 2 ? 'active' : ''}`}
               id="tbg-radio-2"
               value={2}
               onClick={() => handleFilterChange(2)}
@@ -110,13 +112,14 @@ const LaporanPublikPage = () => {
               Butuh tanggapan cepat
             </ToggleButton>
             <ToggleButton
-              className="toggle-btn"
+              className={`toggle-btn ${activeFilter === 3 ? 'active' : ''}`}
               id="tbg-radio-3"
               value={3}
               onClick={() => handleFilterChange(3)}
             >
               Terbaru
             </ToggleButton>
+
           </ToggleButtonGroup>
         </div>
 
@@ -140,7 +143,7 @@ function ReportAll({ laporanAll }) {
   return (
     <div className="laporan-all">
       {laporanAll.map((data) => (
-        <div key={data.id} className="d-flex flex-column mb-3">
+        <div key={data.id} className="d-flex flex-column">
           <div className="laporan-artikel d-flex w-100">
             {data.user && data.user.avatar ? (
               <img
@@ -196,9 +199,22 @@ function ReportAll({ laporanAll }) {
                   <h4>{data.title}</h4>
                   <p>{data.content}</p>
                   {data.image && data.image.length > 0 && (
-                    <img src={data.image[0].path} alt={`Laporan ${data.id}`} />
+                    <div className="clickable-image gap-2 d-flex">
+                      {data.image.map((image, index) => (
+                        <img
+                          key={index}
+                          src={image.path}
+                          alt={`Laporan ${data.id} - Image ${index + 1}`}
+                          onClick={() => {
+                            setSelectedImage(image.path);
+                            setShowImageModal(true);
+                          }}
+                        />
+                      ))}
+                    </div>
                   )}
                 </div>
+
                 <div className="laporan-comment d-flex">
                   <p> Komentar ({data.totalComment})</p>
                   <span className="black-dot">•</span>
@@ -207,6 +223,7 @@ function ReportAll({ laporanAll }) {
               </Link>
             </div>
           </div>
+          <hr />
         </div>
       ))}
     </div>

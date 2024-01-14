@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Spinner, Button, Modal } from "react-bootstrap";
+import { Spinner, Button, Modal, Form } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 
 import Comment from "../components/Comment";
@@ -8,10 +8,22 @@ const LaporanLengkap = () => {
   let navigate = useNavigate();
   const { id } = useParams();
   const [laporanDetail, setLaporanDetail] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-  const [thanksPopup, setThanksPopup] = useState(false);
-  const [responsePopup, setResponsePopup] = useState(false);
-  const [reportedPopup, setReportedPopup] = useState(false);
+  const [showQuickResponseModal, setShowQuickResponseModal] = useState(false);
+  const [showReportModal, setShowReportModal] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [reportSuccess, setReportSuccess] = useState(false);
+  const [responseGiven, setResponseGiven] = useState(false);
+  const [copySuccess, setCopySuccess] = useState(false);
+  const [comments, setComments] = useState([]);
+
+  const [replyContent, setReplyContent] = useState("");
+  const [isAnonymousReply, setIsAnonymousReply] = useState(false);
+  const [replyingCommentId, setReplyingCommentId] = useState(null);
+  const [visibleReplies, setVisibleReplies] = useState([]);
+
+  const [showImageModal, setShowImageModal] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [replySubmitted, setReplySubmitted] = useState(false);
 
 
   useEffect(() => {
@@ -21,7 +33,6 @@ const LaporanLengkap = () => {
       navigate("/");
     }
 
-    // Sesuaikan URL API sesuai kebutuhan
     fetch(`https://admin.sadam.bid/api/v1/reports/${id}`, {
       method: "GET",
       headers: {
@@ -31,18 +42,22 @@ const LaporanLengkap = () => {
     })
       .then((res) => {
         if (!res.ok) {
-          localStorage.removeItem('token');
-          navigate('/masuk');
+          localStorage.removeItem("token");
+          navigate("/masuk");
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
         return res.json();
       })
       .then((data) => {
         console.log("API Response:", data);
-        setLaporanDetail(data.data); //
+        setLaporanDetail(data.data);
+
+        // Set komentar
+        setComments(data.data.comment);
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, [id]);
+
 
   const handleLike = async () => {
     const token = localStorage.getItem("token");
@@ -60,21 +75,35 @@ const LaporanLengkap = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
+      // Menampilkan modal untuk tanggapan cepat
+      setShowQuickResponseModal(true);
+      setResponseGiven(true); // Set status tanggapan cepat
 
-      // Menampilkan pop-up Butuh Tanggapan Cepat
-      setResponsePopup(true);
 
-      // Menutup pop-up Butuh Tanggapan Cepat setelah beberapa detik
       setTimeout(() => {
-        setResponsePopup(false);
-      }, 3000); // Ubah durasi sesuai kebutuhan
+        setShowQuickResponseModal(false);
+        setResponseGiven(false); // Reset status tanggapan cepat
+      }, 3000);
     } catch (error) {
       console.error("Error liking report:", error);
+
+      // Menampilkan modal untuk pesan kesalahan 
+      if (error.message.includes("Status: 400")) {
+        setShowQuickResponseModal(true);
+        setResponseGiven(false); // Set status tanggapan cepat
+
+        setTimeout(() => {
+          setShowQuickResponseModal(false);
+          setResponseGiven(false); // Reset status tanggapan cepat
+        }, 3000);
+      }
     }
   };
 
+
   const handleReport = async () => {
     const token = localStorage.getItem("token");
+    console.log("Handle Report called");
 
     try {
       const response = await fetch(`https://admin.sadam.bid/api/v1/reports/${id}/reporting/report`, {
@@ -86,26 +115,22 @@ const LaporanLengkap = () => {
       });
 
       if (!response.ok) {
-        console.log(data)
-        if (response.status === 403) {
-          // Menampilkan pop-up "Anda sudah melaporkan"
-          setReportedPopup(true);
+        if (response.status === 422) {
+          // Menampilkan modal untuk "Anda sudah melaporkan"
+          setShowReportModal(true);
 
-          // Menutup pop-up setelah beberapa detik
           setTimeout(() => {
-            setReportedPopup(false);
-          }, 3000); // Ubah durasi sesuai kebutuhan
+            setShowReportModal(false);
+          }, 3000);
         } else {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
       } else {
-        // Menampilkan pop-up "Terima Kasih"
-        setThanksPopup(true);
+        setReportSuccess(true);
 
-        // Menutup pop-up "Terima Kasih" setelah beberapa detik
         setTimeout(() => {
-          setThanksPopup(false);
-        }, 3000); // Ubah durasi sesuai kebutuhan
+          setReportSuccess(false);
+        }, 5000);
       }
     } catch (error) {
       console.error("Error reporting report:", error);
@@ -131,13 +156,253 @@ const LaporanLengkap = () => {
       const data = await response.json();
       const reportLink = `https://admin.sadam.bid/laporan/${id}`;
 
-      // Display the link or use it as needed (e.g., show in a modal)
-      console.log("Report Link:", reportLink);
-      setShowModal(true);
+      // Menampilkan modal untuk share
+      setShowShareModal(true);
     } catch (error) {
       console.error("Error fetching report for sharing:", error);
     }
   };
+
+  const handleReplyClick = (commentId) => {
+    setReplyingCommentId(commentId);
+  };
+
+  const fetchComments = async () => {
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await fetch(`https://admin.sadam.bid/api/v1/reports/${id}/comments`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data.data;
+    } catch (error) {
+      console.error("Error fetching comments:", error);
+      return [];
+    }
+  };
+
+  const handleReplySubmit = async (parentCommentId) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(`https://admin.sadam.bid/api/v1/reports/${id}/comments/${parentCommentId}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          content: replyContent,
+          name_visibility: isAnonymousReply ? 0 : 1,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const updatedComments = await fetchComments();
+      setComments(updatedComments);
+
+      setVisibleReplies((prevVisibleReplies) => [
+        ...prevVisibleReplies,
+        parentCommentId,
+      ]);
+
+      setReplyContent("");
+      setIsAnonymousReply(false);
+      setReplyingCommentId(null);
+
+      console.log("Reply submitted successfully");
+
+      window.location.reload();
+      // Setelah berhasil mengirim balasan
+      setReplySubmitted(true);
+
+      setTimeout(() => {
+        setReplySubmitted(false); // Reset status submit setelah beberapa detik
+      }, 3000);
+    } catch (error) {
+      console.error("Error submitting reply:", error);
+    }
+  };
+
+  const handleToggleReplies = (commentId) => {
+    const updatedVisibleReplies = [...visibleReplies];
+
+    if (updatedVisibleReplies.includes(commentId)) {
+      // If the comment is already visible, remove it from the list
+      updatedVisibleReplies.splice(updatedVisibleReplies.indexOf(commentId), 1);
+    } else {
+      // If the comment is not visible, add it to the list
+      updatedVisibleReplies.push(commentId);
+    }
+
+    setVisibleReplies(updatedVisibleReplies);
+  };
+
+
+  const renderReplies = (parentCommentId) => {
+    const replyComments = comments.filter(comment => comment.parentId === parentCommentId);
+
+    return replyComments.map((reply) => (
+      // Render komentar balasan disini
+      <div key={reply.id} className="comment-reply d-flex gap-4 my-3">
+        {reply.user ? (
+          <img
+            src={reply.user.avatar || 'default-user-avatar-url'}
+            alt={reply.user.username || 'Anonim'}
+          />
+        ) : reply.admin ? (
+          <img
+            src={reply.admin.avatar || 'default-admin-avatar-url'}
+            alt={reply.admin.name || 'Admin'}
+          />
+        ) : (
+          <div className="avatar-anonim" />
+        )}
+        <div className="comment-body">
+          <div className="comment-head d-flex gap-1">
+            {reply.user ? (
+              <p>{reply.user.username}</p>
+            ) : reply.admin ? (
+              <p>{reply.admin.name}</p>
+            ) : (
+              <p>Anonim</p>
+            )}
+            <span className="black-dot">•</span>
+            <p>{reply.publishedAt}</p>
+          </div>
+          <p>{reply.contentComment}</p>
+        </div>
+
+      </div>
+    ));
+  };
+
+  const renderComments = (commentData) => {
+    const topLevelComments = commentData.filter(comment => comment.parentId === null);
+    return topLevelComments.map((comment) => (
+      <div key={comment.id} className="comment-all d-flex mb-3">
+        {comment.user ? (
+          <img
+            src={comment.user.avatar || 'default-user-avatar-url'}
+            alt={comment.user.username || 'Anonim'}
+          />
+        ) : comment.admin ? (
+          <img
+            src={comment.admin.avatar || 'default-admin-avatar-url'}
+            alt={comment.admin.name || 'Admin'}
+          />
+        ) : (
+          <div className="avatar-anonim" />
+        )}
+        <div className="comment-body">
+          <div className="comment-head d-flex gap-1 align-items-center">
+            {comment.user ? (
+              <p>{comment.user.username}</p>
+            ) : comment.admin ? (
+              <p>{comment.admin.name}</p>
+            ) : (
+              <p>Anonim</p>
+            )}
+            <span className="black-dot">•</span>
+            <p>{comment.publishedAt}</p>
+          </div>
+          <p>{comment.contentComment}</p>
+          <div className="btn-reply mt-3 d-flex gap-3">
+            <Button variant="outline-primary" onClick={() => handleReplyClick(comment.id)}>
+              Balas komentar
+            </Button>
+            {commentData.some(childComment => childComment.parentId === comment.id) && (
+              <Button className="d-flex gap-2" variant="outline-primary" onClick={() => handleToggleReplies(comment.id)}>
+                Lihat balasan
+                <i className="bi bi-chevron-down" />
+              </Button>
+            )}
+          </div>
+          {/* Tampilkan input textarea dan checkbox jika sedang membalas komentar tertentu */}
+          {replyingCommentId === comment.id && (
+            <Form className="reply-comment mt-3">
+              <Form.Group controlId="replyContent">
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  placeholder="Balas komentar..."
+                  value={replyContent}
+                  onChange={(e) => setReplyContent(e.target.value)}
+                  onClick={() => handleReplySubmit(comment.id)}
+                />
+              </Form.Group>
+              <Form.Group controlId="isAnonymousReply" className="m-0 d-flex align-items-center">
+                <Form.Check
+                  className="d-flex mt-2"
+                  type="checkbox"
+                  label="Rahasiakan nama (Anonim)"
+                  checked={isAnonymousReply}
+                  onChange={() => setIsAnonymousReply(!isAnonymousReply)}
+                />
+              </Form.Group>
+              <Button variant="primary" onClick={() => handleReplySubmit(comment.id)}>
+                Balas
+              </Button>
+            </Form>
+          )}
+          {replySubmitted && (
+            <p className="reply-submitted-popup">Balasan telah berhasil dikirim!</p>
+          )}
+          {visibleReplies.includes(comment.id) && renderReplies(comment.id)}
+        </div>
+      </div>
+    ));
+  };
+
+  const renderMainComments = () => {
+    if (laporanDetail && laporanDetail.comment && laporanDetail.comment.length > 0) {
+      return renderComments(laporanDetail.comment);
+    } else {
+      return <p>Tidak ada komentar.</p>;
+    }
+  };
+
+  const copyToClipboard = () => {
+    try {
+      const input = document.getElementById("laporan-link");
+
+      if (input) {
+        input.select();
+        document.execCommand("copy");
+        setCopySuccess(true);
+      } else {
+        console.error("Elemen input tidak ditemukan.");
+      }
+    } catch (error) {
+      console.error("Terjadi kesalahan saat menyalin ke clipboard:", error);
+    }
+  };
+
+  const ImageModal = ({ image, onClose }) => {
+    return (
+      <Modal show={showImageModal} onHide={() => onClose()}>
+        <Modal.Body className="text-center">
+          <img src={image} alt="Laporan" />
+        </Modal.Body>
+      </Modal>
+    );
+  };
+
+  useEffect(() => {
+    copyToClipboard();
+  }, []);
 
 
   return (
@@ -155,10 +420,7 @@ const LaporanLengkap = () => {
           <div className="laporan-artikel d-flex w-100">
             {laporanDetail.user && laporanDetail.user.avatar ? (
               <img
-                src={laporanDetail.user.avatar.replace(
-                  "https://admin.sadam.bid/",
-                  ""
-                )}
+                src={laporanDetail.user.avatar}
                 alt={`avatar ${laporanDetail.id}`}
                 className="avatar"
               />
@@ -167,7 +429,7 @@ const LaporanLengkap = () => {
             )}
             <div className="laporan-content">
               <div className="laporan-head d-flex mb-2">
-                <div className="badge d-flex gap-2 p-0 mb-3 align-items-center">
+                <div className="badge d-flex gap-2 p-0 align-items-center">
                   {laporanDetail.user && laporanDetail.user.username && (
                     <h3>{laporanDetail.user.username}</h3>
                   )}
@@ -208,8 +470,23 @@ const LaporanLengkap = () => {
                 <p className="laporan-desc">{laporanDetail.content}</p>
                 <p className="laporan-desc">Lampiran:</p>
                 {laporanDetail.image && laporanDetail.image.length > 0 && (
-                  <img src={laporanDetail.image[0].path} alt="Laporan" />
+                  <div className="clickable-image d-flex gap-2">
+                    {laporanDetail.image.map((image, index) => (
+                      <img
+                        className="img-pop-up"
+                        key={index}
+                        src={image.path}
+                        alt={`laporan-image-${index}`}
+                        onClick={() => {
+                          setSelectedImage(image.path);
+                          setShowImageModal(true);
+                        }}
+                      />
+                    ))}
+                  </div>
                 )}
+                <ImageModal image={selectedImage} onClose={() => setShowImageModal(false)} />
+
                 <div className="laporan-comment d-flex">
                   <p> Komentar ({laporanDetail.totalComment}) </p>
                   <span className="black-dot">•</span>
@@ -225,53 +502,67 @@ const LaporanLengkap = () => {
           </div>
           <div className="laporan-tanggapan">
             <div className="respons d-flex mt-4 align-items-center gap-3">
-              <Button className="btn-respons" variant="outline-primary" onClick={handleLike}>
+              <Button className="btn-respons" variant="outline-primary" onClick={handleLike} disabled={responseGiven}>
                 Butuh tanggapan cepat
               </Button>
               <Button className="btn-respons" variant="outline-primary" onClick={handleReport}>
-                Laporakan laporan ini
+                Laporkan laporan ini
               </Button>
               <Button className="btn-respons" variant="outline-primary" onClick={handleShare}>
                 Bagikan
               </Button>
             </div>
-            {/* Pop-up Terima Kasih */}
-            {thanksPopup && (
-              <div className="popup">
-                <p>Terima Kasih. Kami akan segera menindak lanjuti laporan ini.</p>
-              </div>
-            )}
-            {/* Pop-up "Anda sudah melaporkan" */}
-            {reportedPopup && (
-              <div className="popup">
-                <p>Anda sudah melaporkan laporan ini.</p>
-              </div>
-            )}
-            {/* Pop-up Butuh Tanggapan Cepat */}
-            {responsePopup && (
-              <div className="popup">
-                <p>Anda telah membutuhkan tanggapan cepat.</p>
-              </div>
-            )}
 
-            <Modal show={showModal} onHide={() => setShowModal(false)}>
+            <Modal show={showQuickResponseModal} onHide={() => setShowQuickResponseModal(false)}>
+              <Modal.Body className="text-center">
+                {responseGiven ? (
+                  <p>Anda memberikan bantuan tanggapan cepat</p>
+                ) : (
+                  <p>Anda telah memberikan bantuan tanggapan cepat pada laporan ini</p>
+                )}
+              </Modal.Body>
+            </Modal>
+
+            <Modal show={showReportModal} onHide={() => setShowReportModal(false)}>
+              <Modal.Body className="text-center">
+                {reportSuccess ? (
+                  <p className="report-pop-up">Terima Kasih. Kami akan segera menindak lanjuti laporan ini.</p>
+                ) : (
+                  <p className="report-pop-up">Anda sudah melaporkan laporan ini.</p>
+                )}
+              </Modal.Body>
+            </Modal>
+
+            <Modal show={showShareModal} onHide={() => setShowShareModal(false)}>
               <Modal.Header>
                 <Modal.Title>Bagikan</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <p>Tautan Laporan</p>
-                <input type="text" value={`https://admin.sadam.bid/laporan/${id}`} readOnly />
+                {copySuccess && <p className="mt-2">Berhasil disalin ke clipboard!</p>}
+                <p className="mb-1">Tautan Laporan</p>
+                <input className="input-pop-up" type="text" value={`https://admin.sadam.bid/laporan/${id}`} readOnly id="laporan-link" />
+
+                <Button variant="primary" onClick={copyToClipboard} className="mt-1">
+                  Bagikan
+                </Button>
+
               </Modal.Body>
             </Modal>
 
+            <Comment id={id} />
+            <div className="comments-section">
+              <h4>Komentar  ({laporanDetail ? laporanDetail.totalComment : 0})</h4>
+              {renderMainComments()}
+            </div>
           </div>
-          <Comment id={id} />
+
         </div>
       ) : (
-        <Spinner animation="border" variant="primary" />
+        <Spinner animation="border" className="loader d-flex" />
       )}
     </div>
   );
 };
 
 export default LaporanLengkap;
+

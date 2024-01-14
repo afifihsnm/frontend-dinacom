@@ -13,6 +13,11 @@
   gap: var(--Dimensions-Spacing-md, 0.75rem);
 }
 
+.laporan-lengkap .lapor-back:hover {
+  background: var(--Colors-Primary-Surface-default-subtle, #ecf5ff);
+  color: var(--colors-grayscale-text-icon-title, #191b29);
+}
+
 .laporan-lengkap .laporan-detail .laporan-artikel {
   gap: var(--Dimensions-Spacing-3xl, 2rem);
 }
@@ -80,7 +85,7 @@
   width: 3.875rem;
   height: 3.875rem;
   border-radius: var(--Dimensions-Corner-Radius-sm, 0.125rem);
-  border: 1px solid var(--Colors-Grayscale-Border-default, #D3D5E4);
+  border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
 }
 
 .laporan-content .laporan-comment {
@@ -113,7 +118,7 @@
   justify-content: flex-start;
 }
 
-.laporan-detail .laporan-artikel .avatar-anonim {
+.avatar-anonim {
   width: 3.25rem;
   height: 3.25rem;
   flex-shrink: 0;
@@ -218,6 +223,10 @@
   height: 3.875rem;
 }
 
+.modal-body img {
+  max-width: 25rem;
+}
+
 .laporan-detail .laporan-body-link {
   text-decoration: none;
 }
@@ -248,6 +257,12 @@
 /*Style Laporan Tanggapan End*/
 
 /*Style Button Respons*/
+.laporan-detail .laporan-tanggapan .respons {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: space-between;
+}
+
 .laporan-detail .laporan-tanggapan .respons .btn-respons {
   display: flex;
   color: var(--colors-grayscale-text-icon-title, #191b29);
@@ -257,22 +272,32 @@
   letter-spacing: 0.0625rem;
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
   background: #fff;
-  padding: var(--Dimensions-Spacing-2xs, 0.25rem) var(--Dimensions-Spacing-lg, 1rem);
+  padding: var(--Dimensions-Spacing-2xs, 0.25rem)
+    var(--Dimensions-Spacing-lg, 1rem);
   border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
 }
 
-.laporan-detail  .laporan-tanggapan .respons .btn-respons:hover {
+.laporan-detail .laporan-tanggapan .respons .btn-respons:hover {
   background: var(--Colors-Primary-Surface-default-subtle, #ecf5ff);
 }
 
-.laporan-detail  .laporan-tanggapan .respons .btn-respons:active {
+.laporan-detail .laporan-tanggapan .respons .btn-respons:active {
   background: var(--Colors-Primary-Surface-default-subtle, #ecf5ff);
 }
 /*Style Button Respons End*/
 
 /*Style Comment*/
+.laporan-detail .comments-section h4 {
+  color: var(--colors-grayscale-text-icon-title, #191b29);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.625rem;
+  letter-spacing: 0.0625rem;
+}
+
 .laporan-detail .laporan-tanggapan .tanggapan {
-  color: var(--colors-grayscale-text-icon-title, #191B29);
+  color: var(--colors-grayscale-text-icon-title, #191b29);
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.625rem;
@@ -285,39 +310,40 @@
 }
 
 .laporan-detail .laporan-tanggapan .tanggapan .form-control {
-  color: var(--colors-grayscale-text-icon-caption, #A4A7C6);
+  color: var(--colors-grayscale-text-icon-caption, #a4a7c6);
   font-weight: 400;
   line-height: 1.625rem;
   letter-spacing: 0.04688rem;
   padding: 2rem 1rem;
   border-radius: var(--Dimensions-Corner-Radius-5xl, 1.5rem);
-  border: 1px solid var(--Colors-Grayscale-Border-default, #D3D5E4);
+  border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
 }
 
-.laporan-detail .laporan-tanggapan .tanggapan .form-text{
-  color: var(--colors-grayscale-text-icon-caption, #A4A7C6);
+.laporan-detail .laporan-tanggapan .tanggapan .form-text {
+  color: var(--colors-grayscale-text-icon-caption, #a4a7c6);
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
   line-height: 1.625rem;
-  letter-spacing: 0.0625rem;  
+  letter-spacing: 0.0625rem;
 }
 
-.laporan-detail .laporan-tanggapan .tanggapan .form-check .form-check-input{
+.laporan-detail .laporan-tanggapan .tanggapan .form-check .form-check-input {
   margin: 0;
   width: var(--Dimensions-Spacing-3xl, 2rem);
   height: var(--Dimensions-Spacing-3xl, 2rem);
   border-radius: var(--Dimensions-Corner-Radius-xl, 0.5rem);
-  border: 2px solid var(--Colors-Grayscale-Border-default, #D3D5E4);
+  border: 2px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
 }
 
 .laporan-detail .laporan-tanggapan .tanggapan .btn {
   display: flex;
-  padding: var(--Dimensions-Spacing-sm, 0.5rem) var(--Dimensions-Spacing-lg, 1rem);
+  padding: var(--Dimensions-Spacing-sm, 0.5rem)
+    var(--Dimensions-Spacing-lg, 1rem);
   justify-content: center;
   align-items: center;
   border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
-  background: var(--Colors-Primary-Surface-default, #0E206A);
+  background: var(--Colors-Primary-Surface-default, #0e206a);
   font-weight: 600;
   line-height: 2rem;
   width: 8.75rem;
@@ -325,67 +351,151 @@
 }
 /*Style Comment End*/
 
-/*Style Pop Up Bagikan*/
-.laporan-detail .laporan-tanggapan .modal-content {
-  display: inline-flex;
+/*Style Pop Up*/
+.modal-content {
   padding: var(--Dimensions-Spacing-4xl, 2.5rem);
   flex-direction: column;
+  gap: var(--Dimensions-Spacing-3xl, 2rem);
+  border-radius: var(--Dimensions-Corner-Radius-2xl, 0.75rem);
+  background: var(--Colors-Charcoal-50, #fff);
+}
+
+.modal-title {
+  color: var(--colors-grayscale-text-icon-title, #191b29);
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.625rem;
+  letter-spacing: 0.0625rem;
+}
+
+.modal-header,
+.modal-body {
+  padding: 0;
+  border: none;
+}
+
+.modal-body p {
+  color: var(--colors-grayscale-text-icon-title, #191b29);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.625rem;
+  letter-spacing: 0.0625rem;
+}
+
+.modal-body .report-pop-up {
+  border-radius: var(--Dimensions-Corner-Radius-5xl, 1.5rem);
+  border: 1px solid var(--Colors-Success-Border-default, #4ae27e);
+  background: var(--Colors-Success-Surface-default-subtle, #edfcf3);
+  padding: var(--Dimensions-Spacing-4xl, 2.5rem)
+    var(--Dimensions-Spacing-lg, 1rem);
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+
+.modal-body button {
+  padding: var(--Dimensions-Spacing-sm, 0.5rem)
+    var(--Dimensions-Spacing-md, 0.75rem);
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
+  background: var(--Colors-Primary-Surface-default, #0e206a);
+}
+
+.modal-body input.input-pop-up {
+  width: 25rem;
+  padding: var(--Dimensions-Spacing-md, 0.75rem)
+    var(--Dimensions-Spacing-lg, 1rem);
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
+  border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
+}
+/*Style Pop Up End*/
+
+/*Style Comment All*/
+.comment-all {
   align-items: flex-start;
   gap: var(--Dimensions-Spacing-3xl, 2rem);
 }
 
-.laporan-detail .laporan-tanggapan .modal-header {
-  display: inline-flex;
-  padding: var(--Dimensions-Spacing-4xl, 2.5rem);
-  flex-direction: column;
+.comment-all img {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 3.25rem;
+  border: 2px solid var(--Colors-Charcoal-100, #f2f2f2);
+}
+
+.comment-all .comment-body p {
+  color: var(--colors-grayscale-text-icon-title, #191b29);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.625rem;
+  letter-spacing: 0.04688rem;
+  margin: 0;
+}
+
+.comment-all .comment-body .comment-head p {
+  font-weight: 500;
+  letter-spacing: 0.04688rem;
+  margin: 0;
+}
+
+.comment-all .comment-body .btn-reply button {
+  color: var(--colors-grayscale-text-icon-title, #191b29);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.625rem;
+  padding: var(--Dimensions-Spacing-2xs, 0.25rem)
+    var(--Dimensions-Spacing-lg, 1rem);
+  border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
+  border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
+}
+
+.comment-all .comment-body .btn-reply button:hover {
+  background: var(--Colors-Primary-Surface-default-subtle, #ecf5ff);
+}
+
+.reply-comment .form-control {
+  display: flex;
+  padding: var(--Dimensions-Spacing-4xl, 2.5rem)
+    var(--Dimensions-Spacing-lg, 1rem);
   align-items: flex-start;
-  gap: var(--Dimensions-Spacing-3xl, 2rem);
+  border-radius: var(--Dimensions-Corner-Radius-5xl, 1.5rem);
+  border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
 }
 
-.laporan-detail .laporan-tanggapan .modal-title.h4 {
-  color: var(--colors-grayscale-text-icon-title, #191B29);
-font-size: 1.25rem;
-font-style: normal;
-font-weight: 500;
-line-height: 1.625rem;
-letter-spacing: 0.0625rem;
+.reply-comment .form-check-input {
+  margin: 0;
+  width: var(--Dimensions-Spacing-3xl, 2rem);
+  height: var(--Dimensions-Spacing-3xl, 2rem);
+  border-radius: var(--Dimensions-Corner-Radius-xl, 0.5rem);
+  border: 2px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
 }
 
-.laporan-detail .laporan-tanggapan .modal-body {
-
+.reply-comment button {
+  display: flex;
+  width: 6.25rem;
+  padding: var(--Dimensions-Spacing-sm, 0.5rem)
+    var(--Dimensions-Spacing-md, 0.75rem);
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
+  background: var(--Colors-Primary-Surface-default, #0e206a);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  letter-spacing: 0.0625rem;
 }
-/*Style Pop Up Bagikan End*/
-
+/*Style Comment All End*/
 
 .loader {
   margin: auto;
-  position: relative;
   width: 60px;
   height: 60px;
   border-radius: 50%;
-}
-
-.loader::before,
-.loader::after {
-  content: "";
-  position: absolute;
-  border-radius: inherit;
-}
-
-.loader::before {
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(#0e206a, #fff);
-  animation: spin 0.5s infinite linear;
-}
-
-.loader::after {
-  width: 85%;
-  height: 85%;
-  background-color: #fff;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  color: var(--Colors-Primary-Surface-default, #0e206a);
 }
 
 @keyframes spin {
@@ -394,16 +504,39 @@ letter-spacing: 0.0625rem;
   }
 }
 
-@media (max-width:552px) {
+@media (max-width: 552px) {
   .laporan-detail .laporan-artikel .avatar {
     display: none;
   }
-  .laporan-detail .laporan-artikel .avatar-anonim {
+  .avatar-anonim {
+    display: none;
+  }
+
+  .laporan-detail .laporan-tanggapan {
+    margin-left: 0;
+  }
+
+  .comments-section .comment-all img {
     display: none;
   }
 }
 
 @media (max-width: 425px) {
+  .comment-all .comment-body p {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+  }
+
+  .comment-all .comment-body .comment-head p {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+  }
+
+  .comment-all .comment-body .btn-reply button {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+  }
+
   .laporan-publik .laporan-publik-content h1 {
     font-size: 2rem;
     line-height: 3rem;
@@ -424,7 +557,7 @@ letter-spacing: 0.0625rem;
     line-height: 1.5rem;
     letter-spacing: 0.04688rem;
   }
-  
+
   .laporan-detail .laporan-head .badge .anonim-username {
     font-size: 0.875rem;
     line-height: 1.5rem;
@@ -468,7 +601,6 @@ letter-spacing: 0.0625rem;
     font-size: 0.75rem;
   }
 }
-
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .laporan-lengkap {
