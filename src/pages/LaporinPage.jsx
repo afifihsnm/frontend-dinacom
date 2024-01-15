@@ -26,8 +26,8 @@ const LaporinPage = () => {
         formData.append(`files[${index}]`, file);
       });
 
-      formData.append("name_visibility", Number.name_visibility);
-      formData.append("post_visibility", Number.post_visibility);
+      formData.append("name_visibility", values.name_visibility);
+      formData.append("post_visibility", values.post_visibility);
 
       const response = await fetch("https://admin.sadam.bid/api/v1/reports", {
         method: "POST",
@@ -53,14 +53,14 @@ const LaporinPage = () => {
     }
   };
 
-const schema = Yup.object().shape({
-  title: Yup.string().min(5, "Judul terlalu pendek").required("Harus diisi"),
-  content: Yup.string().required("Harus diisi").min(5, "Laporan terlalu pendek"),
-  files: Yup.array()
-    .of(Yup.mixed().test("fileSize", "Ukuran file terlalu besar", (value) => !value || (value && value.size <= 5242880))),
-    name_visibility: Yup.number().oneOf([0, 1], "Harus dipilih").required("Harus dipilih"),
-    post_visibility: Yup.number().oneOf([0, 1], "Harus dipilih").required("Harus dipilih"),
-});
+  const schema = Yup.object().shape({
+    title: Yup.string().min(5, "Judul terlalu pendek").required("Harus diisi"),
+    content: Yup.string().required("Harus diisi").min(5, "Laporan terlalu pendek"),
+    files: Yup.array()
+      .of(Yup.mixed().test("fileSize", "Ukuran file terlalu besar", (value) => !value || (value && value.size <= 5242880))),
+    name_visibility: Yup.bool().oneOf([0, 1], "Harus dipilih").required("Harus dipilih"),
+    post_visibility: Yup.bool().oneOf([0, 1], "Harus dipilih").required("Harus dipilih"),
+  });
 
 
   return (
@@ -79,7 +79,7 @@ const schema = Yup.object().shape({
               initialValues={{
                 title: "",
                 content: "",
-                files: [],
+                files: "",
                 name_visibility: false,
                 post_visibility: false,
               }}
@@ -146,34 +146,34 @@ const schema = Yup.object().shape({
                   </Form.Group>
 
                   <Form.Group className="forms-g" controlId="validationFormFile">
-  <Form.Label className="label">
-    Unggah Bukti Foto<span className="red-dot">*</span>
-  </Form.Label>
-  <InputGroup className="mb-1">
-    <FormControl
-      type="file"
-      multiple
-      className="file-field rounded-5"
-      accept="files/*"
-      name="files"
-      onChange={(event) => {
-        // Convert FileList to an array
-        const filesArray = Array.from(event.currentTarget.files);
-        setFieldValue("files", filesArray);
+                    <Form.Label className="label">
+                      Unggah Bukti Foto<span className="red-dot">*</span>
+                    </Form.Label>
+                    <InputGroup className="mb-1">
+                      <FormControl
+                        type="file"
+                        multiple
+                        className="file-field rounded-5"
+                        accept="files/*"
+                        name="files"
+                        onChange={(event) => {
+                          // Convert FileList to an array
+                          const filesArray = Array.from(event.currentTarget.files);
+                          setFieldValue("files", filesArray);
 
-        // Clear validation error for files field
-        setFieldError("files", "");
-      }}
-      isInvalid={touched.files && !!errors.files}
-    />
-    <Form.Control.Feedback type="invalid">
-      {errors.files}
-    </Form.Control.Feedback>
-  </InputGroup>
-  <Form.Text id="filesHelpBlock" muted>
-    Unggah bukti agar memperkuat laporanmu.
-  </Form.Text>
-</Form.Group>
+                          // Clear validation error for files field
+                          setFieldError("files", "");
+                        }}
+                        isInvalid={touched.files && !!errors.files}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.files}
+                      </Form.Control.Feedback>
+                    </InputGroup>
+                    <Form.Text id="filesHelpBlock" muted>
+                      Unggah bukti agar memperkuat laporanmu.
+                    </Form.Text>
+                  </Form.Group>
 
                   <Form.Group
                     className="forms-g"

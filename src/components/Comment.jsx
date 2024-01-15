@@ -10,8 +10,7 @@ function Comment() {
         content: '',
         name_visibility: 1,
     });
-    const [commentSubmitted, setCommentSubmitted] = useState(false); // State untuk menandai pengiriman komentar
-
+    const [commentSubmitted, setCommentSubmitted] = useState(false); 
     const handleInput = (event) => {
         let value = event.target.value;
 
