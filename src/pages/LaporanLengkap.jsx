@@ -565,4 +565,3 @@ const LaporanLengkap = () => {
 };
 
 export default LaporanLengkap;
-
