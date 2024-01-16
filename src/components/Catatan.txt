@@ -425,30 +425,7 @@ const schema = Yup.object().shape({
                       Apakah Anda ingin menampilkan nama Anda
                       <span className="red-dot">*</span>
                     </Form.Label>
-                    <Form.Check
-                      required
-                      className="d-flex mb-1"
-                      type="radio"
-                      name="visibility"
-                      checked={values.visibility === true}
-                      label="Ya!, saya ingin menampilkan nama pada laporan"
-                      onChange={() => setFieldValue("visibility", true)}
-                      isInvalid={!!errors.visibility}
-                      feedback={errors.visibility}
-                      feedbackType="invalid"
-                    />
-                    <Form.Check
-                      required
-                      className="d-flex mb-1"
-                      type="radio"
-                      name="visibility"
-                      checked={values.visibility === false}
-                      label="Tidak, saya ingin merahasiakan nama saya"
-                      onChange={() => setFieldValue("visibility", false)}
-                      isInvalid={!!errors.visibility}
-                      feedback={errors.visibility}
-                      feedbackType="invalid"
-                    />
+                
                   </Form.Group>
 
                   <Form.Group

@@ -42,7 +42,7 @@
     border: 1px solid var(--Colors-Error-Border-default, #FF1A51);
     border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
     background: var(--Colors-Error-Surface-default-subtle, #FFEBEF);
-  }
+}
 
 .signin-form .forms-g a {
     color: var(--Colors-Indigo-500, #5D11FF);
@@ -54,7 +54,6 @@
 }
 
 .signin-form button {
-    width: 25rem;
     padding: var(--Dimensions-Spacing-md, 0.75rem) var(--Dimensions-Spacing-lg, 1rem);
     border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
     background: var(--Colors-Primary-Surface-default, #0E206A);
@@ -74,7 +73,7 @@
 
 .form-control:focus {
     border: 1px solid var(--Colors-Primary-Border-default, #1B5BFF);
-    background: var(--Colors-Primary-Surface-default-subtle, #ECF5FF);   
+    background: var(--Colors-Primary-Surface-default-subtle, #ECF5FF);
 }
 
 .form-control.is-invalid {
@@ -91,6 +90,7 @@
     .signin-form {
         width: 100%;
     }
+
     .signin-form button {
         width: 100%;
     }

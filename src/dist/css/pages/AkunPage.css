@@ -1,3 +1,7 @@
+.akun {
+  border-left: 1px solid rgba(0, 0, 0, 0.15);
+}
+
 .akun .akun-content {
   color: var(--colors-grayscale-text-icon-title, #191b29);
 }
@@ -34,8 +38,7 @@
 
 .akun .akun-content .form-control {
   width: 25rem;
-  padding: var(--Dimensions-Spacing-md, 0.75rem)
-    var(--Dimensions-Spacing-lg, 1rem);
+  padding: var(--Dimensions-Spacing-md, 0.75rem) var(--Dimensions-Spacing-lg, 1rem);
   align-items: center;
   border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
   border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);

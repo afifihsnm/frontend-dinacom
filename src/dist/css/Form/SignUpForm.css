@@ -20,8 +20,7 @@
 }
 
 .signup-form .form-control {
-  padding: var(--Dimensions-Spacing-md, 0.75rem)
-    var(--Dimensions-Spacing-lg, 1rem);
+  padding: var(--Dimensions-Spacing-md, 0.75rem) var(--Dimensions-Spacing-lg, 1rem);
   border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
   border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
   color: var(--colors-grayscale-text-icon-caption, #191B29);
@@ -43,8 +42,7 @@ p a {
 
 .signup-form button {
   width: 25rem;
-  padding: var(--Dimensions-Spacing-md, 0.75rem)
-    var(--Dimensions-Spacing-lg, 1rem);
+  padding: var(--Dimensions-Spacing-md, 0.75rem) var(--Dimensions-Spacing-lg, 1rem);
   border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
   background: var(--Colors-Primary-Surface-default, #0e206a);
 }
@@ -55,7 +53,6 @@ p a {
   font-weight: 600;
   line-height: 1.5rem;
   letter-spacing: 0.0625rem;
-  width: 25rem;
 }
 
 .signup-form p a {
@@ -66,6 +63,7 @@ p a {
   .signup-form {
     width: 100%;
   }
+
   .signup-form button {
     width: 100%;
   }

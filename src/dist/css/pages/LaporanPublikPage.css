@@ -1,3 +1,7 @@
+.laporan-publik {
+  border-left: 1px solid rgba(0, 0, 0, 0.15);
+}
+
 .laporan-publik .laporan-publik-content h1 {
   color: var(--colors-grayscale-text-icon-title, #191b29);
   font-size: 3.5rem;
@@ -22,8 +26,7 @@
   align-items: center;
   border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
   border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
-  padding: var(--Dimensions-Spacing-md, 0.75rem)
-    var(--Dimensions-Spacing-2xl, 1.5rem);
+  padding: var(--Dimensions-Spacing-md, 0.75rem) var(--Dimensions-Spacing-2xl, 1.5rem);
 }
 
 .laporan-publik-content .search {
@@ -66,8 +69,7 @@
   letter-spacing: 0.0625rem;
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
   background: #fff;
-  padding: var(--Dimensions-Spacing-sm, 0.5rem)
-    var(--Dimensions-Spacing-2xl, 1.5rem);
+  padding: var(--Dimensions-Spacing-sm, 0.5rem) var(--Dimensions-Spacing-2xl, 1.5rem);
   justify-content: center;
   align-items: center;
   border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
@@ -155,48 +157,42 @@
   color: var(--Colors-Chilled-Gray-500, #8e92b9);
   background: var(--Colors-Chilled-Gray-50, #f2f3f7);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-all .laporan-head .badge-status2 {
   color: var(--Colors-Orange-500, #ff9736);
   background: var(--Colors-Orange-50, #fff4eb);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-all .laporan-head .badge-status3 {
   color: var(--Colors-Green-500, #4ae27e);
   background: var(--Colors-Green-50, #edfcf3);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-all .laporan-head .badge-status4 {
   color: var(--Colors-Red-500, #ff1a51);
   background: var(--Colors-Red-50, #ffebef);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-all .laporan-head .badge-post1 {
   color: var(--Colors-Blue-500, #1b5bff);
   background: var(--Colors-Blue-50, #ebf0ff);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-all .laporan-head .badge-post2 {
   color: var(--Colors-Blue-500, #1b5bff);
   background: var(--Colors-Blue-50, #ebf0ff);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-all .laporan-head {
@@ -285,6 +281,7 @@
   .laporan-all .laporan-artikel .avatar {
     display: none;
   }
+
   .laporan-all .laporan-artikel .avatar-anonim {
     display: none;
   }

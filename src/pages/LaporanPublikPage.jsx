@@ -147,7 +147,7 @@ function ReportAll({ laporanAll }) {
           <div className="laporan-artikel d-flex w-100">
             {data.user && data.user.avatar ? (
               <img
-                src={data.user.avatar.replace("https://admin.sadam.bid/", "")}
+                src={data.user.avatar}
                 alt={`Laporan ${data.id}`}
                 className="avatar"
               />

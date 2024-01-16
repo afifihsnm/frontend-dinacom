@@ -1,17 +1,14 @@
 .sidebar {
   display: flex;
   width: 17.0625rem;
-  padding: var(--Dimensions-Spacing-3xl, 2rem)
-    var(--Dimensions-Spacing-2xl, 1.5rem);
+  padding: var(--Dimensions-Spacing-3xl, 2rem) var(--Dimensions-Spacing-2xl, 1.5rem);
   flex-direction: column;
-  border-right: 1px solid rgba(0, 0, 0, 0.15);
   background: var(--Colors-Charcoal-50, #fff);
   gap: var(--Dimensions-Spacing-md, 0.75rem);
   max-width: 100%;
   float: left;
   position: fixed;
   top: 0;
-  bottom: 0;
   z-index: 10;
 }
 
@@ -47,8 +44,7 @@
   line-height: 1.625rem;
   letter-spacing: 0.0625rem;
   text-decoration: none;
-  padding: var(--Dimensions-Spacing-sm, 0.5rem)
-    var(--Dimensions-Spacing-lg, 1rem);
+  padding: var(--Dimensions-Spacing-sm, 0.5rem) var(--Dimensions-Spacing-lg, 1rem);
   gap: var(--Dimensions-Spacing-md, 0.75rem);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
 }
@@ -88,8 +84,7 @@
     align-items: center;
     left: 0;
     flex-direction: row;
-    padding: var(--Dimensions-Spacing-lg, 1rem)
-      var(--Dimensions-Spacing-2xl, 1rem);
+    padding: var(--Dimensions-Spacing-lg, 1rem) var(--Dimensions-Spacing-2xl, 1rem);
     align-items: center;
     gap: var(--Dimensions-Spacing-2xl, 1.5rem);
     height: 4.75rem;
@@ -105,8 +100,7 @@
   }
 
   .offcanvas-lg {
-    padding: var(--Dimensions-Spacing-3xl, 1.5rem)
-      var(--Dimensions-Spacing-2xl, 1.5rem);
+    padding: var(--Dimensions-Spacing-3xl, 1.5rem) var(--Dimensions-Spacing-2xl, 1.5rem);
   }
 
   .offcanvas-header {
@@ -120,6 +114,7 @@
     line-height: 1.625rem;
     letter-spacing: 0.0625rem;
   }
+
   .offcanvas-body .icon {
     margin-right: 0.75rem;
   }
@@ -133,8 +128,7 @@
     line-height: 1.625rem;
     letter-spacing: 0.0625rem;
     text-decoration: none;
-    padding: var(--Dimensions-Spacing-sm, 0.5rem)
-      var(--Dimensions-Spacing-lg, 1rem);
+    padding: var(--Dimensions-Spacing-sm, 0.5rem) var(--Dimensions-Spacing-lg, 1rem);
     gap: var(--Dimensions-Spacing-md, 0.75rem);
     border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
   }
@@ -142,7 +136,6 @@
 
 @media (max-width: 425px) {
   .offcanvas-lg {
-    padding: var(--Dimensions-Spacing-3xl, 1rem)
-    var(--Dimensions-Spacing-2xl, 1rem);
+    padding: var(--Dimensions-Spacing-3xl, 1rem) var(--Dimensions-Spacing-2xl, 1rem);
   }
 }

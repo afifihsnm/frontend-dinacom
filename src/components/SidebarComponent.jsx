@@ -50,7 +50,7 @@ function Sidebar({ activePage }) {
             <span className="icon"><i className="bi bi-file-earmark-plus" style={{ fontSize: '1.5rem' }}></i></span>Laporin
           </Link>
           <Link to="/lapor-publik" className={activePage === "lapor-publik" ? "active" : ""}>
-            <span className="icon"><i className="bi bi-file-earmark-text" style={{ fontSize: '1.5rem' }}></i></span>Laporin Publik
+            <span className="icon"><i className="bi bi-file-earmark-text" style={{ fontSize: '1.5rem' }}></i></span>Laporan Publik
           </Link>
           <h5>Dukungan</h5>
           <Link to="/akun" className={activePage === "akun" ? "active" : ""}>
@@ -75,7 +75,7 @@ function Sidebar({ activePage }) {
         <span className="icon"><i className="bi bi-file-earmark-plus" style={{ fontSize: '1.5rem' }}></i></span>Laporin
       </Link>
       <Link to="/lapor-publik" className={activePage === "lapor-publik" ? "active" : ""}>
-        <span className="icon"><i className="bi bi-file-earmark-text" style={{ fontSize: '1.5rem' }}></i></span>Laporin Publik
+        <span className="icon"><i className="bi bi-file-earmark-text" style={{ fontSize: '1.5rem' }}></i></span>Laporan Publik
       </Link>
       <h5>Dukungan</h5>
       <Link to="/akun" className={activePage === "akun" ? "active" : ""}>

@@ -25,7 +25,7 @@ const Dashboard = () => {
       console.log('Sending request to:', `https://admin.sadam.bid/api/v1/users/dashboard/report/${reportId}/${statusType}`);
 
       const response = await fetch(`https://admin.sadam.bid/api/v1/users/dashboard/report/${reportId}/${statusType}`, {
-        method: 'POST',  // Assuming this is a delete request for removing a report
+        method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',

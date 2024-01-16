@@ -1,3 +1,7 @@
+.laporan-lengkap {
+  border-left: 1px solid rgba(0, 0, 0, 0.15);
+}
+
 .laporan-lengkap .lapor-back {
   display: flex;
   color: var(--colors-grayscale-text-icon-title, #191b29);
@@ -7,8 +11,7 @@
   letter-spacing: 0.0625rem;
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
   border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
-  padding: var(--Dimensions-Spacing-md, 0.75rem)
-    var(--Dimensions-Spacing-lg, 1rem);
+  padding: var(--Dimensions-Spacing-md, 0.75rem) var(--Dimensions-Spacing-lg, 1rem);
   align-items: center;
   gap: var(--Dimensions-Spacing-md, 0.75rem);
 }
@@ -37,48 +40,42 @@
   color: var(--Colors-Chilled-Gray-500, #8e92b9);
   background: var(--Colors-Chilled-Gray-50, #f2f3f7);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-content .laporan-head .badge-status2 {
   color: var(--Colors-Orange-500, #ff9736);
   background: var(--Colors-Orange-50, #fff4eb);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-content .laporan-head .badge-status3 {
   color: var(--Colors-Green-500, #4ae27e);
   background: var(--Colors-Green-50, #edfcf3);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-content .laporan-head .badge-status4 {
   color: var(--Colors-Red-500, #ff1a51);
   background: var(--Colors-Red-50, #ffebef);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-content .laporan-head .badge-post1 {
   color: var(--Colors-Blue-500, #1b5bff);
   background: var(--Colors-Blue-50, #ebf0ff);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-content .laporan-head .badge-post2 {
   color: var(--Colors-Blue-500, #1b5bff);
   background: var(--Colors-Blue-50, #ebf0ff);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-artikel .laporan-content img {
@@ -140,48 +137,42 @@
   color: var(--Colors-Chilled-Gray-500, #8e92b9);
   background: var(--Colors-Chilled-Gray-50, #f2f3f7);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-detail .laporan-head .badge-status2 {
   color: var(--Colors-Orange-500, #ff9736);
   background: var(--Colors-Orange-50, #fff4eb);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-detail .laporan-head .badge-status3 {
   color: var(--Colors-Green-500, #4ae27e);
   background: var(--Colors-Green-50, #edfcf3);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-detail .laporan-head .badge-status4 {
   color: var(--Colors-Red-500, #ff1a51);
   background: var(--Colors-Red-50, #ffebef);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-detail .laporan-head .badge-post1 {
   color: var(--Colors-Blue-500, #1b5bff);
   background: var(--Colors-Blue-50, #ebf0ff);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-detail .laporan-head .badge-post2 {
   color: var(--Colors-Blue-500, #1b5bff);
   background: var(--Colors-Blue-50, #ebf0ff);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
-  padding: var(--Dimensions-Spacing-4xs, 0.0625rem)
-    var(--Dimensions-Spacing-sm, 0.5rem);
+  padding: var(--Dimensions-Spacing-4xs, 0.0625rem) var(--Dimensions-Spacing-sm, 0.5rem);
 }
 
 .laporan-detail .laporan-head {
@@ -223,10 +214,6 @@
   height: 3.875rem;
 }
 
-.modal-body img {
-  max-width: 25rem;
-}
-
 .laporan-detail .laporan-body-link {
   text-decoration: none;
 }
@@ -254,6 +241,7 @@
 .laporan-detail .laporan-tanggapan {
   margin-left: 5.25rem;
 }
+
 /*Style Laporan Tanggapan End*/
 
 /*Style Button Respons*/
@@ -272,8 +260,7 @@
   letter-spacing: 0.0625rem;
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
   background: #fff;
-  padding: var(--Dimensions-Spacing-2xs, 0.25rem)
-    var(--Dimensions-Spacing-lg, 1rem);
+  padding: var(--Dimensions-Spacing-2xs, 0.25rem) var(--Dimensions-Spacing-lg, 1rem);
   border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
 }
 
@@ -284,6 +271,7 @@
 .laporan-detail .laporan-tanggapan .respons .btn-respons:active {
   background: var(--Colors-Primary-Surface-default-subtle, #ecf5ff);
 }
+
 /*Style Button Respons End*/
 
 /*Style Comment*/
@@ -320,7 +308,7 @@
 }
 
 .laporan-detail .laporan-tanggapan .tanggapan .form-text {
-  color: var(--colors-grayscale-text-icon-caption, #a4a7c6);
+  color: var(--colors-grayscale-text-icon-caption, #A4A7C6);
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
@@ -338,8 +326,7 @@
 
 .laporan-detail .laporan-tanggapan .tanggapan .btn {
   display: flex;
-  padding: var(--Dimensions-Spacing-sm, 0.5rem)
-    var(--Dimensions-Spacing-lg, 1rem);
+  padding: var(--Dimensions-Spacing-sm, 0.5rem) var(--Dimensions-Spacing-lg, 1rem);
   justify-content: center;
   align-items: center;
   border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
@@ -349,15 +336,17 @@
   width: 8.75rem;
   font-size: 1.25rem;
 }
+
 /*Style Comment End*/
 
 /*Style Pop Up*/
 .modal-content {
-  padding: var(--Dimensions-Spacing-4xl, 2.5rem);
+  padding: 1.5rem 0;
   flex-direction: column;
   gap: var(--Dimensions-Spacing-3xl, 2rem);
   border-radius: var(--Dimensions-Corner-Radius-2xl, 0.75rem);
   background: var(--Colors-Charcoal-50, #fff);
+  border-radius: 1.5rem;
 }
 
 .modal-title {
@@ -387,15 +376,13 @@
   border-radius: var(--Dimensions-Corner-Radius-5xl, 1.5rem);
   border: 1px solid var(--Colors-Success-Border-default, #4ae27e);
   background: var(--Colors-Success-Surface-default-subtle, #edfcf3);
-  padding: var(--Dimensions-Spacing-4xl, 2.5rem)
-    var(--Dimensions-Spacing-lg, 1rem);
+  padding: var(--Dimensions-Spacing-4xl, 2.5rem) var(--Dimensions-Spacing-lg, 1rem);
   align-items: flex-start;
   gap: 0.625rem;
 }
 
 .modal-body button {
-  padding: var(--Dimensions-Spacing-sm, 0.5rem)
-    var(--Dimensions-Spacing-md, 0.75rem);
+  padding: var(--Dimensions-Spacing-sm, 0.5rem) var(--Dimensions-Spacing-md, 0.75rem);
   justify-content: center;
   align-items: center;
   gap: 0.625rem;
@@ -405,13 +392,29 @@
 
 .modal-body input.input-pop-up {
   width: 25rem;
-  padding: var(--Dimensions-Spacing-md, 0.75rem)
-    var(--Dimensions-Spacing-lg, 1rem);
+  padding: var(--Dimensions-Spacing-md, 0.75rem) var(--Dimensions-Spacing-lg, 1rem);
   align-items: center;
   gap: 0.625rem;
   border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
   border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
 }
+
+.modal-body img {
+  max-width: 25rem;
+  border-radius: 1.5rem;
+}
+
+@media (max-width:552px) {
+  .modal-body img {
+    max-width: 13rem;
+  }
+
+  .modal-content {
+    max-width: 15rem;
+    margin: auto;
+  }
+}
+
 /*Style Pop Up End*/
 
 /*Style Comment All*/
@@ -447,8 +450,7 @@
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.625rem;
-  padding: var(--Dimensions-Spacing-2xs, 0.25rem)
-    var(--Dimensions-Spacing-lg, 1rem);
+  padding: var(--Dimensions-Spacing-2xs, 0.25rem) var(--Dimensions-Spacing-lg, 1rem);
   border-radius: var(--Dimensions-Corner-Radius-pill, 62.5rem);
   border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
 }
@@ -459,8 +461,7 @@
 
 .reply-comment .form-control {
   display: flex;
-  padding: var(--Dimensions-Spacing-4xl, 2.5rem)
-    var(--Dimensions-Spacing-lg, 1rem);
+  padding: var(--Dimensions-Spacing-4xl, 2.5rem) var(--Dimensions-Spacing-lg, 1rem);
   align-items: flex-start;
   border-radius: var(--Dimensions-Corner-Radius-5xl, 1.5rem);
   border: 1px solid var(--Colors-Grayscale-Border-default, #d3d5e4);
@@ -477,8 +478,7 @@
 .reply-comment button {
   display: flex;
   width: 6.25rem;
-  padding: var(--Dimensions-Spacing-sm, 0.5rem)
-    var(--Dimensions-Spacing-md, 0.75rem);
+  padding: var(--Dimensions-Spacing-sm, 0.5rem) var(--Dimensions-Spacing-md, 0.75rem);
   justify-content: center;
   align-items: center;
   border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
@@ -488,6 +488,7 @@
   line-height: 1.5rem;
   letter-spacing: 0.0625rem;
 }
+
 /*Style Comment All End*/
 
 .loader {
@@ -508,6 +509,7 @@
   .laporan-detail .laporan-artikel .avatar {
     display: none;
   }
+
   .avatar-anonim {
     display: none;
   }
