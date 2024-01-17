@@ -202,7 +202,7 @@ function ReportUser({ laporanUser, filteredLaporanUser, handleStatusChange }) {
           <p className="mb-2">{data.publishedAt}</p>
           <div className="laporan-artikel d-flex w-100">
             {data.user && data.user.avatar && (
-              <img src={data.user.avatar.replace('https://admin.sadam.bid/', '')} alt={`Laporan ${data.id}`} className="avatar" />
+              <img src={data.user.avatar.replace('https://sadam.bid/', '')} alt={`Laporan ${data.id}`} className="avatar" />
             )}
             <div className="laporan-content w-100">
               <div className="laporan-head d-flex">

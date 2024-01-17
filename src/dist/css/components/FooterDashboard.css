@@ -1,4 +1,6 @@
 .footer-content {
+  position: fixed;
+  bottom: 0;
     padding: var(--Dimensions-Spacing-2xl, 1.5rem) var(--Dimensions-Spacing-3xl, 2rem);
     background: var(--Colors-Chilled-Gray-50, #F2F3F7);
     justify-content: space-between;
