@@ -100,7 +100,6 @@ const LaporanLengkap = () => {
     }
   };
 
-
   const handleReport = async () => {
     const token = localStorage.getItem("token");
     console.log("Handle Report called");
@@ -116,7 +115,6 @@ const LaporanLengkap = () => {
 
       if (!response.ok) {
         if (response.status === 422) {
-          // Menampilkan modal untuk "Anda sudah melaporkan"
           setShowReportModal(true);
 
           setTimeout(() => {
@@ -540,8 +538,7 @@ const LaporanLengkap = () => {
               <Modal.Body>
                 {copySuccess && <p className="mt-2">Berhasil disalin ke clipboard!</p>}
                 <p className="mb-1">Tautan Laporan</p>
-                <input className="input-pop-up" type="text" value={`https://admin.sadam.bid/laporan/${id}`} readOnly id="laporan-link" />
-
+                <input className="mb-1 input-pop-up">{`https://admin.sadam.bid/laporan/${id}`}</input>                
                 <Button variant="primary" onClick={copyToClipboard} className="mt-1">
                   Bagikan
                 </Button>
@@ -551,7 +548,7 @@ const LaporanLengkap = () => {
 
             <Comment id={id} />
             <div className="comments-section">
-              <h4>Komentar  ({laporanDetail ? laporanDetail.totalComment : 0})</h4>
+              <h4 className="mb-4">Komentar  ({laporanDetail ? laporanDetail.totalComment : 0})</h4>
               {renderMainComments()}
             </div>
           </div>

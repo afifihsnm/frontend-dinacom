@@ -55,10 +55,14 @@ function DropzoneWithoutClick({ onFilesChange }) {
 
 
 const LaporinPage = () => {
+  const token = localStorage.getItem('token');
   let navigate = useNavigate();
   const [acceptedFiles, setAcceptedFiles] = useState([]);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
+  if (!token) {
+    navigate('/');
+  }
 
   const handleFilesChange = (files) => {
     setAcceptedFiles(files);

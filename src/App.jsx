@@ -1,4 +1,4 @@
-import { Routes, Route, Link, useLocation } from "react-router-dom";
+import { Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import NavbarComponent from "./components/NavbarComponent";
@@ -23,6 +23,7 @@ import FooterDashboard from "./components/FooterDashboard";
 
 function App() {
   const location = useLocation();
+  let navigate = useNavigate();
   const [activePage, setActivePage] = useState("");
   const [isLaporanLengkap, setIsLaporanLengkap] = useState(false);
   const token = localStorage.getItem("token");
@@ -31,7 +32,10 @@ function App() {
     const path = location.pathname.substring(1);
     setActivePage(path);
     setIsLaporanLengkap(location.pathname.startsWith("/lapor-publik/"));
-  }, [location.pathname]);
+    if (token && window.location.pathname === "/") {
+      navigate("/dashboard");
+    }
+  }, [token, navigate],[location.pathname]);
 
   const isLoginPage = ["/masuk", "/daftar", "/lupa-sandi"].includes(
     location.pathname
@@ -47,19 +51,11 @@ function App() {
       <div>
         {showSidebar && <Sidebar activePage={activePage} />}
         <Routes>
-          <Route path="/dashboard" element={<PrivateRoute />}>
             <Route path="/dashboard" element={<DashboardPage />} />
-          </Route>
-          <Route path="/laporin" element={<PrivateRoute />}>
             <Route path="/laporin" element={<LaporinPage />} />
-          </Route>
-          <Route path="/lapor-publik" element={<PrivateRoute />}>
             <Route path="/lapor-publik" element={<LaporanPublikPage />} />
             <Route path="/lapor-publik/:id" element={<LaporanLengkap />} />
-          </Route>
-          <Route path="/akun" element={<PrivateRoute />}>
             <Route path="/akun" element={<AkunPage />} />
-          </Route>
         </Routes>
           {showSidebar && <FooterDashboard />}
       </div>

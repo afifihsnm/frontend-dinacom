@@ -524,6 +524,10 @@
 }
 
 @media (max-width: 425px) {
+  .modal {
+    overflow-x: auto;
+  }
+
   .comment-all .comment-body p {
     font-size: 0.75rem;
     line-height: 1.125rem;

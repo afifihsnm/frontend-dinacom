@@ -41,7 +41,7 @@ p a {
 }
 
 .signup-form button {
-  width: 25rem;
+  width: 100%;
   padding: var(--Dimensions-Spacing-md, 0.75rem) var(--Dimensions-Spacing-lg, 1rem);
   border-radius: var(--Dimensions-Corner-Radius-pill, 624.9375rem);
   background: var(--Colors-Primary-Surface-default, #0e206a);
@@ -60,6 +60,10 @@ p a {
 }
 
 @media (max-width: 375px) {
+  .signup-form {
+    width: 100%;
+  }
+
   .signup-form {
     width: 100%;
   }
