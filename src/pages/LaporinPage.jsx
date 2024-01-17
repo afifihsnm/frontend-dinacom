@@ -6,8 +6,8 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 
 function DropzoneWithoutClick({ onFilesChange }) {
-  const maxSize = 2 * 1024 * 1024; // 2MB
-  const accept = ['.jpeg', '.png'];
+  const maxSize = 5 * 1024 * 1024; // 5MB
+  const accept = [".jpeg", ".jpg", ".png"];
 
   const { getRootProps, getInputProps, acceptedFiles, fileRejections } = useDropzone({
     onDrop: (acceptedFiles, fileRejections) => {
