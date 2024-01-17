@@ -163,7 +163,7 @@ function ReportAll({ laporanAll }) {
                   {!data.user && (
                     <span className="anonim-username">Anonim</span>
                   )}
-                  <p>12/2/2222</p>
+                  <p>{data.publishedAt}</p>
                   {data.status === 0 && (
                     <label className="badge-status1 d-flex">
                       Belum ditangani

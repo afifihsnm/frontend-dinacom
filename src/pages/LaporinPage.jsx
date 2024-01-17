@@ -33,7 +33,7 @@ function DropzoneWithoutClick({ onFilesChange }) {
       <div {...getRootProps({ className: 'dropzone align-items-center py-4 rounded-4 gap-2 d-flex flex-column' })}>
         <input {...getInputProps()} />
         <i className="bi bi-upload" />
-        <p className="text-input">Unggah bukti foto (MAX 2MB, JPEG, PNG)</p>
+        <p className="text-input">Unggah bukti foto (MAX 5MB, JPEG, PNG)</p>
       </div>
       {acceptedFiles.length > 0 && (
         <div className="ul-list-file">

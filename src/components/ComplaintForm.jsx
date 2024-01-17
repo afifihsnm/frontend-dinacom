@@ -45,7 +45,7 @@ function DropzoneWithoutClick({ onFilesChange }) {
       >
         <input {...getInputProps()} />
         <i className="bi bi-upload" />
-        <p className="text-input">Unggah bukti foto (MAX 2MB, JPEG, PNG)</p>
+        <p className="text-input">Unggah bukti foto (MAX 5MB, JPEG, PNG)</p>
       </div>
       {acceptedFiles.length > 0 && (
         <div className="ul-list-file">
@@ -153,8 +153,8 @@ const LaporinPage = () => {
         )}
       </div>
       <div className="Complaint my-4 d-flex flex-column">
-        <h1 className="text-center">Yuk, laporin keresahanmu</h1>
-        <p className="mb-4 text-center">
+        <h1 className="text-center"  data-aos="fade-up" data-aos-duration="900">Yuk, laporin keresahanmu</h1>
+        <p className="mb-4 text-center" data-aos="fade-up" data-aos-duration="1000">
           Laporkan keresahanmu di Sadam. Cepat, Aman, Mudah, dan Transparan.
         </p>
         {submitSuccess && (
@@ -185,7 +185,7 @@ const LaporinPage = () => {
                   className="complaint-form"
                   onSubmit={handleSubmit}
                 >
-                  <Form.Group className="forms-g" controlId="validationTitle">
+                  <Form.Group className="forms-g" controlId="validationTitle" data-aos="fade-up" data-aos-duration="1000">
                     <Form.Label className="label">
                       Judul Laporan<span className="red-dot">*</span>
                     </Form.Label>

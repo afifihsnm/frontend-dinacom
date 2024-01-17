@@ -107,7 +107,7 @@ const SignInForm = ({ onLoginSuccess }) => {
             <Link to="/lupa-sandi">Lupa Kata Sandi?</Link>
           </Form.Group>
 
-          <Button className="mt-4" type="submit" disabled={isSubmitting}>
+          <Button className="mt-4 w-100" type="submit" disabled={isSubmitting}>
             Masuk
           </Button>
           <p className="text-center m-0 mt-3">

@@ -1,5 +1,6 @@
 import { Card, Dropdown } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // Import Image 
 import IconCircleTime from "../assets/icon/circle-time.svg";
@@ -211,7 +212,7 @@ function ReportUser({ laporanUser, filteredLaporanUser, handleStatusChange }) {
                     <h3>{data.user.username}</h3>
                   )}
                   <label className="badge-anda d-flex">Anda</label>
-                  <p>12/22/2222</p>
+                  <p>{data.publishedAt}</p>
                   {data.status === 0 && (
                     <label className="badge-status1 d-flex">Belum ditangani</label>
                   )}
@@ -253,8 +254,13 @@ function ReportUser({ laporanUser, filteredLaporanUser, handleStatusChange }) {
                 </div>
               </div>
               <div className="laporan-body">
+              <Link
+                to={`/lapor-publik/${data.id}`}
+                className="laporan-body-link text-decoration-none"
+              >
                 <h4>{data.title}</h4>
                 <p>{data.content}</p>
+                </Link>
               </div>
             </div>
           </div>
