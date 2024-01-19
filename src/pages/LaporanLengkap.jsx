@@ -241,13 +241,49 @@ const LaporanLengkap = () => {
       // If the comment is already visible, remove it from the list
       updatedVisibleReplies.splice(updatedVisibleReplies.indexOf(commentId), 1);
     } else {
-      // If the comment is not visible, add it to the list
       updatedVisibleReplies.push(commentId);
     }
 
     setVisibleReplies(updatedVisibleReplies);
   };
 
+
+  const renderRepliesNew = (parentCommentId) => {
+    const replyComments = comments.filter(comment => comment.parentId === parentCommentId);
+
+    return replyComments.map((reply) => (
+      // Render komentar balasan disini
+      <div key={reply.id} className="comment-reply d-flex gap-4 my-3">
+        {reply.user ? (
+          <img
+            src={reply.user.avatar || 'default-user-avatar-url'}
+            alt={reply.user.username || 'Anonim'}
+          />
+        ) : reply.admin ? (
+          <img
+            src={reply.admin.avatar || 'default-admin-avatar-url'}
+            alt={reply.admin.name || 'Admin'}
+          />
+        ) : (
+          <div className="avatar-anonim" />
+        )}
+        <div className="comment-body">
+          <div className="comment-head d-flex gap-1">
+            {reply.user ? (
+              <p>{reply.user.username}</p>
+            ) : reply.admin ? (
+              <p>{reply.admin.name}</p>
+            ) : (
+              <p>Anonim</p>
+            )}
+            <span className="black-dot">•</span>
+            <p>{reply.publishedAt}</p>
+          </div>
+          <p>{reply.contentComment}</p>
+        </div>
+      </div>
+    ));
+  };
 
   const renderReplies = (parentCommentId) => {
     const replyComments = comments.filter(comment => comment.parentId === parentCommentId);
@@ -281,8 +317,54 @@ const LaporanLengkap = () => {
             <p>{reply.publishedAt}</p>
           </div>
           <p>{reply.contentComment}</p>
+          <div className="btn-reply mt-3 d-flex gap-3">
+            <Button variant="outline-primary" onClick={() => handleReplyClick(reply.id)}>
+              Balas komentar
+            </Button>
+            {comments.some(childComment => childComment.parentId === reply.id) && (
+              <Button
+                className="d-flex gap-2"
+                variant="outline-primary"
+                onClick={() => handleToggleReplies(reply.id)}
+              >
+                {visibleReplies.includes(reply.id) ? 'Sembunyikan balasan' : 'Lihat balasan'}
+                <i className={`bi bi-chevron-${visibleReplies.includes(reply.id) ? 'up' : 'down'}`} />
+              </Button>
+            )}
+          </div>
+          {/* Tampilkan input textarea dan checkbox jika sedang membalas komentar tertentu */}
+          {replyingCommentId === reply.id && (
+            <Form className="reply-comment mt-3">
+              <Form.Group controlId="replyContent">
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  placeholder="Balas komentar..."
+                  value={replyContent}
+                  onChange={(e) => setReplyContent(e.target.value)}
+                  onClick={() => handleReplySubmit(reply.id)}
+                />
+              </Form.Group>
+              <Form.Group controlId="isAnonymousReply" className="m-0 d-flex align-items-center">
+                <Form.Check
+                  className="d-flex mt-2"
+                  type="checkbox"
+                  label="Rahasiakan nama (Anonim)"
+                  checked={isAnonymousReply}
+                  onChange={() => setIsAnonymousReply(!isAnonymousReply)}
+                />
+              </Form.Group>
+              <Button variant="primary" onClick={() => handleReplySubmit(reply.id)}>
+                Balas
+              </Button>
+            </Form>
+          )}
+          {replySubmitted && (
+            <p className="reply-submitted-popup">Balasan telah berhasil dikirim!</p>
+          )}
+          {/* Render balasan untuk balasan (rekursif) */}
+          {visibleReplies.includes(reply.id) && renderRepliesNew(reply.id)}
         </div>
-
       </div>
     ));
   };
@@ -323,8 +405,8 @@ const LaporanLengkap = () => {
             </Button>
             {commentData.some(childComment => childComment.parentId === comment.id) && (
               <Button className="d-flex gap-2" variant="outline-primary" onClick={() => handleToggleReplies(comment.id)}>
-                Lihat balasan
-                <i className="bi bi-chevron-down" />
+                {visibleReplies.includes(comment.id) ? 'Sembunyikan balasan' : 'Lihat balasan'}
+                <i className={`bi bi-chevron-${visibleReplies.includes(comment.id) ? 'up' : 'down'}`} />
               </Button>
             )}
           </div>
@@ -358,6 +440,7 @@ const LaporanLengkap = () => {
           {replySubmitted && (
             <p className="reply-submitted-popup">Balasan telah berhasil dikirim!</p>
           )}
+          {/* Render balasan untuk komentar (rekursif) */}
           {visibleReplies.includes(comment.id) && renderReplies(comment.id)}
         </div>
       </div>
@@ -538,7 +621,7 @@ const LaporanLengkap = () => {
               <Modal.Body>
                 {copySuccess && <p className="mt-2">Berhasil disalin ke clipboard!</p>}
                 <p className="mb-1">Tautan Laporan</p>
-                <input className="mb-1 input-pop-up">{`https://admin.sadam.bid/laporan/${id}`}</input>                
+                <input className="mb-1 input-pop-up">{`https://admin.sadam.bid/laporan/${id}`}</input>
                 <Button variant="primary" onClick={copyToClipboard} className="mt-1">
                   Bagikan
                 </Button>

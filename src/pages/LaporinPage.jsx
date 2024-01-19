@@ -6,20 +6,21 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 
 function DropzoneWithoutClick({ onFilesChange }) {
-  const maxSize = 5 * 1024 * 1024; // 5MB
-  const accept = [".jpeg", ".jpg", ".png"];
+  const maxSize = 10 * 1024 * 1024;
+  const accept = {
+    'image/jpeg': [],
+    'image/png': [],
+  }
 
   const { getRootProps, getInputProps, acceptedFiles, fileRejections } = useDropzone({
     onDrop: (acceptedFiles, fileRejections) => {
       onFilesChange(acceptedFiles);
-      // Handle file rejections (e.g., file size exceeded, invalid file type)
       if (fileRejections.length > 0) {
         console.log('File rejected:', fileRejections);
-        // You can add user-friendly error messages or other handling here
       }
     },
     maxSize,
-    accept: accept.join(','),
+    accept,
   });
 
   const files = acceptedFiles.map(file => (
@@ -33,7 +34,7 @@ function DropzoneWithoutClick({ onFilesChange }) {
       <div {...getRootProps({ className: 'dropzone align-items-center py-4 rounded-4 gap-2 d-flex flex-column' })}>
         <input {...getInputProps()} />
         <i className="bi bi-upload" />
-        <p className="text-input">Unggah bukti foto (MAX 5MB, JPEG, PNG)</p>
+        <p className="text-input">Unggah bukti foto (MAX 10MB, JPEG, PNG, MP4)</p>
       </div>
       {acceptedFiles.length > 0 && (
         <div className="ul-list-file">
@@ -79,18 +80,18 @@ const LaporinPage = () => {
   const handleSubmit = async (postForm, { setSubmitting }) => {
     const token = localStorage.getItem('token');
     const formData = new FormData();
-  
-   // Append Dropzone files to formData
-   acceptedFiles.forEach(file => {
-    formData.append('files[]', file);
-  });
-  
-      // Append other form data to formData
-      formData.append('title', postForm.title);
-      formData.append('content', postForm.content);
-      formData.append('name_visibility', postForm.name_visibility);
-      formData.append('post_visibility', postForm.post_visibility);
-  
+
+    // Append Dropzone files to formData
+    acceptedFiles.forEach(file => {
+      formData.append('files[]', file);
+    });
+
+    // Append other form data to formData
+    formData.append('title', postForm.title);
+    formData.append('content', postForm.content);
+    formData.append('name_visibility', postForm.name_visibility);
+    formData.append('post_visibility', postForm.post_visibility);
+
     try {
       const response = await fetch('https://admin.sadam.bid/api/v1/reports', {
         method: 'POST',
@@ -99,7 +100,7 @@ const LaporinPage = () => {
         },
         body: formData,
       });
-  
+
       const data = await response.json();
       console.log(data);
       setSubmitSuccess(true);
@@ -110,7 +111,7 @@ const LaporinPage = () => {
       setSubmitting(false);
     }
   };
-  
+
 
   const schema = Yup.object().shape({
     title: Yup.string().min(5, "Judul terlalu pendek").required("Harus diisi"),
@@ -128,7 +129,7 @@ const LaporinPage = () => {
         </p>
         {submitSuccess && (
           <div className="alert alert-success mt-4" role="alert">
-            <p className="font-weight-bold">Yey, Laporanmu sudah terkirim.</p><br/>
+            <p className="font-weight-bold">Yey, Laporanmu sudah terkirim.</p><br />
             <p>Untuk mengetahui tanggapan dari instansi, Anda bisa cek Pesan secara berkala. Terima Kasih.</p>
           </div>
         )}
@@ -196,13 +197,13 @@ const LaporinPage = () => {
                   </Form.Group>
 
                   <FormGroup>
-                  <Form.Label className="label">
+                    <Form.Label className="label">
                       Unggah Bukti Foto
                       <span className="red-dot">*</span>
                     </Form.Label>
-                  <DropzoneWithoutClick onFilesChange={handleFilesChange} />
-                  <Form.Text id="contentHelpBlock" muted>
-                     Unggah bukti agar memperkuat laporanmu.
+                    <DropzoneWithoutClick onFilesChange={handleFilesChange} />
+                    <Form.Text id="contentHelpBlock" muted>
+                      Unggah bukti agar memperkuat laporanmu.
                     </Form.Text>
                   </FormGroup>
                   <Form.Group className="forms-g" controlId="name_visibility">
@@ -237,7 +238,7 @@ const LaporinPage = () => {
 
                   <Form.Group className="forms-g" controlId="post_visibility">
                     <Form.Label className="label">
-                    Siapakah yang dapat melihat/ menanggapi laporan ini
+                      Siapakah yang dapat melihat/ menanggapi laporan ini
                       <span className="red-dot">*</span>
                     </Form.Label>
                     <div className="mb-1">

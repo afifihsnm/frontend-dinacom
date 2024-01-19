@@ -18,7 +18,7 @@ const SignInForm = ({ onLoginSuccess }) => {
         },
         body: JSON.stringify(values),
       });
-  
+
       if (response.ok) {
         const responseData = await response.json();
         console.log('Login berhasil:', responseData);
@@ -29,21 +29,21 @@ const SignInForm = ({ onLoginSuccess }) => {
           onLoginSuccess();
         }
         navigate('/dashboard');
-        } else {
+      } else {
         const responseData = await response.json();
         console.log('Login gagal:', responseData);
-        setLoginError(responseData.message); 
-        setHasError(true); 
+        setLoginError(responseData.message);
+        setHasError(true);
       }
     } catch (error) {
       console.error('Terjadi kesalahan saat login:', error);
       setLoginError('Terjadi kesalahan saat login');
-      setHasError(true); 
+      setHasError(true);
     } finally {
       setSubmitting(false);
     }
   };
-  
+
 
   const schema = Yup.object().shape({
     username: Yup.string().min(3, "Minimum 3 karakter").required("Wajib diisi"),
@@ -60,7 +60,7 @@ const SignInForm = ({ onLoginSuccess }) => {
       }}
     >
       {({ handleSubmit, handleChange, values, touched, errors, isSubmitting }) => (
-        <Form noValidate className="signin-form" onSubmit={handleSubmit}>
+        <Form noValidate className="signin-form px-2" onSubmit={handleSubmit}>
 
           {loginError && (
             <p className="text-danger"><i className="bi bi-exclamation-circle mx-2" />Sepertinya ada yang salah</p>
@@ -72,7 +72,7 @@ const SignInForm = ({ onLoginSuccess }) => {
             </Form.Label>
             <InputGroup className="mb-1">
               <FormControl
-  className={`rounded-5 ${hasError ? 'border-danger' : ''}`}
+                className={`rounded-5 ${hasError ? 'border-danger' : ''}`}
                 type="text"
                 placeholder="Username"
                 name="username"
@@ -92,7 +92,7 @@ const SignInForm = ({ onLoginSuccess }) => {
             </Form.Label>
             <InputGroup className="mb-1">
               <FormControl
-  className={`rounded-5 ${hasError ? 'border-danger' : ''}`}
+                className={`rounded-5 ${hasError ? 'border-danger' : ''}`}
                 type="password"
                 placeholder="Password"
                 name="password"

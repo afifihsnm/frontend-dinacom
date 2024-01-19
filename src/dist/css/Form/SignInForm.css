@@ -86,7 +86,7 @@
     background: var(--Colors-Error-Surface-default-subtle, #FFEBEF);
 }
 
-@media (max-width: 375px) {
+@media (max-width: 425px) {
     .signin-form {
         width: 100%;
     }

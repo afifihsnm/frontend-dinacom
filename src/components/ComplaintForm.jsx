@@ -12,22 +12,24 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 
 function DropzoneWithoutClick({ onFilesChange }) {
-  const maxSize = 2 * 1024 * 1024; // 2MB
-  const accept = [".jpeg", ".png"];
+  const maxSize = 10 * 1024 * 1024;
+  const accept = {
+    'image/jpeg': [],
+    'image/png': [],
+    'video/mp4': [],
+  }
 
-  const { getRootProps, getInputProps, acceptedFiles, fileRejections } =
-    useDropzone({
-      onDrop: (acceptedFiles, fileRejections) => {
-        onFilesChange(acceptedFiles);
-        // Handle file rejections (e.g., file size exceeded, invalid file type)
-        if (fileRejections.length > 0) {
-          console.log("File rejected:", fileRejections);
-          // You can add user-friendly error messages or other handling here
-        }
-      },
-      maxSize,
-      accept: accept.join(","),
-    });
+  const { getRootProps, getInputProps, acceptedFiles, fileRejections } = useDropzone({
+    onDrop: (acceptedFiles, fileRejections) => {
+      onFilesChange(acceptedFiles);
+      if (fileRejections.length > 0) {
+        console.log('File rejected:', fileRejections);
+      }
+    },
+    maxSize,
+    accept,
+  });
+
 
   const files = acceptedFiles.map((file) => (
     <li key={file.path} className="list-file">
@@ -45,7 +47,7 @@ function DropzoneWithoutClick({ onFilesChange }) {
       >
         <input {...getInputProps()} />
         <i className="bi bi-upload" />
-        <p className="text-input">Unggah bukti foto (MAX 5MB, JPEG, PNG)</p>
+        <p className="text-input">Unggah bukti foto (MAX 10MB, JPEG, PNG, MP4)</p>
       </div>
       {acceptedFiles.length > 0 && (
         <div className="ul-list-file">
@@ -97,6 +99,7 @@ const LaporinPage = () => {
     if (!isAuthenticated) {
       // Show a message or redirect to the account creation page
       console.log("You need to have an account to submit a report.");
+      setShowAccountCreationMessage(true);
       return;
     }
 
@@ -153,7 +156,7 @@ const LaporinPage = () => {
         )}
       </div>
       <div className="Complaint my-4 d-flex flex-column">
-        <h1 className="text-center"  data-aos="fade-up" data-aos-duration="900">Yuk, laporin keresahanmu</h1>
+        <h1 className="text-center" data-aos="fade-up" data-aos-duration="900">Yuk, laporin keresahanmu</h1>
         <p className="mb-4 text-center" data-aos="fade-up" data-aos-duration="1000">
           Laporkan keresahanmu di Sadam. Cepat, Aman, Mudah, dan Transparan.
         </p>
