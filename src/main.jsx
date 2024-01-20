@@ -19,8 +19,6 @@ import "./dist/css/pages/AboutPage.css";
 import "./dist/css/pages/HomePage.css";
 import "./dist/css/pages/SignInPage.css";
 import "./dist/css/pages/SignUpPage.css";
-import "./dist/css/pages/ForgotPasswordPage.css";
-import "./dist/css/pages/NewPassPage.css";
 import "./dist/css/pages/DashboardPage.css";
 import "./dist/css/pages/LaporinPage.css";
 import "./dist/css/pages/LaporanLengkap.css";
@@ -38,8 +36,6 @@ import "./dist/css/components/SidebarComponent.css";
 // Import CSS Form Page
 import "./dist/css/Form/SignInForm.css";
 import "./dist/css/Form/SignUpForm.css";
-import "./dist/css/Form/ForgotPasswordForm.css";
-import "./dist/css/Form/NewPassForm.css";
 import "./dist/css/Form/ComplaintForm.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(

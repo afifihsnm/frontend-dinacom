@@ -10,6 +10,7 @@ function DropzoneWithoutClick({ onFilesChange }) {
   const accept = {
     'image/jpeg': [],
     'image/png': [],
+    'video/.mp4': []
   }
 
   const { getRootProps, getInputProps, acceptedFiles, fileRejections } = useDropzone({

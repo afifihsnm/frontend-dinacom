@@ -9,11 +9,9 @@ import PrivateRoute from "./components/PrivateRoute";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ComplaintForm from "./components/ComplaintForm";
-import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import NavInfo from "./components/NavInfo";
-import NewPassPage from "./pages/NewPassPage";
 import DashboardPage from "./pages/DashboardPage";
 import LaporinPage from "./pages/LaporinPage";
 import LaporanPublikPage from "./pages/LaporanPublikPage";
@@ -72,7 +70,6 @@ function App() {
           <Route path="/pengaduan" element={<ComplaintForm />} />
           <Route path="/masuk" element={<SignInPage />} />
           <Route path="/daftar" element={<SignUpPage />} />
-          <Route path="/lupa-sandi" element={<ForgotPasswordPage />} />
           <Route path="/dashboard" element={<PrivateRoute />}>
             <Route path="/dashboard" element={<DashboardPage />} />
           </Route>

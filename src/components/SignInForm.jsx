@@ -104,7 +104,6 @@ const SignInForm = ({ onLoginSuccess }) => {
                 {errors.password}
               </Form.Control.Feedback>
             </InputGroup>
-            <Link to="/lupa-sandi">Lupa Kata Sandi?</Link>
           </Form.Group>
 
           <Button className="mt-4 w-100" type="submit" disabled={isSubmitting}>
