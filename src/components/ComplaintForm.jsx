@@ -16,7 +16,6 @@ function DropzoneWithoutClick({ onFilesChange }) {
   const accept = {
     'image/jpeg': [],
     'image/png': [],
-    'video/mp4': [],
   }
 
   const { getRootProps, getInputProps, acceptedFiles, fileRejections } = useDropzone({
@@ -47,7 +46,7 @@ function DropzoneWithoutClick({ onFilesChange }) {
       >
         <input {...getInputProps()} />
         <i className="bi bi-upload" />
-        <p className="text-input">Unggah bukti foto (MAX 10MB, JPEG, PNG, MP4)</p>
+        <p className="text-input">Unggah bukti foto ((MAX 10MB, JPEG, PNG))</p>
       </div>
       {acceptedFiles.length > 0 && (
         <div className="ul-list-file">

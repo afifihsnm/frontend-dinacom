@@ -9,13 +9,13 @@
 
 @media (min-width: 768px) and (max-width: 1024px) {
     .footer-content {
-      margin-left: 17.0625rem;
+      padding-left: 19.0625rem;
     }
 }
   
 @media (min-width: 1024px) {
     .footer-content {
-      margin-left: 17.0625rem;
+      padding-left: 19.0625rem;
     }
   }
   
