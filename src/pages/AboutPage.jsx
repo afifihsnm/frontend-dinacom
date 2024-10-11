@@ -1,7 +1,7 @@
 //Import Image
 import logoInstagram from "../assets/img/medsos/Instagram.png";
 import logoTelegram from "../assets/img/medsos/Telegram.png";
-import logoFacebook from "../assets/img/medsos/Facebook.png";
+import logoFacebook from "../assets/img/medsos/facebook.png";
 import logoX from "../assets/img/medsos/X.png";
 
 const AboutPage = () => {
