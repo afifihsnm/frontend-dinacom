@@ -16,12 +16,12 @@ const LaporanPublikPage = () => {
       navigate("/");
     }
 
-    let apiPost = "https://admin.sadam.bid/api/v1/reports";
+    let apiPost = "https://admin.sadam.fr.to/api/v1/reports";
 
     if (filter === 2) {
-      apiPost = "https://admin.sadam.bid/api/v1/reports/liked";
+      apiPost = "https://admin.sadam.fr.to/api/v1/reports/liked";
     } else if (filter === 3) {
-      apiPost = "https://admin.sadam.bid/api/v1/reports/latest";
+      apiPost = "https://admin.sadam.fr.to/api/v1/reports/latest";
     }
 
     fetch(apiPost, {

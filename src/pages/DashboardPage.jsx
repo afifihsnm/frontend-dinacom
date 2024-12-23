@@ -23,9 +23,9 @@ const Dashboard = () => {
     const token = localStorage.getItem('token');
 
     try {
-      console.log('Sending request to:', `https://admin.sadam.bid/api/v1/users/dashboard/report/${reportId}/${statusType}`);
+      console.log('Sending request to:', `https://admin.sadam.fr.to/api/v1/users/dashboard/report/${reportId}/${statusType}`);
 
-      const response = await fetch(`https://admin.sadam.bid/api/v1/users/dashboard/report/${reportId}/${statusType}`, {
+      const response = await fetch(`https://admin.sadam.fr.to/api/v1/users/dashboard/report/${reportId}/${statusType}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -59,7 +59,7 @@ const Dashboard = () => {
   const handleFilterClick = async (filterType) => {
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch(`https://admin.sadam.bid/api/v1/users/dashboard/filter/${filterType}`, {
+      const response = await fetch(`https://admin.sadam.fr.to/api/v1/users/dashboard/filter/${filterType}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -88,7 +88,7 @@ const Dashboard = () => {
       navigate('/');
     }
 
-    fetch('https://admin.sadam.bid/api/v1/users/dashboard', {
+    fetch('https://admin.sadam.fr.to/api/v1/users/dashboard', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,

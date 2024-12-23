@@ -14,7 +14,7 @@ function AkunPage() {
       return;
     }
 
-    fetch("https://admin.sadam.bid/api/v1/users/profile", {
+    fetch("https://admin.sadam.fr.to/api/v1/users/profile", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,

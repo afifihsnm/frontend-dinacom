@@ -33,7 +33,7 @@ const LaporanLengkap = () => {
       navigate("/");
     }
 
-    fetch(`https://admin.sadam.bid/api/v1/reports/${id}`, {
+    fetch(`https://admin.sadam.fr.to/api/v1/reports/${id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -63,7 +63,7 @@ const LaporanLengkap = () => {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(`https://admin.sadam.bid/api/v1/reports/${id}/liked`, {
+      const response = await fetch(`https://admin.sadam.fr.to/api/v1/reports/${id}/liked`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -105,7 +105,7 @@ const LaporanLengkap = () => {
     console.log("Handle Report called");
 
     try {
-      const response = await fetch(`https://admin.sadam.bid/api/v1/reports/${id}/reporting/report`, {
+      const response = await fetch(`https://admin.sadam.fr.to/api/v1/reports/${id}/reporting/report`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -139,7 +139,7 @@ const LaporanLengkap = () => {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(`https://admin.sadam.bid/api/v1/reports/${id}`, {
+      const response = await fetch(`https://admin.sadam.fr.to/api/v1/reports/${id}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -152,7 +152,7 @@ const LaporanLengkap = () => {
       }
 
       const data = await response.json();
-      const reportLink = `https://admin.sadam.bid/laporan/${id}`;
+      const reportLink = `https://admin.sadam.fr.to/laporan/${id}`;
 
       // Menampilkan modal untuk share
       setShowShareModal(true);
@@ -169,7 +169,7 @@ const LaporanLengkap = () => {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(`https://admin.sadam.bid/api/v1/reports/${id}/comments`, {
+      const response = await fetch(`https://admin.sadam.fr.to/api/v1/reports/${id}/comments`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -192,7 +192,7 @@ const LaporanLengkap = () => {
   const handleReplySubmit = async (parentCommentId) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`https://admin.sadam.bid/api/v1/reports/${id}/comments/${parentCommentId}`, {
+      const response = await fetch(`https://admin.sadam.fr.to/api/v1/reports/${id}/comments/${parentCommentId}`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -621,7 +621,7 @@ const LaporanLengkap = () => {
               <Modal.Body>
                 {copySuccess && <p className="mt-2">Berhasil disalin ke clipboard!</p>}
                 <p className="mb-1">Tautan Laporan</p>
-                <input className="mb-1 input-pop-up">{`https://admin.sadam.bid/laporan/${id}`}</input>
+                <input className="mb-1 input-pop-up">{`https://admin.sadam.fr.to/laporan/${id}`}</input>
                 <Button variant="primary" onClick={copyToClipboard} className="mt-1">
                   Bagikan
                 </Button>

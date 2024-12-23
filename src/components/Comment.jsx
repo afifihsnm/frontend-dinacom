@@ -34,7 +34,7 @@ function Comment() {
             Authorization: `Bearer ${token}`
         };
 
-        axios.post(`https://admin.sadam.bid/api/v1/reports/${id}/comments`, data, { headers })
+        axios.post(`https://admin.sadam.fr.to/api/v1/reports/${id}/comments`, data, { headers })
             .then(response => {
                 console.log(response.data);
 

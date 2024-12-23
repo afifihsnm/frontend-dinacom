@@ -117,7 +117,7 @@ const LaporinPage = () => {
     formData.append("post_visibility", postForm.post_visibility);
 
     try {
-      const response = await fetch("https://admin.sadam.bid/api/v1/reports", {
+      const response = await fetch("https://admin.sadam.fr.to/api/v1/reports", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

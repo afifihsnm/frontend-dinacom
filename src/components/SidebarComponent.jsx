@@ -12,7 +12,7 @@ function Sidebar({ activePage }) {
   const handleShow = () => setShow(true);
 
   const logout = () => {
-    fetch('https://admin.sadam.bid/api/v1/auth/logout', {
+    fetch('https://admin.sadam.fr.to/api/v1/auth/logout', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`, // Sesuaikan dengan cara autentikasi API Anda
