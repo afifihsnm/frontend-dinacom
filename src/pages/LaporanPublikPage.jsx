@@ -203,7 +203,7 @@ function ReportAll({ laporanAll }) {
                       {data.image.map((image, index) => (
                         <img
                           key={index}
-                          src={image.path}
+                          src={`https://admin.sadam.fr.to/${image.path}`}
                           alt={`Laporan ${data.id} - Image ${index + 1}`}
                           onClick={() => {
                             setSelectedImage(image.path);
